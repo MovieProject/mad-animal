@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+* { font-family: 굴림, gulim, tahoma, sans-serif; font-size: 12px; }
+a:link { text-decoration: none; color: #000000; }
+a:visited { text-decoration: none; color: #000000; }
+a:hover, a:active { text-decoration: underline; color: #cc6600; }
+
+
+#page {
+	width: 1024px;
+	margin: 0;
+}
+
+#header {
+	height: 160px;
+	border: 1px solid #CCC;
+}
+
+#sidebar {
+	width: 200px;
+	height: 600px;
+	border: 1px solid #CCC;
+	float: left;
+}
+
+#content {
+	width: 800px;
+	height: 600px;
+	border: 1px solid #CCC;
+	float: right;
+	vertical-align: top;
+	height: 600px;
+}
+
+#footer {
+	border: 1px solid #CCC;
+	height: 100px;
+	clear: both;
+}
+
+#week {
+	border: 1px solid #CCC;
+	height: 300px;
+}
+
+#notice {
+
+	width: 400px;
+	height: 300px;
+	float: left;
+}
+
+#newMovieIntro {
+
+	width: 400px;
+	height: 150px;
+	float: right;
+}
+
+#new {
+
+	width: 400px;
+	height: 150px;
+	float: right;
+	
+}
