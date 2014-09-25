@@ -5,7 +5,7 @@ public class Movie {
 	private String movieName;
 	private String genre;
 	private String releaseDate;
-	private String drector;
+	private String director;
 	private String synopsis;
 	private String photoDir;
 
@@ -13,13 +13,13 @@ public class Movie {
 	}
 
 	public Movie(int movieNum, String movieName, String genre,
-			String releaseDate, String drector, String synopsis, String photoDir) {
+			String releaseDate, String director, String synopsis, String photoDir) {
 		super();
 		this.movieNum = movieNum;
 		this.movieName = movieName;
 		this.genre = genre;
 		this.releaseDate = releaseDate;
-		this.drector = drector;
+		this.director = director;
 		this.synopsis = synopsis;
 		this.photoDir = photoDir;
 	}
@@ -40,8 +40,8 @@ public class Movie {
 		return releaseDate;
 	}
 
-	public String getDrector() {
-		return drector;
+	public String getdirector() {
+		return director;
 	}
 
 	public String getSynopsis() {
@@ -68,8 +68,8 @@ public class Movie {
 		this.releaseDate = releaseDate;
 	}
 
-	public void setDrector(String drector) {
-		this.drector = drector;
+	public void setdirector(String director) {
+		this.director = director;
 	}
 
 	public void setSynopsis(String synopsis) {
@@ -84,7 +84,7 @@ public class Movie {
 	public String toString() {
 		return "Movie [movieNum=" + movieNum + ", movieName=" + movieName
 				+ ", genre=" + genre + ", releaseDate=" + releaseDate
-				+ ", drector=" + drector + ", synopsis=" + synopsis
+				+ ", director=" + director + ", synopsis=" + synopsis
 				+ ", photoDir=" + photoDir + "]";
 	}
 

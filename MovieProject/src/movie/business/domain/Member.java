@@ -3,7 +3,7 @@ package movie.business.domain;
 public class Member {
 	private String memberID;
 	private String password;
-	private String member_Name;
+	private String memberName;
 	private String address;
 	private String email;
 	private String tel;
@@ -13,12 +13,12 @@ public class Member {
 
 	}
 
-	public Member(String memberID, String password, String member_Name,
+	public Member(String memberID, String password, String memberName,
 			String address, String email, String tel, int power) {
 		super();
 		this.memberID = memberID;
 		this.password = password;
-		this.member_Name = member_Name;
+		this.memberName = memberName;
 		this.address = address;
 		this.email = email;
 		this.tel = tel;
@@ -33,8 +33,8 @@ public class Member {
 		return password;
 	}
 
-	public String getMember_Name() {
-		return member_Name;
+	public String getmemberName() {
+		return memberName;
 	}
 
 	public String getAddress() {
@@ -61,8 +61,8 @@ public class Member {
 		this.password = password;
 	}
 
-	public void setMember_Name(String member_Name) {
-		this.member_Name = member_Name;
+	public void setmemberName(String memberName) {
+		this.memberName = memberName;
 	}
 
 	public void setAddress(String address) {
@@ -84,7 +84,7 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [memberID=" + memberID + ", password=" + password
-				+ ", member_Name=" + member_Name + ", address=" + address
+				+ ", memberName=" + memberName + ", address=" + address
 				+ ", email=" + email + ", tel=" + tel + ", power=" + power
 				+ "]";
 	}
