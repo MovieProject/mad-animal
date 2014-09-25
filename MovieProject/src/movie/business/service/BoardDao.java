@@ -31,8 +31,7 @@ public interface BoardDao {
 	/**
 	 * 지정된 번호에 해당하는 게시글의 조회수를 증가시킨다.
 	 * 
-	 * @param boardNum
-	 *            조회수를 증가시킬 게시글의 번호
+	 * @param boardNum 조회수를 증가시킬 게시글의 번호
 	 */
 	public void addReadCount(int boardNum);
 
@@ -42,7 +41,7 @@ public interface BoardDao {
 	 * @param boardNum 존재여부를 확인하려는 게시글의 번호
 	 * @return 해당하는 게시글이 존재하면 true, 존재하지 않으면 false
 	 */
-	public boolean boardboardNumExists(int boardNum);
+	public boolean boardNumExists(int boardNum);
 
 	/**
 	 * 인수로 주어진 Board 객체의 정보로 새로운 게시글을 등록한다.
@@ -54,8 +53,7 @@ public interface BoardDao {
 	/**
 	 * 인수로 주어진 Board 객체의 정보로 기존 게시글을 수정한다.
 	 * 
-	 * @param board
-	 *            수정할 게시글 정보를 담고 있는 Board 객체
+	 * @param board 수정할 게시글 정보를 담고 있는 Board 객체
 	 */
 	public void updateBoard(Board board);
 
