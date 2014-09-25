@@ -49,4 +49,12 @@ public interface MemberDao {
 	 */
 	public boolean memberIDExists(String memberID);
 
+
+	/**
+	 * 인수로 주어진 ID에 해당하는 회원이 선택한다.
+	 * 
+	 * @param memberID 존재여부를 확인하려는 회원의 ID
+	 * @return 회원정보
+	 */
+	public Member selectMember(String memberID);
 }
