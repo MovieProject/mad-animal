@@ -42,7 +42,7 @@ public interface BoardDao {
 	 * @param boardNum 존재여부를 확인하려는 게시글의 번호
 	 * @return 해당하는 게시글이 존재하면 true, 존재하지 않으면 false
 	 */
-	public boolean boardboardNumExists(int boardNum);
+	public boolean boardNumExists(int boardNum);
 
 	/**
 	 * 인수로 주어진 Board 객체의 정보로 새로운 게시글을 등록한다.
