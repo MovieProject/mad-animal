@@ -2,7 +2,7 @@
 
 * {
 	font-family: 굴림, gulim, tahoma, sans-serif;
-	font-size: 12px;
+	font-size: 12px;	
 }
 
 a:link {
@@ -31,27 +31,27 @@ a:hover, a:active {
 
 #header {
 	height: 160px;
-	border: 1px solid #CCC;
+	border-bottom: 1px solid ;
 }
 
 #sidebar {
 	width: 200px;
 	height: 600px;
-	border: 1px solid #CCC;
+	border-right: 1px solid ;
 	float: left;
 }
 
 #content {
 	width: 800px;
 	height: 600px;
-	border: 1px solid #CCC;
+	border: 1px solid ;
 	float: right;
 	vertical-align: top;
 	height: 600px;
 }
 
 #footer {
-	border: 1px solid #CCC;
+	border-top: 1px solid ;
 	height: 100px;
 	clear: both;
 }
@@ -72,7 +72,7 @@ a:hover, a:active {
 	font-size: 20px;
 	width: 390px;
 	text-align: left;
-	border-bottom: 1px solid #CCC;
+	border-bottom: 1px solid ;
 }
 
 #listtable .num {
@@ -114,6 +114,10 @@ a:hover, a:active {
 	float: right;
 }
 
-#registertable {
-	border: 1px solid #CCC;
+
+.registertable td.label {
+	text-align:left;
+	width:50px;
+	border-right: 1px solid ;
+
 }

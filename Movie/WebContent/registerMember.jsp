@@ -20,42 +20,42 @@
 			<h4>[회원가입]</h4>
 			<form action="member?action=register" method="POST">
 				<table class="registertable">
-					<tr>
-						<td class="label">회원ID :</td>
-						<td><input type="text" name="memberID" size="20"
+				
+				<tr>
+				<td class="label">회원ID</td>
+				<td class="text"><input type="text" name="memberID" size="20"
 							maxlength="15"></td>
-					</tr>
+				</tr>
+
 					<tr>
-						<td class="label">비밀번호 :</td>
+						<td class="label">비밀번호</td>
 						<td><input type="password" name="password" size="20"
 							maxlength="10"></td>
 					</tr>
 					<tr>
-						<td class="label">이름 :</td>
+						<td class="label">이름</td>
 						<td><input type="text" name="name" size="20" maxlength="20"></td>
 					</tr>
 					<tr>
-						<td class="label">나이 :</td>
+						<td class="label">나이</td>
 						<td><input type="text" name="age" size="20" maxlength="20"></td>
 					</tr>
 					<tr>
-						<td class="label">주소 :</td>
+						<td class="label">주소</td>
 						<td><input type="text" name="address" size="20"
 							maxlength="20"></td>
 					</tr>
 					<tr>
-						<td class="label">이메일 :</td>
+						<td class="label">이메일</td>
 						<td><input type="text" name="email" size="20" maxlength="20"></td>
 					</tr>
 					<tr>
-						<td class="label">전화번호 :</td>
+						<td class="label">전화번호</td>
 						<td><input type="text" name="tel" size="20" maxlength="20"></td>
 					</tr>
+
 					<tr>
-						<td colspan="2">
-					</tr>
-					<tr>
-						<td></td>
+					<td></td>
 						<td><input type="submit" value="회원가입"> <input
 							type="reset" value="취소"></td>
 					</tr>

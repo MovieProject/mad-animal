@@ -19,7 +19,7 @@
 		
 				<div class="boardpage">
 		<table id="listtable" class="maintable">
-			<caption>최신 영화 소개</caption>
+			<a herf ="" id="title">최신 영화 소개</a>
 			<thead>
 				<tr>
 					<th class="num"></th>
