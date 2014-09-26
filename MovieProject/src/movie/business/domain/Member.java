@@ -4,6 +4,7 @@ public class Member {
 	private String memberID;
 	private String password;
 	private String memberName;
+	private int age;
 	private String address;
 	private String email;
 	private String tel;
@@ -13,12 +14,14 @@ public class Member {
 
 	}
 
-	public Member(String memberID, String password, String memberName,
+
+	public Member(String memberID, String password, String memberName,int age,
 			String address, String email, String tel, int grade) {
 		super();
 		this.memberID = memberID;
 		this.password = password;
 		this.memberName = memberName;
+		this.age = age;
 		this.address = address;
 		this.email = email;
 		this.tel = tel;
@@ -33,7 +36,7 @@ public class Member {
 		return password;
 	}
 
-	public String getmemberName() {
+	public String getMemberName() {
 		return memberName;
 	}
 
@@ -49,10 +52,15 @@ public class Member {
 		return tel;
 	}
 
+
 	public int getGrade() {
 		return grade;
-	}
+		}
 
+	public int getAge() {
+		return age;
+	}
+	
 	public void setMemberID(String memberID) {
 		this.memberID = memberID;
 	}
@@ -61,7 +69,7 @@ public class Member {
 		this.password = password;
 	}
 
-	public void setmemberName(String memberName) {
+	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
 
@@ -81,6 +89,10 @@ public class Member {
 		this.grade = grade;
 	}
 
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
 	@Override
 	public String toString() {
 		return "Member [memberID=" + memberID + ", password=" + password

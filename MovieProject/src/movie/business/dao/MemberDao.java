@@ -11,14 +11,14 @@ public interface MemberDao {
 	 * 
 	 * @return 검색된 회원 목록을 담고 있는 List 객체
 	 */
-	public List<Member> selectMemberList(Map<String, Object> searchInfo);
+	public List<Member> selectMemberList();
 	
 	/**
 	 * 조건에 맞는 모든 회원 수를 조회한다.
 	 * 
 	 * @return 검색된 모든 회원의 수
 	 */
-	public int selectMemberCount(Map<String, Object> searchInfo);
+	public int selectMemberCount();
 	
 	/**
 	 * 인수로 주어진 Member 객체의 정보로 새로운 회원을 등록한다.
@@ -49,4 +49,12 @@ public interface MemberDao {
 	 */
 	public boolean memberIDExists(String memberID);
 
+
+	/**
+	 * 인수로 주어진 ID에 해당하는 회원이 선택한다.
+	 * 
+	 * @param memberID 존재여부를 확인하려는 회원의 ID
+	 * @return 회원정보
+	 */
+	public Member selectMember(String memberID);
 }
