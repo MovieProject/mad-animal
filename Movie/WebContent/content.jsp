@@ -19,7 +19,7 @@
 		<div id="notice">
 			<div class="boardpage">
 				<table id="listtable" class="maintable">
-					<caption>영화추천 최신글</caption>
+					<caption id="title">공지 사항</caption>
 					<thead>
 						<tr>
 							<th class="num"></th>
@@ -57,7 +57,7 @@
 --%>
 						<tr>
 							<td class="num">1</td>
-							<td class="title"><a href="read.jsp">안녕하세요. 영화추천입니다.</a></td>
+							<td class="title"><a href="read.jsp">안녕하세요. 공지사항게시판입니다.</a></td>
 							<td class="writer">운영자</td>
 							<td class="regdate">2014.7.1</td>
 						</tr>
@@ -72,7 +72,7 @@
 		<div id="newMovieIntro">
 			<div class="boardpage">
 				<table id="listtable" class="maintable">
-					<caption>영화추천 최신글</caption>
+					<caption id="title">최신 영화 소개</caption>
 					<thead>
 						<tr>
 							<th class="num"></th>
@@ -110,7 +110,7 @@
 
 						<tr>
 							<td class="num">1</td>
-							<td class="title"><a href="read.jsp">안녕하세요. 영화추천입니다.</a></td>
+							<td class="title"><a href="read.jsp">안녕하세요. 공지사항게시판입니다.</a></td>
 							<td class="writer">운영자</td>
 							<td class="regdate">2014.7.1</td>
 						</tr>
@@ -125,7 +125,7 @@
 		<div id="new">
 			<div class="boardpage">
 				<table id="listtable" class="maintable">
-					<caption>영화추천 최신글</caption>
+					<caption id="title">회원 영화 추천</caption>
 					<thead>
 						<tr>
 							<th class="num"></th>

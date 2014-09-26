@@ -18,7 +18,7 @@
 		<div id="content">
 
 			<table id="listtable" class="maintable">
-				<caption>공지 사항</caption>
+				<a herf ="" id="title">공지사항</a>
 				<thead>
 					<tr>
 						<th class="num"></th>

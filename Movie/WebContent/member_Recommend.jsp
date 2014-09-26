@@ -18,7 +18,7 @@
 		<div id="content">
 
 			<table id="listtable" class="maintable">
-				<caption>회원 추천</caption>
+				<a herf="" id="title">회원 영화 추천</a>
 				<thead>
 					<tr>
 						<th class="num"></th>
