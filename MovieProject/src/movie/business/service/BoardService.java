@@ -6,7 +6,8 @@ import movie.business.exception.*;
 import movie.business.domain.Board;
 
 public interface BoardService {
-	 /**
+
+	/**
      * 특정 번호의 게시글을 읽는다. 조회된 게시글의 조회수는 증가되어야 한다.
      *
      * @param num 읽고자 하는 게시글의 번호

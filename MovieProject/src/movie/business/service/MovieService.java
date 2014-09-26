@@ -7,6 +7,7 @@ import movie.business.exception.DataDuplicatedException;
 import movie.business.exception.DataNotFoundException;
 
 public interface MovieService {
+	
 	/**
      * 특정 번호의 영화을 읽는다. 조회된 영화의 조회수는 증가되어야 한다.
      *

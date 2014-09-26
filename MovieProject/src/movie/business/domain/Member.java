@@ -7,14 +7,14 @@ public class Member {
 	private String address;
 	private String email;
 	private String tel;
-	private int power;
+	private int grade;
 
 	public Member() {
 
 	}
 
 	public Member(String memberID, String password, String memberName,
-			String address, String email, String tel, int power) {
+			String address, String email, String tel, int grade) {
 		super();
 		this.memberID = memberID;
 		this.password = password;
@@ -22,7 +22,7 @@ public class Member {
 		this.address = address;
 		this.email = email;
 		this.tel = tel;
-		this.power = power;
+		this.grade = grade;
 	}
 
 	public String getMemberID() {
@@ -49,8 +49,8 @@ public class Member {
 		return tel;
 	}
 
-	public int getPower() {
-		return power;
+	public int getGrade() {
+		return grade;
 	}
 
 	public void setMemberID(String memberID) {
@@ -77,15 +77,15 @@ public class Member {
 		this.tel = tel;
 	}
 
-	public void setPower(int power) {
-		this.power = power;
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 
 	@Override
 	public String toString() {
 		return "Member [memberID=" + memberID + ", password=" + password
 				+ ", memberName=" + memberName + ", address=" + address
-				+ ", email=" + email + ", tel=" + tel + ", power=" + power
+				+ ", email=" + email + ", tel=" + tel + ", grade=" + grade
 				+ "]";
 	}
 
