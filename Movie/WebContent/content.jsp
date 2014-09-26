@@ -125,7 +125,7 @@
 		<div id="new">
 			<div class="boardpage">
 				<table id="listtable" class="maintable">
-					<caption id="title">회원 영화 추천</caption>
+					<caption id="boardtitle">회원 영화 추천</caption>
 					<thead>
 						<tr>
 							<th class="num"></th>

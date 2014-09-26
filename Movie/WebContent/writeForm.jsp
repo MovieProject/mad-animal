@@ -19,18 +19,18 @@
 		<div id="content">
 
 			<form name="writeForm" action="write" method="POST" >
-			<table id="writetable" class="maintable">
-				<caption>게시글 입력</caption>
+			<table id="writetable" class="maintable" align="center">
+				<caption id="boardtitle">공지사항 입력</caption>
 				<thead>
 					<tr>
 						<th>제 목</th>
-						<td><input class="titleinput" type="text" name="title" maxlength="100"></td>
+						<td><input class="titleinput" type="text" name="title"  size="20" maxlength="50"></td>
 					</tr>
 					<tr>
 						<th>작성자</th>
 
 						<td>
-						<input class="writerinput" type="text" name="writer" maxlength="20" >
+						<input class="writerinput" type="text" name="writer"  size="20" maxlength="20" >
 						</td>
 					</tr>
 				</thead>

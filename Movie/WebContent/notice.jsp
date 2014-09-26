@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-<link rel="stylesheet" href="css/movie.css">
+<link rel="stylesheet" href="css/board.css">
 </head>
 <body>
 
@@ -17,8 +17,8 @@
 
 		<div id="content">
 
-			<table id="listtable" class="maintable">
-				<a herf ="" id="title">공지사항</a>
+			<table id="listtable" class="maintable"  align="center">
+				<caption id="boardtitle">공지사항</caption>
 				<thead>
 					<tr>
 						<th class="num"></th>
@@ -29,7 +29,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:choose>
+<%-- 					<c:choose>
 
 						<c:when test="${empty requestScope.boardList}">
 							<tr>
@@ -54,15 +54,15 @@
 						</c:otherwise>
 
 					</c:choose>
+--%>
 
-
-					<!-- <tr>
+					<tr>
 					<td class="num">1</td>
 					<td class="title"><a href="read.jsp">안녕하세요. 게시판 지기입니다.</a></td>
 					<td class="writer">운영자</td>
 					<td class="regdate">2014.07.01</td>
 					<td class="readcount">10</td>
-				</tr> -->
+				</tr> 
 				</tbody>
 				<tfoot>
 					<tr>
@@ -88,7 +88,7 @@
 					</tr>
 				</tfoot>
 			</table>
-			<div class="buttonbar">
+			<div class="buttonbar" >
 				<form name="searchForm" action="list" method="GET"
 					onsubmit="return searchCheck();">
 					<select name="searchType">

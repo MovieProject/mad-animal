@@ -2,7 +2,7 @@
 
 * {
 	font-family: 굴림, gulim, tahoma, sans-serif;
-	font-size: 12px;	
+	font-size: 12px;
 }
 
 a:link {
@@ -17,7 +17,7 @@ a:visited {
 
 a:hover, a:active {
 	text-decoration: underline;
-	color: #cc6600;
+	color: #000000;
 }
 
 #login {
@@ -30,28 +30,29 @@ a:hover, a:active {
 }
 
 #header {
-	height: 160px;
-	border-bottom: 1px solid ;
+	height: 100px;
+
 }
 
 #sidebar {
 	width: 200px;
 	height: 600px;
-	border-right: 1px solid ;
+	border-style: solid;
 	float: left;
+	
 }
 
 #content {
 	width: 800px;
 	height: 600px;
-	border: 1px solid ;
+	border-style: solid;
 	float: right;
 	vertical-align: top;
 	height: 600px;
 }
 
 #footer {
-	border-top: 1px solid ;
+
 	height: 100px;
 	clear: both;
 }
@@ -72,7 +73,8 @@ a:hover, a:active {
 	font-size: 20px;
 	width: 390px;
 	text-align: left;
-	border-bottom: 1px solid ;
+	border-bottom: 1px solid;
+	
 }
 
 #listtable .num {
@@ -114,10 +116,24 @@ a:hover, a:active {
 	float: right;
 }
 
+#registertable {
 
-.registertable td.label {
-	text-align:left;
-	width:50px;
-	border-right: 1px solid ;
+	border-bottom: 1px solid #CCC;
 
+}
+
+.registertable th {
+	
+	padding: 5px 10px;
+	border-top: 1px solid #CCC;
+	background: #EEE;
+	text-align: left;
+	width: 70px;
+}
+
+
+.registertable td {
+	border-top: 1px solid #CCC;
+	color: #0000ff;
+	padding: 5px 10px;
 }

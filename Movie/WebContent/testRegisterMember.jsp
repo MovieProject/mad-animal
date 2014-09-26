@@ -5,53 +5,51 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-<link rel="stylesheet" href="css/test.css">
+<link rel="stylesheet" href="css/movie.css">
 </head>
 <body>
-
-	<div id="content">
-
-		<h4>[회원가입]</h4>
+		<h4 align="center">[회원가입]</h4>
 		<form action="member?action=register" method="POST">
-			<table class="registertable">
+			<table class="registertable" align="center">
 
 				<tr>
-
-					<td><input type="text" name="memberID" size="20"
-						maxlength="15" placeholder="ID"></td>
+					<th class="label">회원ID</th>
+					<td class="text"><input type="text" name="memberID" size="20"
+						maxlength="15"></td>
 				</tr>
 
 				<tr>
+					<th class="label">비밀번호</th>
 					<td><input type="password" name="password" size="20"
-						maxlength="10" placeholder="비밀번호"></td>
+						maxlength="10"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="name" size="20" maxlength="20"
-						placeholder="이름"></td>
+					<th class="label">이름</th>
+					<td><input type="text" name="name" size="20" maxlength="20"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="age" size="20" maxlength="20"
-						placeholder="나이"></td>
+					<th class="label">나이</th>
+					<td><input type="text" name="age" size="20" maxlength="20"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="address" size="20" maxlength="20"
-						placeholder="주소"></td>
+					<th class="label">주소</th>
+					<td><input type="text" name="address" size="20" maxlength="20"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="email" size="20" maxlength="20"
-						placeholder="E-Mail"></td>
+					<th class="label">이메일</th>
+					<td><input type="text" name="email" size="20" maxlength="20"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="tel" size="20" maxlength="20"
-						placeholder="전화번호"></td>
+					<th class="label">전화번호</th>
+					<td><input type="text" name="tel" size="20" maxlength="20"></td>
 				</tr>
 
 				<tr>
-					<td><input type="submit" value="회원가입" id="reg_ok">
+					<td></td>
+					<td><input type="submit" value="회원가입"> <input
+						type="reset" value="취소"></td>
 				</tr>
 			</table>
 		</form>
-	</div>
-
 </body>
 </html>
