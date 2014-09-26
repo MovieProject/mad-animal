@@ -11,14 +11,14 @@ public interface MemberDao {
 	 * 
 	 * @return 검색된 회원 목록을 담고 있는 List 객체
 	 */
-	public List<Member> selectMemberList(Map<String, Object> searchInfo);
+	public List<Member> selectMemberList();
 	
 	/**
 	 * 조건에 맞는 모든 회원 수를 조회한다.
 	 * 
 	 * @return 검색된 모든 회원의 수
 	 */
-	public int selectMemberCount(Map<String, Object> searchInfo);
+	public int selectMemberCount();
 	
 	/**
 	 * 인수로 주어진 Member 객체의 정보로 새로운 회원을 등록한다.
@@ -32,7 +32,7 @@ public interface MemberDao {
 	 * 
 	 * @param member 수정할 회원 정보를 담고 있는 Member 객체
 	 */
-	public void updateMember(String memberID);
+	public void updateMember(Member member);
 	
 	/**
 	 * 인수로 주어진 번호에 해당하는 회원을 삭제한다.
