@@ -8,17 +8,15 @@ public class Member {
 	private String address;
 	private String email;
 	private String tel;
-	private int garde;
-
-	
-	
+	private int grade;
 
 	public Member() {
 
 	}
 
+
 	public Member(String memberID, String password, String memberName,int age,
-			String address, String email, String tel, int garde) {
+			String address, String email, String tel, int grade) {
 		super();
 		this.memberID = memberID;
 		this.password = password;
@@ -27,7 +25,7 @@ public class Member {
 		this.address = address;
 		this.email = email;
 		this.tel = tel;
-		this.garde = garde;
+		this.grade = grade;
 	}
 
 	public String getMemberID() {
@@ -54,9 +52,10 @@ public class Member {
 		return tel;
 	}
 
-	public int getGarde() {
-		return garde;
-	}
+
+	public int getGrade() {
+		return grade;
+		}
 
 	public int getAge() {
 		return age;
@@ -86,8 +85,8 @@ public class Member {
 		this.tel = tel;
 	}
 
-	public void setGarde(int garde) {
-		this.garde = garde;
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 
 	public void setAge(int age) {
@@ -98,7 +97,7 @@ public class Member {
 	public String toString() {
 		return "Member [memberID=" + memberID + ", password=" + password
 				+ ", memberName=" + memberName + ", address=" + address
-				+ ", email=" + email + ", tel=" + tel + ", garde=" + garde
+				+ ", email=" + email + ", tel=" + tel + ", grade=" + grade
 				+ "]";
 	}
 

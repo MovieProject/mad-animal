@@ -1,4 +1,4 @@
-package movie.business.service;
+package movie.business.dao;
 
 import java.util.*;
 

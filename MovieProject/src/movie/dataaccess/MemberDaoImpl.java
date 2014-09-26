@@ -6,8 +6,8 @@ import java.util.*;
 import javax.naming.*;
 import javax.sql.*;
 
+import movie.business.dao.MemberDao;
 import movie.business.domain.Member;
-import movie.business.service.MemberDao;
 import movie.util.MovieUtil;
 
 public class MemberDaoImpl implements MemberDao {
@@ -169,7 +169,7 @@ public class MemberDaoImpl implements MemberDao {
 			pstmt.setString(4, member.getAddress());
 			pstmt.setString(5, member.getEmail());
 			pstmt.setString(6, member.getTel());
-			pstmt.setInt(7, member.getGarde());
+			pstmt.setInt(7, member.getGrade());
 			pstmt.setString(8, member.getMemberID());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
