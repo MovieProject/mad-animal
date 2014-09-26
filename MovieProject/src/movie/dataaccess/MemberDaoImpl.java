@@ -17,29 +17,38 @@ public class MemberDaoImpl implements MemberDao {
 
 	public MemberDaoImpl() {
 		try {
-			Context context = new InitialContext();
+			Class.forName("oracle.jdbc.OracleDriver");
+			
+			
+			/*Context context = new InitialContext();
 			context = ((Context) context.lookup("java:comp/env"));
-			dataSource = (DataSource) context.lookup("jdbc/movieDB");
-
+			dataSource = (DataSource) context.lookup("jdbc/movieDB");*/
+			
 			obtainConnection();
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-
-			throw new RuntimeException("JNDI erroroccured." + e.getMessage());
-		} catch (SQLException e) {
+		}  catch (SQLException e) {
 			// TODO Auto-generated catch block
 
 			e.printStackTrace();
 			throw new RuntimeException("Connection fail" + e.getMessage());
 
 		}
+//		catch (NamingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//
+//			throw new RuntimeException("JNDI erroroccured." + e.getMessage());
+//		}
+ catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
 	/** Connection¿ª ∏Œ±‚ ¿ß«— Method */
 	private void obtainConnection() throws SQLException {
-		theCon = dataSource.getConnection();
+//		theCon = dataSource.getConnection();
+		theCon = DriverManager.getConnection("jdbc:oracle:thin:@220.67.115.225:1521:xe", "movie", "1234");
 	}
 
 	public List<Member> selectMemberList() {
@@ -201,6 +210,7 @@ public class MemberDaoImpl implements MemberDao {
 		try {
 			pstmt = theCon.prepareStatement(query);
 			pstmt.setString(1, memberID);
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -272,7 +282,7 @@ public class MemberDaoImpl implements MemberDao {
 			pstmt = theCon.prepareStatement(query);
 			pstmt.setString(1, memberID);
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
+			if (rs.next()) {
 				 result = new Member(rs.getString(1), rs.getString(2),
 						rs.getString(3), rs.getInt(4), rs.getString(5),
 						rs.getString(6), rs.getString(7), rs.getInt(8));
