@@ -7,7 +7,7 @@ import javax.naming.*;
 import javax.sql.*;
 
 import movie.business.domain.Member;
-import movie.business.service.MemberDao;
+import movie.business.dao.MemberDao;
 
 public class MemberDaoImpl implements MemberDao {
 	private DataSource dataSource;
@@ -44,7 +44,7 @@ public class MemberDaoImpl implements MemberDao {
 
 	}
 
-	public void updateMember(String memberID) {
+	public void updateMember(Member member) {
 		// TODO Auto-generated method stub
 
 	}

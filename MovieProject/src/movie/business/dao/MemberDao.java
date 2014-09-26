@@ -32,7 +32,7 @@ public interface MemberDao {
 	 * 
 	 * @param member 수정할 회원 정보를 담고 있는 Member 객체
 	 */
-	public void updateMember(String memberID);
+	public void updateMember(Member member);
 	
 	/**
 	 * 인수로 주어진 번호에 해당하는 회원을 삭제한다.
