@@ -1,4 +1,4 @@
-package movie.controller;
+package movie.web.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
