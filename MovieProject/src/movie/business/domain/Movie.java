@@ -11,7 +11,19 @@ public class Movie {
 
 	public Movie() {
 	}
+	/**insert용*/
+	
+	public Movie(String movieName, String genre, String director,
+			String synopsis, String photoDir) {
+		super();
+		this.movieName = movieName;
+		this.genre = genre;
+		this.director = director;
+		this.synopsis = synopsis;
+		this.photoDir = photoDir;
+	}
 
+	/**List 생성용*/
 	public Movie(int movieNum, String movieName, String genre,
 			String releaseDate, String director, String synopsis, String photoDir) {
 		super();
@@ -24,6 +36,7 @@ public class Movie {
 		this.photoDir = photoDir;
 	}
 
+	
 	public int getMovieNum() {
 		return movieNum;
 	}
