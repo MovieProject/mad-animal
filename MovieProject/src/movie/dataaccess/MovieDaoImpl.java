@@ -195,7 +195,7 @@ public class MovieDaoImpl implements MovieDao {
 
 	public void insertMovie(Movie movie) {
 		// TODO Auto-generated method stub
-		query = "INSERT INTO movie(movie_num,movie_name,genre,release_date,director,syonpsis,phorodir) VALUES(MOVIE_SEQUENCE.NEXTVAL,?,?,SYSDATE,?,?,?)";
+		query = "INSERT INTO movie(movie_num,movie_name,genre,release_date,director,syonpsis,photodir) VALUES(MOVIE_SEQUENCE.NEXTVAL,?,?,?,?,?,?)";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -203,9 +203,10 @@ public class MovieDaoImpl implements MovieDao {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, movie.getMovieName());
 			pstmt.setString(2, movie.getGenre());
-			pstmt.setString(3, movie.getdirector());
-			pstmt.setString(4, movie.getSynopsis());
-			pstmt.setString(5, movie.getPhotoDir());
+			pstmt.setString(3, movie.getReleaseDate());
+			pstmt.setString(4, movie.getdirector());
+			pstmt.setString(5, movie.getSynopsis());
+			pstmt.setString(6, movie.getPhotoDir());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -232,7 +233,7 @@ public class MovieDaoImpl implements MovieDao {
 
 	public void updateMovie(Movie movie) {
 		// TODO Auto-generated method stub
-		query = "UPDATE movie SET movie_name = ?, genre = ? ,release_date = ?,director = ? ,syonpsis = ?, phorodir = ? WHERE movie_num = ?)";
+		query = "UPDATE movie SET movie_name = ?, genre = ? ,release_date = ?,director = ? ,syonpsis = ?, photodir = ? WHERE movie_num = ?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -240,8 +241,8 @@ public class MovieDaoImpl implements MovieDao {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, movie.getMovieName());
 			pstmt.setString(2, movie.getGenre());
-			pstmt.setString(3, movie.getdirector());
-			pstmt.setString(4, movie.getReleaseDate());
+			pstmt.setString(3, movie.getReleaseDate());
+			pstmt.setString(4, movie.getdirector());
 			pstmt.setString(5, movie.getSynopsis());
 			pstmt.setString(6, movie.getPhotoDir());
 			pstmt.setInt(7, movie.getMovieNum());

@@ -14,10 +14,11 @@ public class Movie {
 	/**insert¿ë*/
 	
 	public Movie(String movieName, String genre, String director,
-			String synopsis, String photoDir) {
+			String releaseDate,String synopsis, String photoDir) {
 		super();
 		this.movieName = movieName;
 		this.genre = genre;
+		this.releaseDate = releaseDate;
 		this.director = director;
 		this.synopsis = synopsis;
 		this.photoDir = photoDir;
