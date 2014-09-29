@@ -13,6 +13,16 @@ public class Review {
 
 	}
 
+	public Review(int reviewNum, String moviewTitle, String writerName,
+			String contents, String regDate) {
+		super();
+		this.reviewNum = reviewNum;
+		this.moviewTitle = moviewTitle;
+		this.writerName = writerName;
+		this.contents = contents;
+		this.regDate = regDate;
+	}
+
 	public Review(int reviewNum, int movieNum, String moviewTitle,
 			String writerName, String writerID, String contents, String regDate) {
 		super();
