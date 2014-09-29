@@ -17,6 +17,23 @@ public class Board {
 
 	}
 
+	public Board(String title, String writerName, String contents,
+			String writerID) {
+		this.title = title;
+		this.writerName = writerName;
+		this.contents = contents;
+		this.writerID = writerID;
+	}
+
+	public Board(int boardNum, String title, String writerName,
+			String contents, String writerID) {
+		this.boardNum = boardNum;
+		this.title = title;
+		this.writerName = writerName;
+		this.contents = contents;
+		this.writerID = writerID;
+	}
+
 	public Board(int boardNum, String title, String writerName,
 			String contents, int readCount, String regDate, String modDate,
 			int masterNum, int replyOrder, int replyStep) {
@@ -59,6 +76,20 @@ public class Board {
 		this.title = title;
 		this.writerName = writerName;
 		this.contents = contents;
+		this.masterNum = masterNum;
+		this.replyOrder = replyOrder;
+		this.replyStep = replyStep;
+	}
+
+	public Board(int boardNum, String title, String writerName,
+			String contents, String writerID, int masterNum, int replyOrder,
+			int replyStep) {
+		super();
+		this.boardNum = boardNum;
+		this.title = title;
+		this.writerName = writerName;
+		this.contents = contents;
+		this.writerID = writerID;
 		this.masterNum = masterNum;
 		this.replyOrder = replyOrder;
 		this.replyStep = replyStep;
