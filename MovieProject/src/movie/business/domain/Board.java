@@ -18,6 +18,53 @@ public class Board {
 	}
 
 	public Board(int boardNum, String title, String writerName,
+			String contents, int readCount, String regDate, String modDate,
+			int masterNum, int replyOrder, int replyStep) {
+		super();
+		this.boardNum = boardNum;
+		this.title = title;
+		this.writerName = writerName;
+		this.contents = contents;
+		this.readCount = readCount;
+		this.regDate = regDate;
+		this.modDate = modDate;
+		this.masterNum = masterNum;
+		this.replyOrder = replyOrder;
+		this.replyStep = replyStep;
+	}
+
+	public Board(int boardNum, String title, String writerName, String contents) {
+		super();
+		this.boardNum = boardNum;
+		this.title = title;
+		this.writerName = writerName;
+		this.contents = contents;
+	}
+
+	public Board(int boardNum, String title, String writerName, int readCount,
+			String regDate, int replyStep) {
+		super();
+		this.boardNum = boardNum;
+		this.title = title;
+		this.writerName = writerName;
+		this.readCount = readCount;
+		this.regDate = regDate;
+		this.replyStep = replyStep;
+	}
+
+	public Board(int boardNum, String title, String writerName,
+			String contents, int masterNum, int replyOrder, int replyStep) {
+		super();
+		this.boardNum = boardNum;
+		this.title = title;
+		this.writerName = writerName;
+		this.contents = contents;
+		this.masterNum = masterNum;
+		this.replyOrder = replyOrder;
+		this.replyStep = replyStep;
+	}
+
+	public Board(int boardNum, String title, String writerName,
 			String contents, String writerID, int readCount, String regDate,
 			String modDate, int masterNum, int replyOrder, int replyStep) {
 		super();
