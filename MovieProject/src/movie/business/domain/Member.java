@@ -3,26 +3,29 @@ package movie.business.domain;
 public class Member {
 	private String memberID;
 	private String password;
-	private String member_Name;
+	private String memberName;
+	private int age;
 	private String address;
 	private String email;
 	private String tel;
-	private int power;
+	private int grade;
 
 	public Member() {
 
 	}
 
-	public Member(String memberID, String password, String member_Name,
-			String address, String email, String tel, int power) {
+
+	public Member(String memberID, String password, String memberName,int age,
+			String address, String email, String tel, int grade) {
 		super();
 		this.memberID = memberID;
 		this.password = password;
-		this.member_Name = member_Name;
+		this.memberName = memberName;
+		this.age = age;
 		this.address = address;
 		this.email = email;
 		this.tel = tel;
-		this.power = power;
+		this.grade = grade;
 	}
 
 	public String getMemberID() {
@@ -33,8 +36,8 @@ public class Member {
 		return password;
 	}
 
-	public String getMember_Name() {
-		return member_Name;
+	public String getMemberName() {
+		return memberName;
 	}
 
 	public String getAddress() {
@@ -49,10 +52,15 @@ public class Member {
 		return tel;
 	}
 
-	public int getPower() {
-		return power;
-	}
 
+	public int getGrade() {
+		return grade;
+		}
+
+	public int getAge() {
+		return age;
+	}
+	
 	public void setMemberID(String memberID) {
 		this.memberID = memberID;
 	}
@@ -61,8 +69,8 @@ public class Member {
 		this.password = password;
 	}
 
-	public void setMember_Name(String member_Name) {
-		this.member_Name = member_Name;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 
 	public void setAddress(String address) {
@@ -77,15 +85,19 @@ public class Member {
 		this.tel = tel;
 	}
 
-	public void setPower(int power) {
-		this.power = power;
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
 	@Override
 	public String toString() {
 		return "Member [memberID=" + memberID + ", password=" + password
-				+ ", member_Name=" + member_Name + ", address=" + address
-				+ ", email=" + email + ", tel=" + tel + ", power=" + power
+				+ ", memberName=" + memberName + ", address=" + address
+				+ ", email=" + email + ", tel=" + tel + ", grade=" + grade
 				+ "]";
 	}
 
