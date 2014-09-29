@@ -22,9 +22,10 @@
 	<table id="sidebartable">
 		<tr>
 			<td id="menulabel">Menu</td>
+		<td></td>
 		</tr>
 		<tr>
-			<td><hr></td>
+			<td></td>
 		</tr>
 		<c:if test="${empty loginMember}">
 
@@ -44,16 +45,6 @@
 		<tr>
 			<td><a href="<c:url value="/review.jsp"/>">영화 리뷰 게시판</a></td>
 		</tr>
-		
-		<c:if test="${not empty loginMember}">
-			<tr>
-				<td><a href="<c:url value="/member?action=select"/>">회원정보변경</a></td>
-			</tr>
-			<tr>
-				<td><a onclick='removeCheck("<c:url value='/member?action=remove'/>");'>회원탈퇴</a></td>
-				</tr>
-
-		</c:if>
 	</table>
 </div>
 

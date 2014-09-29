@@ -18,7 +18,7 @@
 		<div id="content">
 
 			<table id="listtable" class="maintable"  align="center">
-				<caption id="boardtitle">회원추천 영화</caption>
+ 				<caption id="boardtitle">회원추천  영화</caption>
 				<thead>
 					<tr>
 						<th class="num"></th>
