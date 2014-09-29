@@ -5,7 +5,8 @@ import java.util.*;
 import movie.business.domain.Board;
 
 public interface BoardDao {
-
+/**수정이 안됨요
+ * */
 	/**
 	 * 조건에 맞는 모든 게시물 목록을 조회한다.
 	 * 
