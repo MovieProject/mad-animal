@@ -18,7 +18,7 @@ public interface ReviewDao {
 	 * 
 	 * @return 검색된 모든 review의 개수
 	 */
-	public int selectReviewCount(Map<String, Object> searchInfo);
+	public int selectReviewCount();
 	
 	/**
 	 * 인수로 주어진 review 객체의 정보로 새로운 review를 등록한다.
