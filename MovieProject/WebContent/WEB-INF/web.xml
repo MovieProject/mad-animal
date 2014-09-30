@@ -4,6 +4,15 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+   <servlet>
+    <display-name>UploadController</display-name>
+    <servlet-name>UploadController</servlet-name>
+    <servlet-class>movie.controller.UploadServlet</servlet-class>
+    <init-param>
+      <param-name>uploadDir</param-name>
+      <param-value>C:\\upload</param-value>
+    </init-param>
+  </servlet>
   <servlet>
     <description></description>
     <display-name>MemberController</display-name>
