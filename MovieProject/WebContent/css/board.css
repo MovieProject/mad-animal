@@ -177,10 +177,39 @@ page {
 	width: 780px;
 	border-top: 1px solid #000;
 <<<<<<< HEAD
-=======
 }
 
-.remove{
+#managertable {
+	width: 770px;
+}
+
+#managertable .num {
+	width: 45px;
+	text-align: center;
+}
+
+#managertable .memberID {
+	width: 350px;
+}
+
+#managertable .name {
+	width: 84px;
+	text-align: center;
+}
+#managertable .grade {
+	width: 84px;
+	text-align: center;
+}
+
+#remove td{
+	width: 84px;
 	float: right;
->>>>>>> refs/remotes/origin/bonobono
+}
+#manager{
+	float: right;
+}
+
+#managertable .gradeName {
+	height:20px;
+	width: 100px;
 }
