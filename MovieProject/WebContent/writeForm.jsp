@@ -7,6 +7,7 @@
 <title>Movie</title>
 <link rel="stylesheet" href="css/movie.css">
 <link rel="stylesheet" href="css/board.css">
+<script src="js/board.js"></script>
 </head>
 <body>
 
@@ -48,7 +49,7 @@
 			</table>
 			<div class="buttonbar">
 				<input type="button" value="등록" onclick="boardWriteCheck(this.form);">
-				<input type="button" value="취소" onclick="goUrl('list');">
+				<input type="button" value="취소" onclick="goUrl('notice.jsp');">
 			</div>
 		</form>
 		</div>
