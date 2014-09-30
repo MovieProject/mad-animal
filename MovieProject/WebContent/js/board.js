@@ -65,12 +65,12 @@ function checkNotEmpty(inputField,errorSpan){
 }
 
 function validateForm(){
-	var checkBoxes = document.listRemove.items;
-	for(var i = 0;i<checkBoxes.length;i++){
-		if(chechBoxes[i].checked == true){
-			return confirm("정말로 삭제하겠습니까?");
+	var checkboxes = document.listDelete.items;
+	for(var i = 0;i<checkboxes.length;i++){
+		if(checkboxes[i].checked== true){
+			return confirm("정말로 삭제하시겠습니까?")
 		}
 	}
-	alert("체크된 값이 없습니다.");
+	alert("선택된 값이 없습니다.");
 	return false;
 }

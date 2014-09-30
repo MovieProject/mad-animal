@@ -18,8 +18,7 @@
 
 		<div id="content">
 
-			<form action="<c:url value = "/member?action=listRemove" />"
-				name="listRemove" method="post" onsubmit="return validateForm()">
+			<form action="<c:url value = '/member?action=listRemove' />" name="listDelete" method="post" onsubmit="return validateForm();">
 				<table id="managertable" class="maintable" align="center">
 					<caption id="boardtitle">회원관리</caption>
 					<thead>
@@ -38,11 +37,11 @@
 								<td class="num">${count.count}</td>
 								<c:choose>
 									<c:when test="${member.grade == 2 }">
-										<td class="check"><input type="checkbox" id="items"
+										<td class="check"><input type="checkbox" id="items" 
 											value="${member.memberID }" disabled="disabled"></td>
 									</c:when>
 									<c:otherwise>
-										<td class="check"><input type="checkbox" id="items"
+										<td class="check"><input type="checkbox" id="items" name = "items"
 											value="${member.memberID }"></td>
 									</c:otherwise>
 								</c:choose>
@@ -62,17 +61,11 @@
 								</c:choose>
 							</tr>
 						</c:forEach>
-
 					</tbody>
 					<tr>
 					</tr>
 				</table>
-				<table id="manager">
-					<tr>
-						<td class="remove"><input type="submit" value="탈퇴"
-							id="removeButton"></td>
-					</tr>
-				</table>
+				<input type="submit" value="탈퇴" id="removeButton" >
 			</form>
 		</div>
 

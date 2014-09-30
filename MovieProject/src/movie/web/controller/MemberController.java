@@ -55,8 +55,20 @@ public class MemberController extends HttpServlet {
 	}
 
 	private void removeMemberList(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response)  throws ServletException, IOException,
+			DataNotFoundException{
 		// TODO Auto-generated method stub
+		String[] items = request.getParameterValues("items");
+		System.out.println("items" + items);
+		MemberService service = new MemberServiceImpl();
+		if(items != null){
+			for(String item:items){
+				service.removeMember(item);
+			}
+		}
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/member?action=memberlist");
+		dispatcher.forward(request, response);
 		
 	}
 
