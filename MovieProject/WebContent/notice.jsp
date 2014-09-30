@@ -107,11 +107,7 @@
 						value="검색" onclick="searchCheck(this.form);"> <input
 						type="button" value="목록" onclick="goUrl('notice.jsp');">
 					<c:if test="${not empty loginMember && loginMember.grade eq 2}">
-<<<<<<< HEAD
-						<a href="<c:url value="writeForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a> 
-=======
 						<input type="button" value="글쓰기" onclick="goUrl('writeForm.jsp');">
->>>>>>> branch 'bonobono' of https://github.com/MovieProject/mad-animal.git
 					</c:if>
 				</form>
 			</div>
