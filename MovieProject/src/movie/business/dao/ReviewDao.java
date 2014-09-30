@@ -40,5 +40,13 @@ public interface ReviewDao {
 	 * @param reviewNum 삭제하려는 review의 번호
 	 */
 	public void deleteReview(int reviewNum);
+	
+	/**
+	 * 인수로 주어진 번호에 해당하는 리뷰이 있는지 확인한다.
+	 * 
+	 * @param reviewNum 존재여부를 확인하려는 리뷰의 번호
+	 * @return 해당하는 리뷰가 존재하면 true, 존재하지 않으면 false
+	 */
+	public boolean reviewNumExists(int reviewNum);
 
 }

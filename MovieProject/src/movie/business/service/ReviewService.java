@@ -42,5 +42,5 @@ public interface ReviewService {
      * @param num 삭제하고자 하는 리뷰의 번호
      * @throws DataNotFoundException 번호에 해당하는 리뷰가 존재하지 않을 경우 발생
      */
-	public void removeReview(int num) throws DataNotFoundException;
+	public void removeReview(int reviewum) throws DataNotFoundException;
 }

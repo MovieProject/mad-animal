@@ -239,4 +239,43 @@ public class ReviewDaoImpl implements ReviewDao {
 
 	}
 
+	public boolean reviewNumExists(int reviewNum) {
+		query = "SELECT review_num FROM rivew WHERE review_num=?";
+		boolean result = false;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = obtainConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, reviewNum);
+			rs = pstmt.executeQuery();
+			result = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace(System.err);
+			}
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace(System.err);
+			}
+			try {
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace(System.err);
+			}
+		}
+
+		return result;
+	}
+
 }
