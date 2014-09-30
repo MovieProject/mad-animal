@@ -16,67 +16,71 @@
 		</header>
 
 		<div id="content">
-			<div class="boardpage">
-				<table id="listtable" class="maintable">
-					<caption>리뷰</caption>
-					<thead>
+			<table id="reviewtable" class="reviewtable">
+				<caption id="boardtitle">한줄평</caption>
+				<tbody>
+					<c:forEach begin="1" end="8">
 						<tr>
-							<th class="num"></th>
-							<th class="title">제 목</th>
-							<th class="writer">글쓴이</th>
-							<th class="regdate">작성일</th>
-
+							<th>영화 제목 :</th>
+							<td class="title">해바라기</td>
+							<th>작성자 :</th>
+							<td class="name">오태식</td>
+							<th>작성일 :</th>
+							<td class="regdate">2006.11.23</td>
 						</tr>
-					</thead>
-					<tbody>
-						<%-- 				<c:choose>
-
-					<c:when test="${empty requestScope.boardList}">
 						<tr>
-							<td colspan="5">등록된 게시물이 없습니다.</td>
+							<th>한줄평</th>
+							<td class="oneline" colspan="5">한줄평</td>
 						</tr>
-					</c:when>
+					</c:forEach>
+				</tbody>
+			</table>
 
-					<c:otherwise>
-						<c:forEach var="board" items="${requestScope.boardList}">
-							<tr>
-								<td class="num">${board.num}</td>
-								<td class="title">
-								<c:forEach begin="1" end="${board.replyStep}">
-									&nbsp;
-								</c:forEach>
-								<a	href="read?pageNumber=${currentPageNumber}&num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}">${board.title}</a></td>
-								<td class="writer">${board.writer}</td>
-								<td class="regdate">${board.regDate}</td>
-							</tr>
-						</c:forEach>
-					</c:otherwise>
-
-				</c:choose> 
---%>
-
-
-						<tr>
-							<td class="num">1</td>
-							<td class="title"><a href="read.jsp">안녕하세요. 게시판 지기입니다.</a></td>
-							<td class="writer">운영자</td>
-							<td class="regdate">2014.7.1</td>
-						</tr>
-					</tbody>
-
+			<%-- <tr>
+						<td id="pagenavigator" colspan="6"><c:if
+								test="${startPageNumber >1}">
+								<a
+									href="list?pageNumber=${startPageNumber - 1}&searchType=${searchType}&searchText=${searchText}">이전</a>
+							</c:if> <c:forEach begin="${startPageNumber}" end="${endPageNumber}"
+								var="pageNumber">
+								<c:choose>
+									<c:when test="${pageNumber eq currentPageNumber}">
+										<a class="pagenumber currpage">${pageNumber}</a>
+									</c:when>
+									<c:otherwise>
+										<a class="pagenumber"
+											href="list?pageNumber=${pageNumber}&searchType=${searchType}&searchText=${searchText}">${pageNumber}</a>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach> <c:if test="${endPageNumber < totalPageCount}">
+								<a
+									href="list?pageNumber=${endPageNumber + 1}&searchType=${searchType}&searchText=${searchText}">다음</a>
+							</c:if></td>
+					</tr> --%>
+			<c:if test="${not empty loginMember}">
+				<table id="reviewwrite" class="reviewwrite">
+					<tr>
+						<td>영화 제목</td>
+						<td><input type="text" name="content" maxlength="20"></td>
+						<td><input type="button" name="write" value="글쓰기"></td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td><input type="text" maxlength="300"></td>
+					</tr>
 				</table>
-			</div>
-			</div>
+			</c:if>
 
-
-			<aside id="sidebar">
-				<c:import url="side-bar.jsp"></c:import>
-			</aside>
-
-			<footer id="footer">
-				<c:import url="footer.jsp"></c:import>
-			</footer>
 		</div>
+
+		<aside id="sidebar">
+			<c:import url="side-bar.jsp"></c:import>
+		</aside>
+
+		<footer id="footer">
+			<c:import url="footer.jsp"></c:import>
+		</footer>
+	</div>
 </body>
 </html>
 

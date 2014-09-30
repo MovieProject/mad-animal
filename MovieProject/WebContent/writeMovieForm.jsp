@@ -18,7 +18,8 @@
 
 		<div id="content">
 
-			<form name="writeForm" action="write" method="POST">
+			<form name="writeForm" action="write" method="POST"
+				enctype="multipart/form-data">
 				<table id="writetable" class="maintable" align="center">
 					<caption id="boardtitle">금주추천 영화 등록</caption>
 					<thead>
@@ -56,17 +57,22 @@
 					<tbody>
 						<tr>
 							<td colspan="2"><textarea id="editor" class="contentsinput"
-									name="contents"></textarea> 
-									<!-- 							<script>CKEDITOR.replace('editor');</script> -->
+									name="contents"></textarea> <!-- 							<script>CKEDITOR.replace('editor');</script> -->
 
 								<!-- <textarea class="contentsinput ckeditor" name="contents"></textarea> -->
 							</td>
 						</tr>
+						<tr>
+							<th>사진첨부</th>
+							<td><input type="file" name="file"></td>
+						</tr>
 					</tbody>
 				</table>
 				<div class="buttonbar">
-					<input type="button" value="등록"
-						onclick="boardWriteCheck(this.form);"> <input
+				<!-- 	<input type="button" value="등록"
+						onclick="boardWriteCheck(this.form);"> -->
+				<input type="submit" value="등록">
+						 <input
 						type="button" value="취소" onclick="goUrl('list');">
 				</div>
 			</form>

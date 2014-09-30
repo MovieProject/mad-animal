@@ -43,12 +43,10 @@
 		<div class="buttonbar">
 				<c:if test="${empty loginMember}">
 				<input type="button" value="목록" onclick="goUrl('list?searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
-			<input type="button" value="답글" onclick="goUrl('replyForm?num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 				</c:if>
-				<c:if test="${not empty loginMember}">
+				<c:if test="${not empty loginMember}"> <!--관리자 ID 비교해서 수정,삭제할 수 있게 -->
 			<!-- <input type="button" value="목록" onclick="goUrl('board?action=list');"> -->
 			<input type="button" value="목록" onclick="goUrl('list?searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
-			<input type="button" value="답글" onclick="goUrl('replyForm?num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 			<input type="button" value="수정" onclick="goUrl('updateForm?num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 			<input type="button" value="삭제" onclick="deleteCheck('remove?num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 		</c:if>

@@ -25,6 +25,15 @@ page {
 	margin-bottom: 8px;
 }
 
+#week {
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	width: 780px;
+	height: 260px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
 .maintable {
 	caption-side: top;
 	border-collapse: collapse;
@@ -78,9 +87,10 @@ page {
 	width: 770px;
 }
 
-#writetable th{
+#writetable th {
 	text-align: left;
 }
+
 #writetable .titleinput, #updatetable .titleinput, #replytable .titleinput
 	{
 	width: 681px;
@@ -101,15 +111,69 @@ page {
 	width: 89px;
 }
 
+#readtable th {
+	width: 75px;
+}
 
+#readtable td.title {
+	font-weight: bold;
+	padding-left: 10px;
+}
 
+#readtable td.writer {
+	width: 127px;
+	text-align: center;
+}
 
-#readtable th { width: 75px; }
-#readtable td.title { font-weight: bold; padding-left: 10px;}
-#readtable td.writer { width: 127px; text-align: center; }
-#readtable td.readcount { width: 90px; text-align: center; }		
-#readtable td.regdate { width: 127px; text-align: center; }
-#readtable td.contents { width: 770px; height: 250px; padding: 20px; line-height: 1.5em; vertical-align: top;}
+#readtable td.readcount {
+	width: 90px;
+	text-align: center;
+}
 
+#readtable td.regdate {
+	width: 127px;
+	text-align: center;
+}
 
+#readtable td.contents {
+	width: 770px;
+	height: 250px;
+	padding: 20px;
+	line-height: 1.5em;
+	vertical-align: top;
+}
 
+#weekMovie {
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	width: 780px;
+	height: 260px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+#poster {
+	padding-right: 50px;
+	padding-left: 50px;
+}
+
+#reviewtable {
+	width: 780px;
+	margin-bottom: 10px;
+	text-align: left;
+}
+
+#reviewtable th.title{
+	width: 75px;
+}
+#reviewtable td.title{
+	width: 100px;
+}
+
+#oneline{
+	text-align: left;
+}
+#reviewwrite {
+	width: 780px;
+	border-top: 1px solid #000;
+}
