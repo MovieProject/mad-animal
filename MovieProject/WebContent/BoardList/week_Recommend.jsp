@@ -8,52 +8,39 @@
 <link rel="stylesheet" href="../css/movie.css">
 </head>
 <body>
-			<table id="listtable" class="maintable"  align="center">
-				<caption id="boardtitle">금주 추천</caption>
-				<thead>
+	<table id="listtable" class="maintable">
+	 				<caption id="boardtitle">금주의 영화</caption>
+		<tr>
+			<td colspan="2">
+				<table>
 					<tr>
-						<th class="num"></th>
-						<th class="title">제 목</th>
-						<th class="writer">글쓴이</th>
-						<th class="regdate">작성일</th>
+						<td rowspan="6"><img alt="영화 포스터"
+							src="<c:url value="http://placehold.it/150x200" />"></td>
+						<td>제목</td>
+						<td>루시</td>
 					</tr>
-				</thead>
-				<tbody>
-<%-- 					<c:choose>
-
-						<c:when test="${empty requestScope.boardList}">
-							<tr>
-								<td colspan="5">등록된 게시물이 없습니다.</td>
-							</tr>
-						</c:when>
-
-						<c:otherwise>
-							<c:forEach var="board" items="${requestScope.boardList}">
-								<tr>
-									<td class="num">${board.num}</td>
-									<td class="title"><c:forEach begin="1"
-											end="${board.replyStep}">
-									&nbsp;
-								</c:forEach> <a
-										href="read?pageNumber=${currentPageNumber}&num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}">${board.title}</a></td>
-									<td class="writer">${board.writer}</td>
-									<td class="regdate">${board.regDate}</td>
-									<td class="readcount">${board.readCount}</td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
-
-					</c:choose>
---%>
-
 					<tr>
-					<td class="num">1</td>
-					<td class="title"><a href="read.jsp">안녕하세요. 게시판 지기입니다.</a></td>
-					<td class="writer">운영자</td>
-					<td class="regdate">14.07.01</td>
-				</tr> 
-				</tbody>
+						<td>장르</td>
+						<td>SF</td>
+					</tr>
+					<tr>
+						<td>감독</td>
+						<td>???</td>
+					</tr>
+					<tr>
+						<td>개봉일</td>
+						<td>XX.XX.XX</td>
+					</tr>
+					<tr>
+						<td colspan="2">줄거리</td>
+					</tr>
+					<tr>
+						<td colspan="2">쏼라 쏼라</td>
+					</tr>
 				</table>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
 
