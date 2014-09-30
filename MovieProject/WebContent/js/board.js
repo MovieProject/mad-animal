@@ -21,6 +21,12 @@ function deleteCheck(url) {
 		location.href=url;
 	}
 }
+function removeCheck(url) {
+	if (confirm('정말 탈퇴하시겠어요?')) {
+		location.href=url;
+		alert("탈퇴되었습니다.")
+	}
+}
 
 // 수정 폼 체크
 function boardWriteCheck(form) {
@@ -56,4 +62,15 @@ function checkNotEmpty(inputField,errorSpan){
 	}else{
 		errorSpan.innerHTML = '';
 	}
+}
+
+function validateForm(){
+	var checkBoxes = document.listRemove.items;
+	for(var i = 0;i<checkBoxes.length;i++){
+		if(chechBoxes[i].checked == true){
+			return confirm("정말로 삭제하겠습니까?");
+		}
+	}
+	alert("체크된 값이 없습니다.");
+	return false;
 }

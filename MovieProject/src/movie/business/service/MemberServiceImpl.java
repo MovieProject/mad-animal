@@ -15,12 +15,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	
-	public Member[] getMemberList(Map<String, Object> searchInfo) {
+	public Member[] getMemberList() {
 
 		return memberAccess.selectMemberList().toArray(new Member[0]);
 	}
 
-	public int getMemberCount(Map<String, Object> searchInfo) {
+	public int getMemberCount() {
 		// TODO Auto-generated method stub
 		return memberAccess.selectMemberCount();
 	}

@@ -43,9 +43,9 @@
 			<tr>
 				<td><a href="<c:url value="/review.jsp"/>">영화 한줄평</a></td>
 			</tr>
-	<c:if test="${not empty loginMember }">
+	<c:if test="${not empty loginMember && loginMember.grade == 2 }">
 				<tr>
-				<td><a href="<c:url value="/memberManager.jsp"/>">회원 관리</a></td>
+				<td><a href="<c:url value='/member?action=memberlist'/>">회원 관리</a></td>
 			</tr>
 	</c:if>
 

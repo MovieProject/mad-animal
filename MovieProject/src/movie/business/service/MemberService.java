@@ -13,14 +13,14 @@ public interface MemberService {
      * @return 검색된 모든 회원 정보를 담고 있는 Member 배열
      * @throws DataNotFoundException 해당하는 게시글이 존재하지 않을 경우 발생 
      */
-	public Member[] getMemberList(Map<String,Object> searchInfo);
+	public Member[] getMemberList();
 	
 	 /**
 	  * 조건에 맞는 모든 회원 수를 조회한다.
 	  * 
 	  * @return 검색된 모든 회원의 개수
 	  */
-	public int getMemberCount(Map<String,Object> searchInfo);
+	public int getMemberCount();
 	
 	 /**
      * 새로운 회원을 등록한다.

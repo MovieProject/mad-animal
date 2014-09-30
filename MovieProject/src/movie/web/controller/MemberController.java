@@ -41,6 +41,8 @@ public class MemberController extends HttpServlet {
 				registerMember(request, response);
 			}else if( action.equals("memberlist")){
 				selectMemberList(request,response);
+			}else if(action.equals("listRemove")){
+				removeMemberList(request,response);
 			}
 		} catch (DataDuplicatedException e) {
 			// TODO Auto-generated catch block
@@ -52,9 +54,20 @@ public class MemberController extends HttpServlet {
 
 	}
 
+	private void removeMemberList(HttpServletRequest request,
+			HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private void selectMemberList(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		MemberService service = new MemberServiceImpl();
+		Member[] memberList = service.getMemberList();
+		request.setAttribute("memberList", memberList);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("memberManager.jsp");
+		dispatcher.forward(request, response);
 		
 	}
 
