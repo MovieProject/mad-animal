@@ -82,30 +82,19 @@ public class BoardController extends HttpServlet {
 
 		// (5) 전체 페이지 개수
 		int totalPageCount = MovieUtil.getTotalPageCount(totalBoardCount);
-		// int totalPageCount = (int) Math.ceil(totalBoardCount
-		// / (float) PAGE_LIST_SIZE);
 
 		// (6) 페이지 선택 바에 표시될 시작 페이지 번호
 		int startPageNumber = MovieUtil.getStartPageNumber(currentPageNumber);
-		// int startPageNumber = (((currentPageNumber - 1) / PAGE_GROUP_SIZE) *
-		// PAGE_GROUP_SIZE) + 1;
 
 		// (7) 페이지 선택바에 표시될 끝 페이지 번호
 		int endPageNumber = MovieUtil.getEndPageNumber(currentPageNumber,
 				totalBoardCount);
-		// int endPageNumber = (startPageNumber + PAGE_GROUP_SIZE) - 1;
-		//
-		// if (endPageNumber > totalPageCount) {
-		// endPageNumber = totalPageCount;
-		// }
 
 		// (8) 현재 페이지의 게시글 목록에서 처음 보여질 게시글의 행 번호
 		int startRow = MovieUtil.getStartRow(currentPageNumber);
-		// int startRow = (currentPageNumber - 1) * PAGE_LIST_SIZE + 1;
 
 		// (9) 현재 페이지의 게시글 목록에서 마지막에 보여질 게시글의 행 번호
 		int endRow = MovieUtil.getEndRow(currentPageNumber);
-		// int endRow = currentPageNumber * PAGE_LIST_SIZE;
 
 		// 검색옵션 Map(searchInfo)에 startRow와 endRow 값을 저장한다.
 		searchInfo.put("startRow", startRow);
@@ -206,8 +195,6 @@ public class BoardController extends HttpServlet {
 			DataNotFoundException {
 		// 요청 파라미터로 부터 글 번호(num)를 구한다.
 		String num = request.getParameter("boardNum");
-		// String searchText = request.getParameter("searchText");
-		// String searchType = request.getParameter("searchType");
 
 		// pageNumber 요청 파라미터 값을 구한다.
 		String pageNumber = request.getParameter("pageNumber");
@@ -222,10 +209,8 @@ public class BoardController extends HttpServlet {
 		BoardService boardService = new BoardServiceImpl();
 		Board board = boardService.findBoard(Integer.parseInt(num));
 
-		// request scope 속성(board)에 검색한 게시글을 저장한다.
 		request.setAttribute("board", board);
 		request.setAttribute("currentPageNumber", currentPageNumber);
-		// request.setAttribute("searchText", searchText);
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(updateForm.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
@@ -257,8 +242,6 @@ public class BoardController extends HttpServlet {
 
 		// 4. request scope 속성(board)에 게시글을 저장한다.
 		request.setAttribute("board", board);
-		// request.setAttribute("searchType", searchType);
-		// request.setAttribute("searchText", searchText);
 
 		// 5. RequestDispatcher 객체를 통해 게시물 보기(board?action=read)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
@@ -354,7 +337,7 @@ public class BoardController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		processRequest(request, response);
 	}
 
 	/**
@@ -363,7 +346,7 @@ public class BoardController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		processRequest(request, response);
 	}
 
 }
