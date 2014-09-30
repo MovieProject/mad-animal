@@ -8,14 +8,7 @@ import movie.business.exception.DataNotFoundException;
 
 public interface MovieService {
 	
-	/**
-     * 특정 번호의 영화을 읽는다. 조회된 영화의 조회수는 증가되어야 한다.
-     *
-     * @param num 읽고자 하는 영화의 번호
-     * @return 조회된 영화 정보를 담고 있는 Movie 객체
-     * @throws DataNotFoundException 번호에 해당하는 영화가 존재하지 않을 경우 발생
-     */
-	public Movie readMovie(int num) throws DataNotFoundException;
+
  
     /**
      * 특정 번호의 영화의 내용을 찾는다.
