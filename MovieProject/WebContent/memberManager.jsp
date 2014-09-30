@@ -46,7 +46,7 @@
 									</c:otherwise>
 								</c:choose>
 								<td class="memberID"><a
-									href="<c:url value="/detailsMember.jsp"/>">${member.memberID }</a></td>
+									href="<c:url value="/member?action=select&memberID=${member.memberID}"/>">${member.memberID }</a></td>
 								<td class="name">${member.memberName }</td>
 								<c:choose>
 									<c:when test="${member.grade == 2 }">

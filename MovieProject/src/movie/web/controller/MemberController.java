@@ -43,6 +43,8 @@ public class MemberController extends HttpServlet {
 				selectMemberList(request,response);
 			}else if(action.equals("listRemove")){
 				removeMemberList(request,response);
+			}else if(action.equals("gradeUpdate")){
+				updateMemberGrade(request,response);
 			}
 		} catch (DataDuplicatedException e) {
 			// TODO Auto-generated catch block
@@ -52,6 +54,19 @@ public class MemberController extends HttpServlet {
 
 		}
 
+	}
+
+	private void updateMemberGrade(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException,
+			DataNotFoundException{
+		// TODO Auto-generated method stub
+		String memberID = request.getParameter("memberID");
+		String grade = request.getParameter("gradeName");
+		MemberService service = new MemberServiceImpl();
+		service.updateMemberGrade(memberID, Integer.parseInt(grade));
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/member?action=memberlist");
+		dispatcher.forward(request, response);		
 	}
 
 	private void removeMemberList(HttpServletRequest request,
@@ -145,6 +160,14 @@ public class MemberController extends HttpServlet {
 
 	private void selectMember(HttpServletRequest request,
 			HttpServletResponse response)  throws ServletException, IOException,DataNotFoundException{
+			String memberID = request.getParameter("memberID");
+			MemberService service = new MemberServiceImpl();
+			Member member = service.getMember(memberID);
+			request.setAttribute("selectedMember", member);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("detailsMember.jsp");
+			dispatcher.forward(request, response);
+	
 
 	}
 
