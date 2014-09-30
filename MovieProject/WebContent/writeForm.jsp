@@ -24,13 +24,14 @@
 				<thead>
 					<tr>
 						<th>제 목</th>
-						<td><input class="titleinput" type="text" name="title"  size="20" maxlength="50"></td>
+						<td>
+							<input class="titleinput" type="text" name="title"  size="20" maxlength="50" >
+						</td>
 					</tr>
 					<tr>
 						<th>작성자</th>
-
 						<td>
-						<input class="writerinput" type="text" name="writer"  size="20" maxlength="20" >
+							<input class="writerinput" type="text" name="writer"  size="20" maxlength="20" value = '${member.memberName}'>
 						</td>
 					</tr>
 				</thead>

@@ -143,6 +143,49 @@ page {
 	vertical-align: top;
 }
 
+
+#reviewtable th, #reviewtable td {
+	border-left: 1px dotted #c0c0c0;
+	border-right: 1px dotted #c0c0c0;
+}
+
+#reviewtable {
+	width: 670px;
+}
+
+#reviewtable th {
+	width: 100px;
+}
+
+#reviewtable th.name, #reviewtable th.regdate {
+	width: 50px;
+}
+
+#reviewtable td.name, #reviewtable td.regdate {
+	width: 80px;
+	text-align: center;
+}
+
+#reviewtable td.title, #reviewtable td.oneline {
+	padding-left: 8px;
+}
+
+#writereview .inputtext {
+	width: 500px;
+}
+
+#writereview th {
+	width: 100px;
+}
+
+#writereview #writeform {
+	vertical-align: middle;
+}
+
+#writebutton {
+	height: 50px;
+}
+
 #weekMovie {
 	border-top: 1px solid #CCC;
 	border-bottom: 1px solid #CCC;
@@ -157,59 +200,19 @@ page {
 	padding-left: 50px;
 }
 
-#reviewtable {
-	width: 780px;
-	margin-bottom: 10px;
-	text-align: left;
-}
-
-#reviewtable th.title{
-	width: 75px;
-}
-#reviewtable td.title{
-	width: 100px;
-}
-
 #oneline{
 	text-align: left;
 }
-#reviewwrite {
-	width: 780px;
-	border-top: 1px solid #000;
-<<<<<<< HEAD
-}
 
-#managertable {
-	width: 770px;
-}
-
-#managertable .num {
-	width: 45px;
-	text-align: center;
-}
-
-#managertable .memberID {
-	width: 350px;
-}
-
-#managertable .name {
-	width: 84px;
-	text-align: center;
-}
-#managertable .grade {
-	width: 84px;
-	text-align: center;
-}
-
-#remove td{
-	width: 84px;
-	float: right;
-}
-#manager{
+.remove{
 	float: right;
 }
 
-#managertable .gradeName {
-	height:20px;
-	width: 100px;
+#writereply {
+	height: 50px;
 }
+
+#pagenavigator { text-align: center; }
+#pagenavigator > a.pagenumber { padding: 2px 4px 1px 4px; border-width: 0px; font-weight: bold;}
+#pagenavigator > a.pagenumber:hover { padding: 1px 3px 0px 3px; border-width: 1px; border-style: solid;}
+#pagenavigator > a.currpage { text-decoration: underline; }
