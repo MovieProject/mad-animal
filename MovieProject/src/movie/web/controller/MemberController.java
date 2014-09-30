@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import movie.business.exception.DataDuplicatedException;
 import movie.business.exception.DataNotFoundException;
+import movie.business.service.MemberService;
+import movie.business.service.MemberServiceImpl;
 
 /**
  * Servlet implementation class MemberController
@@ -77,7 +79,10 @@ public class MemberController extends HttpServlet {
 
 	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		String memberID = request.getParameter("memberID");
+		String password = request.getParameter("password");
+		MemberService service = new MemberServiceImpl();
+		
 	}
 
 	/**
