@@ -49,40 +49,36 @@ public class MemberController extends HttpServlet {
 	private void registerMember(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataDuplicatedException {
-		// TODO Auto-generated method stub
 
 	}
 
 	private void removeMember(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
-		// TODO Auto-generated method stub
 
 	}
 
 	private void updateMember(HttpServletRequest request,
 			HttpServletResponse response) {
-		// TODO Auto-generated method stub
 
 	}
 
 	private void selectMember(HttpServletRequest request,
 			HttpServletResponse response)  throws ServletException, IOException,DataNotFoundException{
-		// TODO Auto-generated method stub
 
 	}
 
 	private void logout(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
-		// TODO Auto-generated method stub
 
 	}
 
 	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		// TODO Auto-generated method stub
 		String memberID = request.getParameter("memberID");
 		String password = request.getParameter("password");
 		MemberService service = new MemberServiceImpl();
-		
+
 	}
 
 	/**
@@ -91,7 +87,6 @@ public class MemberController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processRequest(request, response);
 	}
 
@@ -101,7 +96,6 @@ public class MemberController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processRequest(request, response);
 	}
 
