@@ -15,13 +15,13 @@ public class ReviewController extends HttpServlet {
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String action = request.getPathInfo();
+		String action = request.getParameter("action");
 
-		if (action.equals("/list")) {
+		if (action.equals("list")) {
 
-		} else if (action.equals("/write")) {
+		} else if (action.equals("write")) {
 
-		} else if (action.equals("/writeForm")) {
+		} else if (action.equals("writeForm")) {
 
 		}
 
