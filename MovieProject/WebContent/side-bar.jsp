@@ -27,7 +27,6 @@
 		<tr>
 			<td></td>
 		</tr>
-		<c:if test="${empty loginMember}">
 
 		<tr>
 			<td><a href="<c:url value="/notice.jsp"/>">공지사항</a></td>
@@ -44,11 +43,10 @@
 			<td><a href="<c:url value="/newMovieIntro.jsp"/>">최신영화 정보
 					게시판</a></td>
 		</tr>
-
 			<tr>
 				<td><a href="<c:url value="/review.jsp"/>">영화 리뷰 게시판</a></td>
 			</tr>
-		</c:if>
+
 	</table>
 </div>
 

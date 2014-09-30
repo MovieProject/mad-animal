@@ -177,3 +177,7 @@ page {
 	width: 780px;
 	border-top: 1px solid #000;
 }
+
+.remove{
+	float: right;
+}
