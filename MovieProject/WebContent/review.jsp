@@ -4,25 +4,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 목록</title>
+<title>Movie</title>
 <link rel="stylesheet" href="css/board.css">
-<script src="../js/board.js"></script>
 </head>
 <body>
-	<div class="boardpage">
-		<table id="listtable" class="maintable">
-			<caption>리뷰</caption>
-			<thead>
-				<tr>
-					<th class="num"></th>
-					<th class="title" >제 목</th>
-					<th class="writer">글쓴이</th>
-					<th class="regdate">작성일</th>
 
-				</tr>
-			</thead>
-			<tbody>
-<%-- 				<c:choose>
+	<div id="page">
+
+		<header id="header">
+			<c:import url="top.jsp"></c:import>
+		</header>
+
+		<div id="content">
+			<div class="boardpage">
+				<table id="listtable" class="maintable">
+					<caption>리뷰</caption>
+					<thead>
+						<tr>
+							<th class="num"></th>
+							<th class="title">제 목</th>
+							<th class="writer">글쓴이</th>
+							<th class="regdate">작성일</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<%-- 				<c:choose>
 
 					<c:when test="${empty requestScope.boardList}">
 						<tr>
@@ -49,16 +56,27 @@
 --%>
 
 
-				<tr>
-					<td class="num">1</td>
-					<td class="title"><a href="read.jsp">안녕하세요. 게시판 지기입니다.</a></td>
-					<td class="writer">운영자</td>
-					<td class="regdate">2014.7.1</td>
-				</tr>
-			</tbody>
+						<tr>
+							<td class="num">1</td>
+							<td class="title"><a href="read.jsp">안녕하세요. 게시판 지기입니다.</a></td>
+							<td class="writer">운영자</td>
+							<td class="regdate">2014.7.1</td>
+						</tr>
+					</tbody>
 
-		</table>
+				</table>
+			</div>
+			</div>
 
-	</div>
+
+			<aside id="sidebar">
+				<c:import url="side-bar.jsp"></c:import>
+			</aside>
+
+			<footer id="footer">
+				<c:import url="footer.jsp"></c:import>
+			</footer>
+		</div>
 </body>
 </html>
+

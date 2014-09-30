@@ -58,7 +58,7 @@
 
 					<tr>
 					<td class="num">1</td>
-					<td class="title"><a href="../board/read.jsp">안녕하세요. 게시판 지기입니다.</a></td>
+					<td class="title"><a href="read.jsp">안녕하세요. 게시판 지기입니다.</a></td>
 					<td class="writer">운영자</td>
 					<td class="regdate">2014.07.01</td>
 					<td class="readcount">10</td>
