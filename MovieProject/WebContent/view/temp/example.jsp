@@ -35,6 +35,7 @@ $(function () {
         ]
     });
     
+    w2ui['layout'].set('top', );
     w2ui['layout'].content('main', w2ui['layout2']);
 });
 </script>
