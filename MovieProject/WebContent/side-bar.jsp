@@ -31,7 +31,7 @@
 
 		</c:if>
 		<tr>
-			<td><a href="<c:url value="notice.jsp"/>">공지사항</a></td>
+			<td><a href="<c:url value="/notice.jsp"/>">공지사항</a></td>
 		</tr>
 		<tr>
 			<td><a href="<c:url value="/week_Recommend.jsp"/>">금주 추천 영화 게시판</a></td>

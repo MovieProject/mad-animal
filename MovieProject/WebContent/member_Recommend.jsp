@@ -107,7 +107,7 @@
 <%-- 					<c:if test="${not empty loginMember}">
 						<input type="button" value="글쓰기" onclick="goUrl('writeForm');">
 					</c:if> --%>
-						<a href="<c:url value="writeForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a>
+						<a href="<c:url value="writeMovieForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a>
 				</form>
 			</div>
 		</div>
