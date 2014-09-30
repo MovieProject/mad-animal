@@ -60,4 +60,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberAccess.selectMember(memberID);
 	}
 
+
+	public Member loginCheck(String memberID, String password) {
+		// TODO Auto-generated method stub
+		return memberAccess.checkMember(memberID, password);
+	}
+
 }

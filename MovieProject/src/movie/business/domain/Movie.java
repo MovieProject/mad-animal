@@ -8,13 +8,14 @@ public class Movie {
 	private String director;
 	private String synopsis;
 	private String photoDir;
+	private int memberGrade;
 
 	public Movie() {
 	}
 	/**insert용*/
 	
 	public Movie(String movieName, String genre, String director,
-			String releaseDate,String synopsis, String photoDir) {
+			String releaseDate,String synopsis, String photoDir,int memberGrade) {
 		super();
 		this.movieName = movieName;
 		this.genre = genre;
@@ -22,11 +23,12 @@ public class Movie {
 		this.director = director;
 		this.synopsis = synopsis;
 		this.photoDir = photoDir;
+		this.memberGrade = memberGrade;
 	}
 
 	/**List 생성용*/
 	public Movie(int movieNum, String movieName, String genre,
-			String releaseDate, String director, String synopsis, String photoDir) {
+			String releaseDate, String director, String synopsis, String photoDir,int memberGrade) {
 		super();
 		this.movieNum = movieNum;
 		this.movieName = movieName;
@@ -35,6 +37,7 @@ public class Movie {
 		this.director = director;
 		this.synopsis = synopsis;
 		this.photoDir = photoDir;
+		this.memberGrade = memberGrade;
 	}
 
 	
