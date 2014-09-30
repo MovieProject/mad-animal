@@ -12,7 +12,7 @@
 		<li>${loginErrorMsg}</li>
 	</ul>
 </c:if>
-<form action="<c:url value="/"/>" method="POST">
+<form action="<c:url value="/member?action=login"/>" method="POST">
 	<table id="logintable">
 		<tr>
 		<td>

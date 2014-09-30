@@ -24,8 +24,9 @@
 
 				<tr>
 					<td colspan="5" id="search"><input type="text"
-						name="searchtext" id="searchtext" placeholder="검색어 입력"><input
-						type="button" name="searchbutton" id="searchbutton" value="검색"></td>
+						name="searchtext" id="searchtext" placeholder="검색어 입력">
+						<a href="<c:url value="/search.jsp"/>"><input
+						type="button" name="searchbutton" id="searchbutton" value="검색"></a></td>
 				</tr>
 			</table>
 		</div>
