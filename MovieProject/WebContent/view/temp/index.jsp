@@ -14,16 +14,19 @@
 	<div id="page">
 
 		<div id="header">
-			<c:import url="banner.jsp"></c:import>
+			<c:import url="/view/banner.jsp"></c:import>
+		</div>
+		
+		<div id="side-bar">
+			<c:import url="/view/side-bar.jsp"></c:import>
 		</div>
 
 		<div id="content">
-			<c:import url="side-bar.jsp"></c:import>
-			<c:import url="content.jsp"></c:import>
+			<c:import url="/view/content.jsp"></c:import>
 		</div>
 
 		<div id="footer">
-			<c:import url="footer.jsp"></c:import>
+			<c:import url="/view/footer.jsp"></c:import>
 		</div>
 	</div>
 </body>
