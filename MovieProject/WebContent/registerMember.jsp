@@ -18,7 +18,7 @@
 		<div id="content">
 
 			<h4>[회원가입]</h4>
-			<form action="member?action=register" method="POST">
+			<form action=" <c:url value = '/member?action=register'/> " method="POST">
 				<table class="registertable">
 
 					<tr>
