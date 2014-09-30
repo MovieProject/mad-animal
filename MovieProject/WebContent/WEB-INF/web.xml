@@ -24,4 +24,14 @@
     <servlet-name>BoardController</servlet-name>
     <url-pattern>/Board</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MovieController</display-name>
+    <servlet-name>MovieController</servlet-name>
+    <servlet-class>movie.web.controller.MovieController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieController</servlet-name>
+    <url-pattern>/MovieController</url-pattern>
+  </servlet-mapping>
 </web-app>
