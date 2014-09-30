@@ -17,9 +17,9 @@
 
 		<div id="content">
 
-			<h4 align="center">[회원가입]</h4>
+			<h4>[회원가입]</h4>
 			<form action="member?action=register" method="POST">
-				<table class="registertable" align="center">
+				<table class="registertable">
 
 					<tr>
 						<th class="label">회원ID</th>
