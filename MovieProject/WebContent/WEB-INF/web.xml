@@ -34,4 +34,14 @@
     <servlet-name>MovieController</servlet-name>
     <url-pattern>/MovieController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReviewController</display-name>
+    <servlet-name>ReviewController</servlet-name>
+    <servlet-class>movie.web.controller.ReviewController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReviewController</servlet-name>
+    <url-pattern>/ReviewController</url-pattern>
+  </servlet-mapping>
 </web-app>
