@@ -9,11 +9,17 @@ public class Member {
 	private String email;
 	private String tel;
 	private int grade;
+	private int loginCheck;
+
 
 	public Member() {
 
 	}
 
+	public Member(String memberID,String password){
+		this.memberID = memberID;
+		this.password = password;
+	}
 
 	public Member(String memberID, String password, String memberName,int age,
 			String address, String email, String tel, int grade) {
@@ -59,6 +65,14 @@ public class Member {
 
 	public int getAge() {
 		return age;
+	}
+	
+	public int getLoginCheck() {
+		return loginCheck;
+	}
+	
+	public void setLoginCheck(int loginCheck) {
+		this.loginCheck = loginCheck;
 	}
 	
 	public void setMemberID(String memberID) {
