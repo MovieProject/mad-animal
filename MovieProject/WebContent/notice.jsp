@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Movie</title>
 <link rel="stylesheet" href="css/board.css">
+
 </head>
 <body>
 
@@ -106,7 +107,7 @@
 						value="검색" onclick="searchCheck(this.form);"> <input
 						type="button" value="목록" onclick="goUrl('list');">
 					<c:if test="${not empty loginMember && loginMember.grade eq 2}">
-						<a href="<c:url value="writeForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a>
+						<a href="<c:url value="writeForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a> 
 					</c:if>
 				</form>
 			</div>

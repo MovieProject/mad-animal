@@ -7,6 +7,7 @@
 <title>Movie</title>
 <link rel="stylesheet" href="css/movie.css">
 <link rel="stylesheet" href="css/board.css">
+<scipt src="js/board.js"></scipt>
 </head>
 <body>
 
