@@ -18,7 +18,7 @@
 		<div id="content">
 
 			<table id="listtable" class="maintable"  align="center">
- 				<caption id="boardtitle">회원추천  영화</caption>
+				<caption id="boardtitle">검색결과</caption>
 				<thead>
 					<tr>
 						<th class="num"></th>
@@ -58,7 +58,7 @@
 
 					<tr>
 					<td class="num">1</td>
-					<td class="title"><a href="readMovie.jsp">안녕하세요. 게시판 지기입니다.</a></td>
+					<td class="title"><a href="read.jsp">안녕하세요. 게시판 지기입니다.</a></td>
 					<td class="writer">운영자</td>
 					<td class="regdate">2014.07.01</td>
 					<td class="readcount">10</td>
@@ -104,13 +104,11 @@
 						value="${param.searchText}"> <input type="submit"
 						value="검색" onclick="searchCheck(this.form);"> <input
 						type="button" value="목록" onclick="goUrl('list');">
-					<c:if test="${not empty loginMember}">
+<%-- 					<c:if test="${not empty loginMember}">
 						<input type="button" value="글쓰기" onclick="goUrl('writeForm');">
-					</c:if> 
-				<%-- 
-				<a href="<c:url value="writeMovieForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a>
-				 --%>
-				 </form>
+					</c:if> --%>
+						<a href="<c:url value="writeForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a>
+				</form>
 			</div>
 		</div>
 

@@ -31,7 +31,7 @@
 					<tr>
 						<th>작성자</th>
 						<td>
-							<input class="writerinput" type="text" name="writer"  size="20" maxlength="20" value = '${member.memberName}'>
+							<input class="writerinput" type="text" name="writer"  size="20" maxlength="20" value = '${loginMember.memberName}'>
 						</td>
 					</tr>
 				</thead>

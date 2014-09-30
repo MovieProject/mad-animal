@@ -53,18 +53,58 @@ public class MemberController extends HttpServlet {
 	private void registerMember(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataDuplicatedException {
+			String memberID = request.getParameter("memberID");
+			String password = request.getParameter("password");
+			String memberName = request.getParameter("name");
+			int age = Integer.parseInt(request.getParameter("age"));
+			String address = request.getParameter("address");
+			String email = request.getParameter("email");
+			String tel = request.getParameter("tel");
+			int grade = MovieUtil.GRADE_GENERAL;
+			Member member = new Member(memberID, password, memberName, age, address, email, tel,grade);
+			MemberService service = new MemberServiceImpl();
+			service.writeMember(member);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+			
+			
 
 	}
 
 	private void removeMember(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
-			DataNotFoundException {
+			DataNotFoundException {		
+		String memberID = request.getParameter("memberID");
+		String password = request.getParameter("password");
+		String memberName = request.getParameter("name");
+		int age = Integer.parseInt(request.getParameter("age"));
+		String address = request.getParameter("address");
+		String email = request.getParameter("email");
+		String tel = request.getParameter("tel");
 
 	}
 
 	private void updateMember(HttpServletRequest request,
-			HttpServletResponse response) {
-
+			HttpServletResponse response) throws ServletException, IOException,DataNotFoundException {
+	
+		String memberID = request.getParameter("memberID");
+		String password = request.getParameter("password");
+		String memberName = request.getParameter("name");
+		int age = Integer.parseInt(request.getParameter("age"));
+		String address = request.getParameter("address");
+		String email = request.getParameter("email");
+		String tel = request.getParameter("tel");
+		int grade = Integer.parseInt(request.getParameter("grade"));
+			
+		Member member = new Member(memberID, password, memberName, age, address, email, tel, grade);
+		MemberService service = new MemberServiceImpl();
+		service.updateMember(member);
+		
+		HttpSession session = request.getSession(false);
+		session.setAttribute("loginMember", member);		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	private void selectMember(HttpServletRequest request,

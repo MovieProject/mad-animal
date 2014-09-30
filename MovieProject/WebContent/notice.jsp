@@ -17,7 +17,7 @@
 
 		<div id="content">
 
-			<table id="listtable" class="maintable"  align="center">
+			<table id="listtable" class="maintable" align="center">
 				<caption id="boardtitle">공지사항</caption>
 				<thead>
 					<tr>
@@ -29,7 +29,7 @@
 					</tr>
 				</thead>
 				<tbody>
-<%-- 					<c:choose>
+					<%-- 					<c:choose>
 
 						<c:when test="${empty requestScope.boardList}">
 							<tr>
@@ -57,16 +57,16 @@
 --%>
 
 					<tr>
-					<td class="num">1</td>
-					<td class="title"><a href="read.jsp">안녕하세요. 게시판 지기입니다.</a></td>
-					<td class="writer">운영자</td>
-					<td class="regdate">2014.07.01</td>
-					<td class="readcount">10</td>
-				</tr> 
+						<td class="num">1</td>
+						<td class="title"><a href="read.jsp">안녕하세요. 게시판 지기입니다.</a></td>
+						<td class="writer">운영자</td>
+						<td class="regdate">2014.07.01</td>
+						<td class="readcount">10</td>
+					</tr>
 				</tbody>
 				<tfoot>
 					<tr>
-						<td id="pagenavigator" colspan="5"><c:if
+						<td id="pagenavigator" colspan="5" ><c:if
 								test="${startPageNumber >1}">
 								<a
 									href="list?pageNumber=${startPageNumber - 1}&searchType=${searchType}&searchText=${searchText}">
@@ -89,7 +89,7 @@
 					</tr>
 				</tfoot>
 			</table>
-			<div class="buttonbar" >
+			<div class="buttonbar">
 				<form name="searchForm" action="list" method="GET"
 					onsubmit="return searchCheck();">
 					<select name="searchType">
@@ -105,9 +105,6 @@
 						value="${param.searchText}"> <input type="submit"
 						value="검색" onclick="searchCheck(this.form);"> <input
 						type="button" value="목록" onclick="goUrl('list');">
-<%-- 					<c:if test="${not empty loginMember}">
-						<input type="button" value="글쓰기" onclick="goUrl('writeForm');">
-					</c:if> --%>
 					<c:if test="${not empty loginMember && loginMember.grade eq 2}">
 						<a href="<c:url value="writeForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a>
 					</c:if>
