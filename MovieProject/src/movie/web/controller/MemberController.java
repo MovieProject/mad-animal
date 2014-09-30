@@ -39,6 +39,8 @@ public class MemberController extends HttpServlet {
 				removeMember(request, response);
 			} else if (action.equals("register")) {
 				registerMember(request, response);
+			}else if( action.equals("memberlist")){
+				selectMemberList(request,response);
 			}
 		} catch (DataDuplicatedException e) {
 			// TODO Auto-generated catch block
@@ -48,6 +50,12 @@ public class MemberController extends HttpServlet {
 
 		}
 
+	}
+
+	private void selectMemberList(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void registerMember(HttpServletRequest request,
@@ -76,12 +84,15 @@ public class MemberController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {		
 		String memberID = request.getParameter("memberID");
-		String password = request.getParameter("password");
-		String memberName = request.getParameter("name");
-		int age = Integer.parseInt(request.getParameter("age"));
-		String address = request.getParameter("address");
-		String email = request.getParameter("email");
-		String tel = request.getParameter("tel");
+		MemberService service = new MemberServiceImpl();
+		service.removeMember(memberID);
+		
+		HttpSession session = request.getSession(false);
+		session.removeAttribute("loginMember");
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		dispatcher.forward(request, response);
+		
 
 	}
 
