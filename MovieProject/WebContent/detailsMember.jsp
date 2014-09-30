@@ -22,19 +22,23 @@
 				<thead>
 					<tr>
 						<td class="num"></td>
-						<td class="check">회원선택</td>
 						<td class="memberID">ID</td>
 						<td class="name">이름</td>
-						<td class="level">등급</td>
+						<td class="grade">등급</td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td class="num"></td>
-						<td class="check"><input type="checkbox"></td>
-						<td class="memberID"><a href="<c:url value="/detailsMember.jsp"/>">lig08</a></td>
+						<td class="memberID">lig08</td>
 						<td class="name">송영욱</td>
-						<td class="level">등급</td>
+						<td class="grade">
+						<select name="gradeName" class="gradeName">
+								<option id="admin">관리자</option>
+								<option id="greatMember">우수회원</option>
+								<option id="nomalMember">일반회원</option>
+						</select>
+						</td>
 					</tr>
 
 				</tbody>
@@ -42,12 +46,14 @@
 				</tr>
 			</table>
 			<table id="manager">
-			<tr>
-					<td class="remove"><input type="button" value="탈퇴" id=removeButton></td>
-			</tr>
+				<tr>
+					<td class="update"><input type="button" value="수정"
+						id=updateButton></td>
+					<td class="remove"><input type="button" value="탈퇴"
+						id=removeButton></td>
+				</tr>
 			</table>
 		</div>
-
 
 		<aside id="sidebar">
 			<c:import url="side-bar.jsp"></c:import>
