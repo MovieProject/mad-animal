@@ -112,7 +112,7 @@ public class Member {
 		return "Member [memberID=" + memberID + ", password=" + password
 				+ ", memberName=" + memberName + ", address=" + address
 				+ ", email=" + email + ", tel=" + tel + ", grade=" + grade
-				+ "]";
+				+ "loginCheck = " + loginCheck+"]";
 	}
 
 }

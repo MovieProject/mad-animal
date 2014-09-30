@@ -8,7 +8,6 @@ import javax.sql.*;
 
 import movie.business.dao.MemberDao;
 import movie.business.domain.Member;
-
 import movie.util.MovieUtil;
 
 public class MemberDaoImpl implements MemberDao {
@@ -17,30 +16,26 @@ public class MemberDaoImpl implements MemberDao {
 
 	public MemberDaoImpl() {
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-
-			/*
-			 * Context context = new InitialContext(); context = ((Context)
-			 * context.lookup("java:comp/env")); dataSource = (DataSource)
-			 * context.lookup("jdbc/movieDB");
-			 */
-
-			// catch (NamingException e) {
+			Context context = new InitialContext();
+			context = ((Context) context.lookup("java:comp/env"));
+			dataSource = (DataSource) context.lookup("jdbc/movieDB");
+		} catch (NamingException e) {
+			e.printStackTrace();
 			// // TODO Auto-generated catch block
 			// e.printStackTrace();
 			//
 			// throw new RuntimeException("JNDI erroroccured." +
 			// e.getMessage());
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-		} 
+		}
 	}
 
 	/** Connection을 맺기 위한 Method */
 	private Connection obtainConnection() throws SQLException {
-		// return dataSource.getConnection();
-		return DriverManager.getConnection(
-				"jdbc:oracle:thin:@220.67.115.225:1521:xe", "movie", "1234");
+		return dataSource.getConnection();
+		/*
+		 * return DriverManager.getConnection(
+		 * "jdbc:oracle:thin:@220.67.115.225:1521:xe", "movie", "1234");
+		 */
 	}
 
 	public List<Member> selectMemberList() {
@@ -64,7 +59,7 @@ public class MemberDaoImpl implements MemberDao {
 		} catch (SQLException e) {
 			throw new RuntimeException("회원리스트를 조회하지 못하였습니다." + e.getMessage());
 		} finally {
-			if(con != null){
+			if (con != null) {
 				try {
 					con.close();
 				} catch (SQLException e) {
@@ -109,7 +104,7 @@ public class MemberDaoImpl implements MemberDao {
 		} catch (SQLException e) {
 			throw new RuntimeException("DB문제 발생" + e.getMessage());
 		} finally {
-			if(con != null){
+			if (con != null) {
 				try {
 					con.close();
 				} catch (SQLException e) {
@@ -146,7 +141,7 @@ public class MemberDaoImpl implements MemberDao {
 		query = "INSERT INTO member(member_ID,password,member_name,age,address,mail,tel,grade) VALUES (?,?,?,?,?,?,?,"
 				+ MovieUtil.GRADE_GENERAL + ")";
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			con = obtainConnection();
 			pstmt = con.prepareStatement(query);
@@ -161,7 +156,7 @@ public class MemberDaoImpl implements MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			if(con != null){
+			if (con != null) {
 				try {
 					con.close();
 				} catch (SQLException e) {
@@ -186,7 +181,7 @@ public class MemberDaoImpl implements MemberDao {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			con  = obtainConnection();
+			con = obtainConnection();
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, member.getPassword());
 			pstmt.setString(2, member.getMemberName());
@@ -202,7 +197,7 @@ public class MemberDaoImpl implements MemberDao {
 			throw new RuntimeException("DB문제 발생" + e.getMessage());
 
 		} finally {
-			if(con != null){
+			if (con != null) {
 				try {
 					con.close();
 				} catch (SQLException e) {
@@ -241,7 +236,7 @@ public class MemberDaoImpl implements MemberDao {
 			throw new RuntimeException("DB문제 발생" + e.getMessage());
 		} finally {
 
-			if(con != null){
+			if (con != null) {
 				try {
 					con.close();
 				} catch (SQLException e) {
@@ -280,7 +275,7 @@ public class MemberDaoImpl implements MemberDao {
 			throw new RuntimeException("DB문제 발생" + e.getMessage());
 		} finally {
 
-			if(con != null){
+			if (con != null) {
 				try {
 					con.close();
 				} catch (SQLException e) {
@@ -333,7 +328,7 @@ public class MemberDaoImpl implements MemberDao {
 		} catch (SQLException e) {
 			throw new RuntimeException("회원리스트를 조회하지 못하였습니다." + e.getMessage());
 		} finally {
-			if(con != null){
+			if (con != null) {
 				try {
 					con.close();
 				} catch (SQLException e) {
@@ -358,6 +353,67 @@ public class MemberDaoImpl implements MemberDao {
 			}
 		}
 
+		return result;
+	}
+
+	public Member checkMember(String memberID, String password) {
+		// TODO Auto-generated method stub
+		Member result = new Member(memberID, password);
+		query = "SELECT password, member_name,age,address,mail,tel,grade FROM member WHERE member_ID = ?";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = obtainConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, memberID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				String pw = rs.getString("PASSWORD");
+				if (pw.equals(password)) {
+					result.setMemberName(rs.getString("member_name"));
+					result.setAddress(rs.getString("address"));
+					result.setTel(rs.getString("tel"));
+					result.setEmail(rs.getString("mail"));
+					result.setGrade(rs.getInt("GRADE"));
+					result.setAge(rs.getInt("age"));
+					result.setLoginCheck(MovieUtil.VALID_MEMBER);
+				} else {
+					result.setLoginCheck(MovieUtil.INVALID_PASSWORD);
+				}
+			} else {
+				result.setLoginCheck(MovieUtil.INVALID_ID);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("DB문제 발생" + e.getMessage());
+
+			}
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("DB문제 발생" + e.getMessage());
+			}
+		}
 		return result;
 	}
 

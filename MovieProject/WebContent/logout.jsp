@@ -4,7 +4,7 @@
     <form action="<c:url value="/member?action=logout"/>" method="POST">
         <table id="logouttable">
             <tr>
-                <td class="message">${loginMember.name} 님<br> 환영합니다.</td>
+                <td class="message">${loginMember.memberName} 님<br> 환영합니다.</td>
             </tr>
 
             <tr>
