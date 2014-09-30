@@ -13,14 +13,14 @@ public interface MemberService {
      * @return 검색된 모든 회원 정보를 담고 있는 Member 배열
      * @throws DataNotFoundException 해당하는 게시글이 존재하지 않을 경우 발생 
      */
-	public Member[] getMemberList(Map<String,Object> searchInfo);
+	public Member[] getMemberList();
 	
 	 /**
 	  * 조건에 맞는 모든 회원 수를 조회한다.
 	  * 
 	  * @return 검색된 모든 회원의 개수
 	  */
-	public int getMemberCount(Map<String,Object> searchInfo);
+	public int getMemberCount();
 	
 	 /**
      * 새로운 회원을 등록한다.
@@ -53,5 +53,13 @@ public interface MemberService {
      * @throws DataNotFoundException memberID에 해당하는 회원이 존재하지 않을 경우 발생
      */
 	public Member getMember(String memberID) throws DataNotFoundException;
+    /**
+     * 특정 memberID이 로그인 가능한 회원인지를 검사.
+     *
+     * @param memberID 찾고자 하는 회원의 ID
+     * @param password 찾고자 하는 회원의 password
+     * @throws DataNotFoundException memberID에 해당하는 회원이 존재하지 않을 경우 발생
+     */
+	public Member loginCheck(String memberID,String password);
 
 }

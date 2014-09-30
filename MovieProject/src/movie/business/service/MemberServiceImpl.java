@@ -15,12 +15,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	
-	public Member[] getMemberList(Map<String, Object> searchInfo) {
+	public Member[] getMemberList() {
 
 		return memberAccess.selectMemberList().toArray(new Member[0]);
 	}
 
-	public int getMemberCount(Map<String, Object> searchInfo) {
+	public int getMemberCount() {
 		// TODO Auto-generated method stub
 		return memberAccess.selectMemberCount();
 	}
@@ -58,6 +58,12 @@ public class MemberServiceImpl implements MemberService {
 			throw new DataNotFoundException("존재하지 않는  아이디입니다.");
 		}
 		return memberAccess.selectMember(memberID);
+	}
+
+
+	public Member loginCheck(String memberID, String password) {
+		// TODO Auto-generated method stub
+		return memberAccess.checkMember(memberID, password);
 	}
 
 }

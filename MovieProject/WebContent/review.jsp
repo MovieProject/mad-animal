@@ -58,7 +58,7 @@
 			</table>
 			
 			<table id="writereview" class="maintable">
-				<c:if test="${empty loginMember}">
+				<c:if test="${not empty loginMember}">
 					<tr>
 						<th>영화 제목</th>
 						<td colspan="4"><input class="inputtext" type="text" name="content"></td>
