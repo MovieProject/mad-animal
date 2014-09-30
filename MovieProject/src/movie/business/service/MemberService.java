@@ -53,5 +53,13 @@ public interface MemberService {
      * @throws DataNotFoundException memberID에 해당하는 회원이 존재하지 않을 경우 발생
      */
 	public Member getMember(String memberID) throws DataNotFoundException;
+    /**
+     * 특정 memberID이 로그인 가능한 회원인지를 검사.
+     *
+     * @param memberID 찾고자 하는 회원의 ID
+     * @param password 찾고자 하는 회원의 password
+     * @throws DataNotFoundException memberID에 해당하는 회원이 존재하지 않을 경우 발생
+     */
+	public Member loginCheck(String memberID,String password);
 
 }

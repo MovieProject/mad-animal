@@ -1,9 +1,17 @@
 package movie.util;
 
 public class MovieUtil {
-	public static int GRADE_ADMIN = 2;
-	public static int GRADE_WRITER = 1;
-	public static int GRADE_GENERAL = 0;
+	/**유효한 회원임을 나타내는 상수*/
+	public static final int VALID_MEMBER = 1; 
+	
+	/**memberID가 존재하지 않는 회원임을 나타내는 상수*/
+	public static final int INVALID_ID = 0; 
+	/**PASSWORD가 일치하지 않는 회원임을 나타내는 상수*/
+	public static final int INVALID_PASSWORD = -1; 
+	
+	public static final int GRADE_ADMIN = 2;
+	public static final int GRADE_WRITER = 1;
+	public static final int GRADE_GENERAL = 0;
 
 	public final static int PAGE_LIST_SIZE = 5;
 	public final static int PAGE_GROUP_SIZE = 2;

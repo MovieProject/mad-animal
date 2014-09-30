@@ -57,4 +57,12 @@ public interface MemberDao {
 	 * @return 회원정보
 	 */
 	public Member selectMember(String memberID);
+	/**
+	 * 유효한 회원인지를 확인한다.
+	 * 
+	 * @param memberID 존재여부를 확인하려는 회원의 ID
+	 * @param password 존재여부를 확인하려는 회원의 password
+	 * @return 회원정보
+	 */
+	public Member checkMember(String memberID,String password);
 }

@@ -17,7 +17,7 @@ public class BoardDaoImpl implements BoardDao {
 		try {
 			Context context = new InitialContext();
 			dataSource = (DataSource) context
-					.lookup("java:comp/env/jdbc/dukeshopDB");
+					.lookup("java:comp/env/jdbc/movieDB");
 		} catch (NamingException ne) {
 			System.err.println("Driver Class Not found");
 			ne.printStackTrace(System.err);

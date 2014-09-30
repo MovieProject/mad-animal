@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
++<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src="js/script.js">
 	
@@ -48,6 +48,7 @@
 				<td><a href="<c:url value="/memberManager.jsp"/>">회원 관리</a></td>
 			</tr>
 	</c:if>
+
 	</table>
 </div>
 
