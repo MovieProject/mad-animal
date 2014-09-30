@@ -7,6 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import movie.business.domain.Board;
+import movie.business.domain.Member;
 import movie.business.exception.DataNotFoundException;
 import movie.business.service.BoardService;
 import movie.business.service.BoardServiceImpl;
@@ -23,26 +24,26 @@ public class BoardController extends HttpServlet {
 
 		try {
 			// action 요청파라미터 값을 확인한다.
-			String action = request.getPathInfo();
+			String action = request.getParameter("action");
 
 			// action 값에 따라 적절한 메소드를 선택하여 호출한다.
-			if (action.equals("/list")) {
+			if (action.equals("list")) {
 				selectBoardList(request, response);
-			} else if (action.equals("/read")) {
+			} else if (action.equals("read")) {
 				readBoard(request, response);
-			} else if (action.equals("/writeForm")) {
+			} else if (action.equals("writeForm")) {
 				writeBoardForm(request, response);
-			} else if (action.equals("/write")) {
+			} else if (action.equals("write")) {
 				writeBoard(request, response);
-			} else if (action.equals("/updateForm")) {
+			} else if (action.equals("updateForm")) {
 				updateBoardForm(request, response);
-			} else if (action.equals("/update")) {
+			} else if (action.equals("update")) {
 				updateBoard(request, response);
-			} else if (action.equals("/remove")) {
+			} else if (action.equals("remove")) {
 				removeBoard(request, response);
-			} else if (action.equals("/reply")) {
+			} else if (action.equals("reply")) {
 				replyBoard(request, response);
-			} else if (action.equals("/replyForm")) {
+			} else if (action.equals("replyForm")) {
 				replyBoardForm(request, response);
 			} else {
 				response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -112,7 +113,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(list.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("/WEB-INF/views/board/list.jsp");
+				.getRequestDispatcher("list.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -146,7 +147,7 @@ public class BoardController extends HttpServlet {
 
 		// 4. RequestDispatcher 객체를 통해 뷰 페이지(read.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("/WEB-INF/views/board/read.jsp");
+				.getRequestDispatcher("read.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -160,7 +161,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(writeForm.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("/WEB-INF/views/board/writeForm.jsp");
+				.getRequestDispatcher("writeForm.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -171,13 +172,13 @@ public class BoardController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
 		// 1. 요청 파라미터로 부터 작성자(writer), 제목(title), 내용(contents)를 구한다.
-		String writerName = request.getParameter("writerName");
+		String memberName = request.getParameter("memberName");
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
-		String writerID = request.getParameter("writerID");
+		String memberID = request.getParameter("memberID");
 
 		// 2. 구해 온 요청 파라미터 값와 ip 값을 지닌 Board 객체를 생성한다.
-		Board board = new Board(title, writerName, contents, writerID);
+		Board board = new Board(title, memberName, contents, memberID);
 		// 3. BoardService 객체를 통해 해당 게시글을 등록한다.
 		BoardService service = new BoardServiceImpl();
 		service.writeBoard(board);
@@ -214,7 +215,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(updateForm.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("/WEB-INF/views/board/updateForm.jsp");
+				.getRequestDispatcher("updateForm.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -226,14 +227,14 @@ public class BoardController extends HttpServlet {
 			DataNotFoundException {
 		// 1. 요청 파라미터로 부터 글 번호(num), 작성자(writer), 제목(title), 내용(contents)을 구한다.
 		String boardNum = request.getParameter("boardNum");
-		String writerName = request.getParameter("writerName");
+		String memberName = request.getParameter("memberName");
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
-		String writerID = request.getParameter("writerID");
+		String memberID = request.getParameter("memberID");
 
 		// 2. 구해 온 요청 파라미터 값와 ip 값을 지닌 Board 객체를 생성한다.
-		Board board = new Board(Integer.parseInt(boardNum), title, writerName,
-				contents, writerID);
+		Board board = new Board(Integer.parseInt(boardNum), title, memberName,
+				contents, memberID);
 		System.out.println("board" + board);
 
 		// 3. BoardService 객체를 통해 해당 게시글을 갱신한다.
@@ -295,7 +296,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(replyForm.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("/WEB-INF/views/board/replyForm.jsp");
+				.getRequestDispatcher("replyForm.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -308,17 +309,17 @@ public class BoardController extends HttpServlet {
 		// 요청 파라미터로 부터 글 번호(num), 작성자(writer), 제목(title), 내용(contents), 원본
 		// 글번호(masterNum)을 구한다.
 		String boardNum = request.getParameter("boardNum");
-		String writerName = request.getParameter("writerName");
+		String memberName = request.getParameter("memberName");
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
 		String masterNum = request.getParameter("masterNum");
 		String replyOrder = request.getParameter("replyOrder");
 		String replyStep = request.getParameter("replyStep");
-		String writerID = request.getParameter("writerID");
+		String memberID = request.getParameter("memberID");
 
 		// 구해 온 요청 파라미터 값와 ip 값을 지닌 Board 객체를 생성한다.
-		Board board = new Board(Integer.parseInt(boardNum), title, writerName,
-				contents, writerID, Integer.parseInt(masterNum),
+		Board board = new Board(Integer.parseInt(boardNum), title, memberName,
+				contents, memberID, Integer.parseInt(masterNum),
 				Integer.parseInt(replyOrder), Integer.parseInt(replyStep));
 		System.out.println("board" + board);
 

@@ -69,7 +69,8 @@
 						<td id="pagenavigator" colspan="5"><c:if
 								test="${startPageNumber >1}">
 								<a
-									href="list?pageNumber=${startPageNumber - 1}&searchType=${searchType}&searchText=${searchText}">이전</a>
+									href="list?pageNumber=${startPageNumber - 1}&searchType=${searchType}&searchText=${searchText}">
+									이전</a>
 							</c:if> <c:forEach begin="${startPageNumber}" end="${endPageNumber}"
 								var="pageNumber">
 								<c:choose>
@@ -107,7 +108,9 @@
 <%-- 					<c:if test="${not empty loginMember}">
 						<input type="button" value="글쓰기" onclick="goUrl('writeForm');">
 					</c:if> --%>
+					<c:if test="${not empty loginMember && loginMember.grade eq 2}">
 						<a href="<c:url value="writeForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a>
+					</c:if>
 				</form>
 			</div>
 		</div>
