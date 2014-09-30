@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-<!-- <link rel="stylesheet" href="css/movie.css"> -->
+<link rel="stylesheet" href="css/movie.css">
 <link rel="stylesheet" href="css/board.css">
 </head>
 <body>
