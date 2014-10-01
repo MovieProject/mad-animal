@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Movie</title>
 <link rel="stylesheet" href="css/board.css">
+<script type="text/javascript" src="js/board.js"></script>
 </head>
 <body>
 
@@ -17,35 +18,59 @@
 
 		<div id="content">
 
-			<table id="managertable" class="maintable" align="center">
-				<caption id="boardtitle">회원관리</caption>
-				<thead>
+			<form action="<c:url value = '/member?action=listRemove' />"
+				name="listDelete" method="post" onsubmit="return validateForm();">
+				<table id="managertable" class="maintable" align="center">
+					<caption id="boardtitle">회원관리</caption>
+					<thead>
+						<tr>
+							<td class="num"></td>
+							<td class="check">회원선택</td>
+							<td class="memberID">ID</td>
+							<td class="name">이름</td>
+							<td class="level">등급</td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="member" items="${requestScope.memberList}"
+							varStatus="count">
+							<tr>
+								<td class="num">${count.count}</td>
+								<c:choose>
+									<c:when test="${member.grade == 2 }">
+										<td class="check"><input type="checkbox" id="items"
+											value="${member.memberID }" disabled="disabled"></td>
+									</c:when>
+									<c:otherwise>
+										<td class="check"><input type="checkbox" id="items"
+											name="items" value="${member.memberID }"></td>
+									</c:otherwise>
+								</c:choose>
+								<td class="memberID"><a
+									href="<c:url value="/member?action=select&memberID=${member.memberID}"/>">${member.memberID }</a></td>
+								<td class="name">${member.memberName }</td>
+								<c:choose>
+									<c:when test="${member.grade == 2 }">
+										<td class="level">관리자</td>
+									</c:when>
+									<c:when test="${member.grade == 1 }">
+										<td class="level">우수회원</td>
+									</c:when>
+									<c:when test="${member.grade == 0 }">
+										<td class="level">일반회원</td>
+									</c:when>
+								</c:choose>
+							</tr>
+						</c:forEach>
+					</tbody>
 					<tr>
-						<td class="check">회원선택</td>
-						<td class="num">번호</td>
-						<td class="memberID">ID</td>
-						<td class="name">이름</td>
-						<td class="level">등급</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="num"></td>
-						<td class="memberID"><a href="<c:url value="/detailsMember.jsp"/>">lig08</a></td>
-						<td class="name">송영욱</td>
-						<td class="level">등급</td>
+
 					</tr>
 
-				</tbody>
-				<tr>
-				</tr>
-			</table>
-			<table id="manager">
-			<tr>
-					<td class="remove"><input type="button" value="탈퇴" id=removeButton></td>
-			</tr>
-			</table>
+				</table>
+				<input type="submit" value="탈퇴" id="removeButton">
+			</form>
+
 		</div>
 
 

@@ -56,7 +56,7 @@ public class BoardDaoImpl implements BoardDao {
 			searchText = "%" + searchText.trim() + "%";
 		}
 
-		query = "select * from (select rownum r, boardNum, title, writerName, reg_date, read_count,reply_step from(select * from board "
+		query = "select * from (select rownum r, board_num, board_title, board_writer, reg_date, read_count,reply_step from(select * from board "
 				+ whereSQL
 				+ " order by master_num DESC, reply_order ASC)) where r between ? and ?";
 
@@ -103,8 +103,8 @@ public class BoardDaoImpl implements BoardDao {
 							"...").toString();
 				}
 
-				board = new Board(rs.getInt("boardNum"), title,
-						rs.getString("writerName"), rs.getInt("read_count"),
+				board = new Board(rs.getInt("board_num"), title,
+						rs.getString("board_writer"), rs.getInt("read_count"),
 						rs.getString("reg_date"), rs.getInt("reply_step"));
 
 				result.add(board);
@@ -146,7 +146,7 @@ public class BoardDaoImpl implements BoardDao {
 
 		if ((searchType != null)) {
 			if (searchType.equals("all")) {
-				whereSQL = "WHERE title LIKE ? OR writer LIKE ? OR contents LIKE ?";
+				whereSQL = "WHERE board_title LIKE ? OR writer LIKE ? OR contents LIKE ?";
 
 			} else if ((searchType.equals("title"))
 					|| (searchType.equals("writer"))
@@ -161,7 +161,7 @@ public class BoardDaoImpl implements BoardDao {
 		}
 
 		int result = 0;
-		query = "select count(boardNum) from board " + whereSQL;
+		query = "select count(board_num) from board " + whereSQL;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -216,7 +216,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	public Board selectBoard(int boardNum) {
-		query = "SELECT boardNum, title, writerName, contents, read_count, reg_date, mod_date, master_num, reply_order, reply_step FROM board WHERE boardNum=?";
+		query = "SELECT board_num, board_title, board_writer, board_contents, read_count, reg_date, mod_date, master_num, reply_order, reply_step FROM board WHERE board_num=?";
 
 		System.out.println("BoardDaoImpl selectBoard() query : " + query);
 
@@ -231,8 +231,8 @@ public class BoardDaoImpl implements BoardDao {
 			pstmt.setInt(1, boardNum);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				result = new Board(rs.getInt("boardNum"),
-						rs.getString("title"), rs.getString("writerName"),
+				result = new Board(rs.getInt("board_num"),
+						rs.getString("title"), rs.getString("board_writer"),
 						rs.getString("contents"), rs.getInt("read_count"),
 						rs.getString("reg_date"), rs.getString("mod_date"),
 						rs.getInt("master_num"), rs.getInt("reply_order"),
@@ -266,7 +266,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	public void addReadCount(int boardNum) {
-		query = "UPDATE board SET read_count=read_count+1 WHERE boardNum=?";
+		query = "UPDATE board SET read_count=read_count+1 WHERE board_num=?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
@@ -295,7 +295,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	public boolean boardNumExists(int boardNum) {
-		query = "SELECT boardNum FROM board WHERE boardNum=?";
+		query = "SELECT board_num FROM board WHERE board_num=?";
 		boolean result = false;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -335,8 +335,8 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	public void insertBoard(Board board) {
-		query = "INSERT INTO board (board_num, board_title, writerName,  contents, writerID, read_count, reg_date,mod_date, master_num) "
-				+ "VALUES (board_num_seq.NEXTVAL, ?, ?, ?, ?, ?, 0, SYSDATE, SYSDATE, board_num_seq.CURRVAL)";
+		query = "INSERT INTO board (board_num, board_title, board_writer,  board_contents, member_ID, read_count, reg_date, mod_date, master_num) "
+				+ "VALUES (board_num_seq.NEXTVAL, ?, ?, ?, ?, 0, SYSDATE, SYSDATE, board_num_seq.CURRVAL)";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
@@ -346,6 +346,7 @@ public class BoardDaoImpl implements BoardDao {
 			pstmt.setString(1, board.getTitle());
 			pstmt.setString(2, board.getWriterName());
 			pstmt.setString(3, board.getContents());
+			pstmt.setString(4, board.getWriterID());
 			pstmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -369,7 +370,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	public void updateBoard(Board board) {
-		query = "UPDATE board SET title=?, writerName=?, contents=?, writerID=?, mod_date=SYSDATE WHERE board_num=?";
+		query = "UPDATE board SET board_title=?, board_writer=?, board_contents=?, board_ID=?, mod_date=SYSDATE WHERE board_num=?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
@@ -402,7 +403,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	public void deleteBoard(int boardNum) {
-		query = "DELETE FROM board WHERE boardNum = ?";
+		query = "DELETE FROM board WHERE board_num = ?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
@@ -436,7 +437,7 @@ public class BoardDaoImpl implements BoardDao {
 
 		System.out.println("BoardDaoImpl insertReplyBoard() query : " + query);
 
-		String query2 = "INSERT INTO board (num, title, writer, contents, writerID, read_count, reg_date, mod_date, master_num, reply_order, reply_step) "
+		String query2 = "INSERT INTO board (board_num, board_title, board_writer, board_contents, board_ID, read_count, reg_date, mod_date, master_num, reply_order, reply_step) "
 				+ "VALUES (board_num_seq.NEXTVAL, ?, ?, ?, ?, 0, SYSDATE, SYSDATE, ?, ?, ?)";
 		System.out
 				.println("BoardDaoImpl insertReplyBoard() query2 : " + query2);

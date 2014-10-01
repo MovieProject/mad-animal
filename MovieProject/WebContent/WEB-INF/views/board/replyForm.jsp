@@ -13,7 +13,7 @@
 	<div id="page">
 
 		<header id="header">
-			<c:import url="top.jsp"></c:import>
+			<c:import url="/top.jsp"></c:import>
 		</header>
 
 		<div id="content">
@@ -48,11 +48,11 @@
 		
 		</div>
 		<aside id="sidebar">
-			<c:import url="side-bar.jsp"></c:import>
+			<c:import url="/side-bar.jsp"></c:import>
 		</aside>
 
 		<footer id="footer">
-			<c:import url="footer.jsp"></c:import>
+			<c:import url="/footer.jsp"></c:import>
 		</footer>
 	</div>
 </body>

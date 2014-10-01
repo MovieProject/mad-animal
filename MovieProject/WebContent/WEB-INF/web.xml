@@ -21,11 +21,11 @@
 		<description></description>
 		<display-name>BoardController</display-name>
 		<servlet-name>BoardController</servlet-name>
-		<servlet-class>movie.web.controller.BoardConroller</servlet-class>
+		<servlet-class>movie.web.controller.BoardController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>BoardController</servlet-name>
-		<url-pattern>/board</url-pattern>
+		<url-pattern>/board/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description></description>

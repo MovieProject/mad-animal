@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Movie</title>
 <link rel="stylesheet" href="css/board.css">
+<script type="text/javascript" src="../js/board.js"></script>
 </head>
 <body>
 
@@ -16,43 +17,49 @@
 		</header>
 
 		<div id="content">
+			<form name = "managerForm" action = "<c:url value = "/member?action=gradeUpdate&memberID=${selectedMember.memberID}"/>" method = "post">
+				<table id="managertable" class="maintable" align="center">
+					<caption id="boardtitle">회원관리</caption>
+					<thead>
+						<tr>
+							<td class="memberID">ID</td>
+							<td class="name">이름</td>
+							<td class="grade">등급</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="memberID">${selectedMember.memberID}</td>
+							<td class="name">${selectedMember.memberName}</td>
+							<td class="grade"><select name="gradeName" class="gradeName">
+									<option id="admin"
+										<c:if test ="${selectedMember.grade == 2}">selected="selected"</c:if>
+										value="2">관리자</option>
+									<option id="greatMember"
+										<c:if test ="${selectedMember.grade == 1}">selected="selected"</c:if>
+										value="1">우수회원</option>
+									<option id="nomalMember"
+										<c:if test ="${selectedMember.grade == 0}">selected="selected"</c:if>
+										value="0">일반회원</option>
+							</select></td>
+						</tr>
 
-			<table id="managertable" class="maintable" align="center">
-				<caption id="boardtitle">회원관리</caption>
-				<thead>
+					</tbody>
 					<tr>
-						<td class="num"></td>
-						<td class="memberID">ID</td>
-						<td class="name">이름</td>
-						<td class="grade">등급</td>
 					</tr>
-				</thead>
-				<tbody>
+				</table>
+				<table id="manager">
 					<tr>
-						<td class="num"></td>
-						<td class="memberID">lig08</td>
-						<td class="name">송영욱</td>
-						<td class="grade">
-						<select name="gradeName" class="gradeName">
-								<option id="admin">관리자</option>
-								<option id="writer">우수회원</option>
-								<option id="general">일반회원</option>
-						</select>
-						</td>
-					</tr>
 
-				</tbody>
-				<tr>
-				</tr>
-			</table>
-			<table id="manager">
-				<tr>
-					<td class="update"><input type="button" value="수정"
-						id=updateButton></td>
-					<td class="remove"><input type="button" value="탈퇴"
-						id=removeButton></td>
-				</tr>
-			</table>
+						<td class="update"><input type="submit" value="수정"
+							id="updateButton"></td>
+						<td class="remove"><input type="button" value="탈퇴"
+							id="removeButton"
+							onclick="goUrl('<c:url value = "/member?action=remove&memberID=${selectedMember.memberID}"/>');"></td>
+
+					</tr>
+				</table>
+			</form>
 		</div>
 
 		<aside id="sidebar">

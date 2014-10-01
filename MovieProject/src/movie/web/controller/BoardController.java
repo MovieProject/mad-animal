@@ -1,13 +1,16 @@
 package movie.web.controller;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import movie.business.domain.Board;
-import movie.business.domain.Member;
 import movie.business.exception.DataNotFoundException;
 import movie.business.service.BoardService;
 import movie.business.service.BoardServiceImpl;
@@ -24,26 +27,26 @@ public class BoardController extends HttpServlet {
 
 		try {
 			// action 요청파라미터 값을 확인한다.
-			String action = request.getParameter("action");
+			String action = request.getPathInfo();
 
 			// action 값에 따라 적절한 메소드를 선택하여 호출한다.
-			if (action.equals("list")) {
+			if (action.equals("/list")) {
 				selectBoardList(request, response);
-			} else if (action.equals("read")) {
+			} else if (action.equals("/read")) {
 				readBoard(request, response);
-			} else if (action.equals("writeForm")) {
+			} else if (action.equals("/writeForm")) {
 				writeBoardForm(request, response);
-			} else if (action.equals("write")) {
+			} else if (action.equals("/write")) {
 				writeBoard(request, response);
-			} else if (action.equals("updateForm")) {
+			} else if (action.equals("/updateForm")) {
 				updateBoardForm(request, response);
-			} else if (action.equals("update")) {
+			} else if (action.equals("/update")) {
 				updateBoard(request, response);
-			} else if (action.equals("remove")) {
+			} else if (action.equals("/remove")) {
 				removeBoard(request, response);
-			} else if (action.equals("reply")) {
+			} else if (action.equals("/reply")) {
 				replyBoard(request, response);
-			} else if (action.equals("replyForm")) {
+			} else if (action.equals("/replyForm")) {
 				replyBoardForm(request, response);
 			} else {
 				response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -113,7 +116,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(list.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("list.jsp");
+				.getRequestDispatcher("/WEB-INF/views/board/notice.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -147,7 +150,7 @@ public class BoardController extends HttpServlet {
 
 		// 4. RequestDispatcher 객체를 통해 뷰 페이지(read.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("read.jsp");
+				.getRequestDispatcher("/WEB-INF/views/board/read.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -161,7 +164,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(writeForm.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("writeForm.jsp");
+				.getRequestDispatcher("/WEB-INF/views/board/writeForm.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -215,7 +218,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(updateForm.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("updateForm.jsp");
+				.getRequestDispatcher("/WEB-INF/views/board/updateForm.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -246,7 +249,7 @@ public class BoardController extends HttpServlet {
 
 		// 5. RequestDispatcher 객체를 통해 게시물 보기(board?action=read)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("read?boardNum=" + boardNum);
+				.getRequestDispatcher("read");
 		dispatcher.forward(request, response);
 	}
 
@@ -296,7 +299,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(replyForm.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("replyForm.jsp");
+				.getRequestDispatcher("/WEB-INF/views/board/replyForm.jsp");
 		dispatcher.forward(request, response);
 	}
 
