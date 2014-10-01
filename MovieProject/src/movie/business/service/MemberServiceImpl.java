@@ -11,7 +11,7 @@ public class MemberServiceImpl implements MemberService {
 	public MemberServiceImpl(){
 		memberAccess = new MemberDaoImpl();
 	}
-	
+	//되는건가??
 	
 	public Member[] getMemberList() {
 

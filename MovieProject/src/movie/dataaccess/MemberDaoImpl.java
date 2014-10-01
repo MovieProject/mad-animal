@@ -13,7 +13,7 @@ import movie.util.MovieUtil;
 public class MemberDaoImpl implements MemberDao {
 	private DataSource dataSource;
 	private String query;
-
+//되는건가??
 	public MemberDaoImpl() {
 		try {
 			Context context = new InitialContext();

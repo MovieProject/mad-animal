@@ -5,7 +5,7 @@ import java.util.*;
 import movie.business.domain.Member;
 
 public interface MemberDao {
-
+	//되는건가??
 	/**
 	 * 조건에 맞는 모든 회원 목록을 조회한다.
 	 * 
