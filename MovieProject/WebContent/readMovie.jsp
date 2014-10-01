@@ -53,11 +53,11 @@
 				<c:if test="${not empty loginMember}">
 					<!-- <input type="button" value="목록" onclick="goUrl('board?action=list');"> -->
 					<input type="button" value="목록"
-						onclick="goUrl('movie?action=movielist&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
+						onclick="goUrl('movielist?searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 					<input type="button" value="수정"
-						onclick="goUrl('movie?action=movieupdateForm&num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
+						onclick="goUrl('movie?action=movieupdate&num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 					<input type="button" value="삭제"
-						onclick="deleteCheck('remove?num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
+						onclick="deleteCheck('movie?action=remove&num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 				</c:if>
 			</div>
 

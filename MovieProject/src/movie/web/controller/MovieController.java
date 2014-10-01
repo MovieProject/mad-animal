@@ -51,6 +51,9 @@ public class MovieController extends HttpServlet {
 				readMovie(request,response);
 			}else if(action.equals("movielist")){
 				movielist(request,response);
+			}else if(action.equals("remove")){
+				removeMovie(request,response);
+				
 			}
 						
 		}catch (DataDuplicatedException e) {
@@ -61,6 +64,17 @@ public class MovieController extends HttpServlet {
 
 		}
 
+	}
+
+	private void removeMovie(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException,DataNotFoundException {
+		// TODO Auto-generated method stub
+		int num =Integer.parseInt(request.getParameter("num"));
+		MovieService service = new MovieServiceImpl();
+		service.removeMovie(num);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/movie?action=movielist");
+		dispatcher.forward(request, response);
+		
 	}
 
 	private void movielist(HttpServletRequest request,
@@ -101,7 +115,17 @@ public class MovieController extends HttpServlet {
 		String synopsis =request.getParameter("synopsis");
 		String photoDir = request.getParameter("file");
 		int memberGrade = Integer.parseInt(request.getParameter("memberGrade"));
-
+//	    if(name.equals("title")){
+//	    	movieName = value;
+//	    }else if(name.equals("genre")){
+//	    	genre = value;
+//	    }else if(name.equals("director")){
+//	    	director = value;
+//		}else if(name.equals("releaseDate")){
+//			releaseDate = value;
+//		}else if(name.equals("synopsis")){
+//			synopsis = value;
+//		}
 		
 //		// 디스크 기반의 FileItem factory 생성
 //				DiskFileItemFactory factory = new DiskFileItemFactory();
