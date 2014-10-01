@@ -18,10 +18,9 @@
 
 		<div id="content">
 
-			<form name="writeForm" action="write" method="POST"
-				enctype="multipart/form-data">
+			<form name="writeForm" action="<c:url value="/movie?action=writeMovie"/>" method="POST">
 				<table id="writetable" class="maintable" align="center">
-					<caption id="boardtitle">금주추천 영화 등록</caption>
+					<caption id="boardtitle">회원추천 영화 등록</caption>
 					<thead>
 						<tr>
 							<th>영화 제목</th>
@@ -31,7 +30,7 @@
 						<tr>
 							<th>장르</th>
 
-							<td><input class="writerinput" type="text" name="writer"
+							<td><input class="writerinput" type="text" name="genre"
 								size="20" maxlength="20"></td>
 
 						</tr>
@@ -39,14 +38,14 @@
 						<tr>
 							<th>개봉일</th>
 
-							<td><input class="writerinput" type="text" name="writer"
+							<td><input class="writerinput" type="date" name="releaseDate"
 								size="20" maxlength="20"></td>
 
 						</tr>
 						<tr>
 							<th>감독</th>
 
-							<td><input class="writerinput" type="text" name="writer"
+							<td><input class="writerinput" type="text" name="director"
 								size="20" maxlength="20"></td>
 
 						</tr>
@@ -57,7 +56,7 @@
 					<tbody>
 						<tr>
 							<td colspan="2"><textarea id="editor" class="contentsinput"
-									name="contents"></textarea> <!-- 							<script>CKEDITOR.replace('editor');</script> -->
+									name="synopsis"></textarea> <!-- 							<script>CKEDITOR.replace('editor');</script> -->
 
 								<!-- <textarea class="contentsinput ckeditor" name="contents"></textarea> -->
 							</td>
@@ -69,6 +68,7 @@
 					</tbody>
 				</table>
 				<div class="buttonbar">
+				<input type="hidden" name = "memberGrade" value = "${loginMember.grade }"> 
 				<!-- 	<input type="button" value="등록"
 						onclick="boardWriteCheck(this.form);"> -->
 				<input type="submit" value="등록">

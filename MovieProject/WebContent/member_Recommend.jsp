@@ -105,7 +105,7 @@
 						value="검색" onclick="searchCheck(this.form);"> <input
 						type="button" value="목록" onclick="goUrl('list');">
 					<c:if test="${not empty loginMember}">
-						<input type="button" value="글쓰기" onclick="goUrl('writeForm');">
+						<input type="button" value="글쓰기" onclick="goUrl('<c:url value = "/writeMovieForm.jsp"/>');">
 					</c:if> 
 				<%-- 
 				<a href="<c:url value="writeMovieForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a>

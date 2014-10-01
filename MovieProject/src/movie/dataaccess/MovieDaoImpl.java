@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.naming.*;
 import javax.sql.DataSource;
 
 import movie.business.dao.MovieDao;
@@ -16,31 +17,26 @@ public class MovieDaoImpl implements MovieDao {
 
 	public MovieDaoImpl() {
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
+			//Class.forName("oracle.jdbc.OracleDriver");
 
-			/*
-			 * Context context = new InitialContext(); context = ((Context)
-			 * context.lookup("java:comp/env")); dataSource = (DataSource)
-			 * context.lookup("jdbc/movieDB");
-			 */
+			
+			 Context context = new InitialContext(); context = ((Context)
+			  context.lookup("java:comp/env")); dataSource = (DataSource)
+			  context.lookup("jdbc/movieDB");
+			
 
-			// catch (NamingException e) {
+		} catch (NamingException e) {
 			// // TODO Auto-generated catch block
 			// e.printStackTrace();
 			//
-			// throw new RuntimeException("JNDI erroroccured." +
-			// e.getMessage());
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		throw new RuntimeException("JNDI erroroccured." +
+			 e.getMessage());
+		} 
 
 	}
 
 	private Connection obtainConnection() throws SQLException {
-		// return dataSource.getConnection();
-		return DriverManager.getConnection(
-				"jdbc:oracle:thin:@220.67.115.225:1521:xe", "movie", "1234");
+		 return dataSource.getConnection();
 	}
 
 	public List<Movie> selectMovieList(Map<String, Object> searchInfo) {

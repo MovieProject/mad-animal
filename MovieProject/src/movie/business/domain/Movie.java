@@ -102,7 +102,19 @@ public class Movie {
 		return "Movie [movieNum=" + movieNum + ", movieName=" + movieName
 				+ ", genre=" + genre + ", releaseDate=" + releaseDate
 				+ ", director=" + director + ", synopsis=" + synopsis
-				+ ", photoDir=" + photoDir + "]";
+				+ ", photoDir=" + photoDir +",memberGrade"+memberGrade+"]";
+	}
+	public String getDirector() {
+		return director;
+	}
+	public int getMemberGrade() {
+		return memberGrade;
+	}
+	public void setDirector(String director) {
+		this.director = director;
+	}
+	public void setMemberGrade(int memberGrade) {
+		this.memberGrade = memberGrade;
 	}
 
 }
