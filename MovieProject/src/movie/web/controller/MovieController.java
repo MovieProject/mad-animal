@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,9 @@ public class MovieController extends HttpServlet {
 	private File uploadDir;
 
 	public void init() throws ServletException{
-		uploadDir = new File(getInitParameter("uploadDir"));
+		System.out.println("실행됨");
+		uploadDir = new File(getServletContext().getRealPath("/" + getInitParameter("uploadDir")));
+		System.out.println(getServletContext().getRealPath("/" + getInitParameter("uploadDir")));
 		if (!uploadDir.exists()) { uploadDir.mkdir(); }
 	}
 
@@ -91,79 +94,82 @@ public class MovieController extends HttpServlet {
 	private void writeMovie(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,DataDuplicatedException{
 		// TODO Auto-generated method stub
-		String movieName = null;
-		String genre = null;
-		String director = null;
-		String releaseDate = null;
-		String synopsis = null;
-		String photoDir = null;		
-		int memberGrade = 0;
-		
-		// 디스크 기반의 FileItem factory 생성
-				DiskFileItemFactory factory = new DiskFileItemFactory();
-				// repository 생성 (a secure temp location is used)
-				File repository = (File) getServletContext().getAttribute("javax.servlet.context.tempdir");
-				//File repository = new File(uploadDir, "temp");  
-				//if (!repository.exists()) { repository.mkdir(); }
-				
-				// factory 제약 설정
-				factory.setSizeThreshold(1024 * 100); // 메모리에 저장할 최대 size (100K까지는 메모리에 저장)
-				factory.setRepository(repository);	// 파일 임시 저장소 (100K 이상이면 repository에 저장)	
-				
-				// 파일 업로드 핸들러 생성
-				ServletFileUpload upload = new ServletFileUpload(factory);
-				// 총 request size 제약 설정
-				upload.setSizeMax(1024 * 1024 * 20); // 최대 size (20M까지 가능)
-				
-				// 요청 파싱
-				try {
-					List<FileItem> items = upload.parseRequest(request);
-					
-					// 업로드된 items 처리
-					Iterator<FileItem> iter = items.iterator();
-					while (iter.hasNext()) {    
-						FileItem item = iter.next();
-						
-						// 일반 폼 필드 처리 (<input type="file">이 아닌 경우)
-						if (item.isFormField()) {
-						    String name = item.getFieldName(); // 필드 이름
-						    String value = item.getString(); // 필드 값
-						    
-						    System.out.println(name +" : " + value);
-						    if(name.equals("title")){
-						    	movieName = value;
-						    }else if(name.equals("genre")){
-						    	genre = value;
-						    }else if(name.equals("director")){
-						    	director = value;
-							}else if(name.equals("releaseDate")){
-								releaseDate = value;
-							}else if(name.equals("synopsis")){
-								synopsis = value;
-							}
-						    
-						 // 파일 업로드 처리 (<input type="file">인 경우)
-						} else {
-							String fieldName = item.getFieldName(); // 필드 이름
-							String fileName = item.getName(); // 경로가 포함된 파일명
-							
-							System.out.println(fieldName);
-							System.out.println(fileName);
+		String movieName = request.getParameter("title");
+		String genre = request.getParameter("genre");
+		String director = request.getParameter("director");
+		String releaseDate =request.getParameter("releaseDate");
+		String synopsis =request.getParameter("synopsis");
+		String photoDir = request.getParameter("file");
+		int memberGrade = Integer.parseInt(request.getParameter("memberGrade"));
 
-							int index = fileName.lastIndexOf("\\"); // 디렉터리 구분자 위치를 통해
-							if (index == -1) {
-								index = fileName.lastIndexOf("/");
-							}
-							photoDir = fileName.substring(index + 1); // 파일명만 추출
-							System.out.println(photoDir);
-							// 파일 업로드 처리
-							File uploadedFile = new File(uploadDir, photoDir);
-							item.write(uploadedFile); // 실질적인 저장			
-							}
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		
+//		// 디스크 기반의 FileItem factory 생성
+//				DiskFileItemFactory factory = new DiskFileItemFactory();
+//				// repository 생성 (a secure temp location is used)
+//				ServletContext servletContext = this.getServletConfig().getServletContext();
+//				File repository = (File) getServletContext().getAttribute("javax.servlet.context.tempdir");
+//				//File repository = new File(uploadDir, "temp");  
+//				//if (!repository.exists()) { repository.mkdir(); }
+//				
+//				// factory 제약 설정
+//				factory.setSizeThreshold(1024 * 100); // 메모리에 저장할 최대 size (100K까지는 메모리에 저장)
+//				factory.setRepository(repository);	// 파일 임시 저장소 (100K 이상이면 repository에 저장)	
+//				
+//				// 파일 업로드 핸들러 생성
+//				ServletFileUpload upload = new ServletFileUpload(factory);
+//				// 총 request size 제약 설정
+//				upload.setSizeMax(1024 * 1024 * 20); // 최대 size (20M까지 가능)
+//				
+//				// 요청 파싱
+//				try {
+//					List<FileItem> items = upload.parseRequest(request);
+//					
+//					// 업로드된 items 처리
+//					Iterator<FileItem> iter = items.iterator();
+//					while (iter.hasNext()) {    
+//						FileItem item = iter.next();
+//						
+//						// 일반 폼 필드 처리 (<input type="file">이 아닌 경우)
+//						if (item.isFormField()) {
+//						    String name = item.getFieldName(); // 필드 이름
+//						    String value = item.getString(); // 필드 값
+//						    
+//						    System.out.println(name +" : " + value);
+//						    
+//						    if(name.equals("title")){
+//						    	movieName = value;
+//						    }else if(name.equals("genre")){
+//						    	genre = value;
+//						    }else if(name.equals("director")){
+//						    	director = value;
+//							}else if(name.equals("releaseDate")){
+//								releaseDate = value;
+//							}else if(name.equals("synopsis")){
+//								synopsis = value;
+//							}
+//						    
+//						 // 파일 업로드 처리 (<input type="file">인 경우)
+//						} else {
+//							String fieldName = item.getFieldName(); // 필드 이름
+//							String fileName = item.getName(); // 경로가 포함된 파일명
+//							
+//							System.out.println(fieldName);
+//							System.out.println(fileName);
+//
+//							int index = fileName.lastIndexOf("\\"); // 디렉터리 구분자 위치를 통해
+//							if (index == -1) {
+//								index = fileName.lastIndexOf("/");
+//							}
+//							photoDir = fileName.substring(index + 1); // 파일명만 추출
+//							System.out.println(photoDir);
+//							// 파일 업로드 처리
+//							File uploadedFile = new File(uploadDir, photoDir);
+//							item.write(uploadedFile); // 실질적인 저장			
+//							}
+//					}
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
 		Movie movie = new Movie(movieName, genre, director, releaseDate, synopsis, photoDir, memberGrade);
 		System.out.println(movie);
 		
