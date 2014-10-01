@@ -66,6 +66,7 @@ public class BoardController extends HttpServlet {
 		searchInfo.put("searchType", searchType);
 		searchInfo.put("searchText", searchText);
 
+		//이거 이상한데
 		// pageNumber 요청 파라미터 값을 구한다.
 		String pageNumber = request.getParameter("pageNumber");
 
@@ -113,7 +114,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(list.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("list.jsp");
+				.getRequestDispatcher("notice.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -143,7 +144,6 @@ public class BoardController extends HttpServlet {
 		// 3. request scope 속성(board)에 게시글을 저장한다.
 		request.setAttribute("board", board);
 		request.setAttribute("currentPageNumber", currentPageNumber);
-		// request.setAttribute("searchText", searchText);
 
 		// 4. RequestDispatcher 객체를 통해 뷰 페이지(read.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
@@ -184,7 +184,7 @@ public class BoardController extends HttpServlet {
 		service.writeBoard(board);
 
 		// 4. RequestDispatcher 객체를 통해 목록 보기(board?action=list)로 요청을 전달한다.
-		RequestDispatcher dispatcher = request.getRequestDispatcher("list");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("board?action=list");
 		dispatcher.forward(request, response);
 	}
 

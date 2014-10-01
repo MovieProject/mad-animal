@@ -177,7 +177,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	public void updateMember(Member member) {
-		query = "UPDATE member SET PASSWORD = ?, MEMBER_NAME = ?, AGE = ?, ADDRESS = ?, MAIL = ?, TEL = ?  WHERE MEMBER_ID = ?";
+		query = "UPDATE member SET PASSWORD = ?, MEMBER_NAME = ?, AGE = ?, ADDRESS = ?, MAIL = ?, TEL = ? ,GRADE = ? WHERE MEMBER_ID = ?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -189,7 +189,8 @@ public class MemberDaoImpl implements MemberDao {
 			pstmt.setString(4, member.getAddress());
 			pstmt.setString(5, member.getEmail());
 			pstmt.setString(6, member.getTel());
-			pstmt.setString(7, member.getMemberID());
+			pstmt.setInt(7, member.getGrade());
+			pstmt.setString(8, member.getMemberID());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -414,41 +415,6 @@ public class MemberDaoImpl implements MemberDao {
 			}
 		}
 		return result;
-	}
-
-	public void updateMemberGrade(String memberID, int grade) {
-		// TODO Auto-generated method stub
-		query = "UPDATE member SET GRADE = ? WHERE MEMBER_ID = ?";
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		
-		try {
-			con = obtainConnection();
-			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, grade);
-			pstmt.setString(2, memberID);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally{
-			if(con!=null){
-				try {
-					con.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if(pstmt!=null){
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
 	}
 
 }

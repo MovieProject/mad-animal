@@ -1,5 +1,7 @@
 package movie.business.service;
 
+import java.util.*;
+
 import movie.business.domain.Member;
 import movie.business.exception.*;
 
@@ -11,14 +13,14 @@ public interface MemberService {
      * @return 검색된 모든 회원 정보를 담고 있는 Member 배열
      * @throws DataNotFoundException 해당하는 게시글이 존재하지 않을 경우 발생 
      */
-	public Member[] getMemberList();
+	public Member[] getMemberList(Map<String,Object> searchInfo);
 	
 	 /**
 	  * 조건에 맞는 모든 회원 수를 조회한다.
 	  * 
 	  * @return 검색된 모든 회원의 개수
 	  */
-	public int getMemberCount();
+	public int getMemberCount(Map<String,Object> searchInfo);
 	
 	 /**
      * 새로운 회원을 등록한다.
@@ -35,13 +37,6 @@ public interface MemberService {
      * @throws DataNotFoundException 해당하는 게시글이 존재하지 않을 경우 발생 
      */
 	public void updateMember(Member member) throws DataNotFoundException;
-	/**
-	 * 기존 회원을 수정한다.
-	 *
-	 * @param member 수정할 회원 정보를 담고 있는 Member 객체
-	 * @throws DataNotFoundException 해당하는 게시글이 존재하지 않을 경우 발생 
-	 */
-	public void updateMemberGrade(String memberID,int grade) throws DataNotFoundException;
 
     /**
      * 특정 memberID의 회원을 삭제한다.

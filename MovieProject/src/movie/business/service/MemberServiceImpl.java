@@ -1,5 +1,7 @@
 package movie.business.service;
 
+import java.util.Map;
+
 import movie.business.dao.MemberDao;
 import movie.business.domain.Member;
 import movie.business.exception.DataDuplicatedException;
@@ -13,12 +15,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 	//되는건가??
 	
-	public Member[] getMemberList() {
+	public Member[] getMemberList(Map<String, Object> searchInfo) {
 
 		return memberAccess.selectMemberList().toArray(new Member[0]);
 	}
 
-	public int getMemberCount() {
+	public int getMemberCount(Map<String, Object> searchInfo) {
 		// TODO Auto-generated method stub
 		return memberAccess.selectMemberCount();
 	}
@@ -62,17 +64,6 @@ public class MemberServiceImpl implements MemberService {
 	public Member loginCheck(String memberID, String password) {
 		// TODO Auto-generated method stub
 		return memberAccess.checkMember(memberID, password);
-	}
-
-
-	public void updateMemberGrade(String memberID, int grade)
-			throws DataNotFoundException {
-		// TODO Auto-generated method stub
-		if(!memberAccess.memberIDExists(memberID)){
-			throw new DataNotFoundException("존재하지 않는  아이디입니다.");
-		}
-		memberAccess.updateMemberGrade(memberID, grade);
-		
 	}
 
 }

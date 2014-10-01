@@ -27,6 +27,7 @@
 		<tr>
 			<td></td>
 		</tr>
+	
 
 		<tr>
 			<td><a href="<c:url value="/index.jsp"/>">메인</a></td>
@@ -35,23 +36,21 @@
 			<td><a href="<c:url value="/notice.jsp"/>">공지사항</a></td>
 		</tr>
 		<tr>
-			<td><a href="<c:url value="/week_Recommend.jsp"/>">금주 추천 영화</a></td>
+			<td><a href="<c:url value="/week_Recommend.jsp"/>">금주 추천 영화
+					게시판</a></td>
 		</tr>
 		<tr>
-			<td><a href="<c:url value="/member_Recommend.jsp"/>">회원 추천 영화</a></td>
+			<td><a href="<c:url value="/member_Recommend.jsp"/>">회원 추천
+					영화 게시판</a></td>
 		</tr>
 		<tr>
-			<td><a href="<c:url value="/newMovieIntro.jsp"/>">최신 영화 정보</a></td>
+			<td><a href="<c:url value="/newMovieIntro.jsp"/>">최신영화 정보
+					게시판</a></td>
 		</tr>
-			<tr>
-				<td><a href="<c:url value="/review.jsp"/>">영화 한줄평</a></td>
-			</tr>
-	<c:if test="${not empty loginMember && loginMember.grade == 2 }">
-				<tr>
-				<td><a href="<c:url value='/member?action=memberlist'/>">회원 관리</a></td>
-			</tr>
-	</c:if>
 
+			<tr>
+				<td><a href="<c:url value="/review.jsp"/>">영화 리뷰 게시판</a></td>
+			</tr>
 	</table>
 </div>
 
