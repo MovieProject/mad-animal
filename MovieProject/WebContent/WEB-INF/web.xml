@@ -32,6 +32,10 @@
 		<display-name>MovieController</display-name>
 		<servlet-name>MovieController</servlet-name>
 		<servlet-class>movie.web.controller.MovieController</servlet-class>
+		<init-param>
+			<param-name>uploadDir</param-name>
+			<param-value>images</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MovieController</servlet-name>

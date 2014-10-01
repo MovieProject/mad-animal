@@ -18,7 +18,7 @@
 
 		<div id="content">
 
-			<form name="writeForm" action="<c:url value="/movie?action=writeMovie"/>" method="POST">
+			<form name="writeForm" action="<c:url value="/movie?action=writeMovie"/>" method="POST" >
 				<table id="writetable" class="maintable" align="center">
 					<caption id="boardtitle">회원추천 영화 등록</caption>
 					<thead>
