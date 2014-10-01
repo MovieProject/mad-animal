@@ -74,3 +74,19 @@ function validateForm(){
 	alert("선택된 값이 없습니다.");
 	return false;
 }
+
+// 리뷰 글쓰기 폼 체크
+function reviewWriteCheck() {
+	var form = document.reviewWriteForm;
+	if (form.movieTitle.value == '') {
+		alert('영화 제목를 입력하세요.');
+		form.movieTitle.focus();
+		return false;
+	}
+	if (form.contents.value == '') {
+		alert('한줄평을 입력하세요.');
+		form.contents.focus();
+		return false;
+	}
+	return true;
+}

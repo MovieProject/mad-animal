@@ -43,13 +43,13 @@
 		<tr>
 			<td><a href="<c:url value="/newMovieIntro.jsp"/>">최신 영화 정보</a></td>
 		</tr>
-			<tr>
-				<td><a href="<c:url value="/review.jsp"/>">영화 한줄평</a></td>
-			</tr>
+		<tr>
+			<td><a href="<c:url value="review?action=list"/>">영화 한줄평</a></td>
+		</tr>
 	<c:if test="${not empty loginMember && loginMember.grade == 2 }">
-				<tr>
-				<td><a href="<c:url value='/member?action=memberlist'/>">회원 관리</a></td>
-			</tr>
+		<tr>
+			<td><a href="<c:url value='/member?action=memberlist'/>">회원 관리</a></td>
+		</tr>
 	</c:if>
 
 	</table>

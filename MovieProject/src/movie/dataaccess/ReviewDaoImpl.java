@@ -63,9 +63,11 @@ public class ReviewDaoImpl implements ReviewDao {
 					contents = new StringBuilder(contents.substring(0, 40))
 							.append("...").toString();
 				}
+				
+				String date = (rs.getString("review_date")).substring(0, 10);
 
-				review = new Review(rs.getInt("review_num"), "movie_name",
-						"member_name", "review_contents", "review_date");
+				review = new Review(rs.getInt("review_num"), rs.getString("movie_name"),
+						rs.getString("member_name"), contents, date);
 				result.add(review);
 			}
 
@@ -96,6 +98,8 @@ public class ReviewDaoImpl implements ReviewDao {
 
 	public int selectReviewCount() {
 		query = "SELECT count(review_num) FROM review";
+		System.out.println("ReviewDaoImpl selectReviewCount() query : " + query);
+		
 		int result = 0;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -137,8 +141,9 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	public void insertReview(Review review) {
-		query = "INSERT INTO review(review_num, movie_name, movie_num, member_name, member_id, review_contents, review_date)"
-				+ " VALUES(review_sequence.NEXTVAL, ?, ?, ?, ?, ?, SYSDATE)";
+		query = "INSERT INTO review(review_num, movie_name, member_name, member_id, review_contents, review_date)"
+				+ " VALUES(review_sequence.NEXTVAL, ?, ?, ?, ?, SYSDATE)";
+		System.out.println("ReviewDaoImpl insertReview() query : " + query);
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -146,11 +151,10 @@ public class ReviewDaoImpl implements ReviewDao {
 		try {
 			con = obtainConnection();
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, review.getMoviewTitle());
-			pstmt.setInt(2, review.getMovieNum());
-			pstmt.setString(3, review.getWriterName());
-			pstmt.setString(4, review.getWriterID());
-			pstmt.setString(5, review.getContents());
+			pstmt.setString(1, review.getMovieTitle());
+			pstmt.setString(2, review.getWriterName());
+			pstmt.setString(3, review.getWriterID());
+			pstmt.setString(4, review.getContents());
 			pstmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -175,6 +179,7 @@ public class ReviewDaoImpl implements ReviewDao {
 
 	public void updateReview(Review review) {
 		query = "UPDATE review SET review_contents = ? WHERE review_num = ?";
+		System.out.println("ReviewDaoImpl updateReview() query : " + query);
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -208,6 +213,7 @@ public class ReviewDaoImpl implements ReviewDao {
 
 	public void deleteReview(int reviewNum) {
 		query = "DELETE FROM review WHERE review_num = ?";
+		System.out.println("ReviewDaoImpl deleteReview() query : " + query);
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -240,7 +246,9 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	public boolean reviewNumExists(int reviewNum) {
-		query = "SELECT review_num FROM rivew WHERE review_num=?";
+		query = "SELECT review_num FROM review WHERE review_num=?";
+		System.out.println("ReviewDaoImpl reviewNumExists() query : " + query);
+		
 		boolean result = false;
 		Connection con = null;
 		PreparedStatement pstmt = null;

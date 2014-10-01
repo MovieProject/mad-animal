@@ -17,8 +17,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	public Review[] getReviewList(Map<String, Object> searchInfo) {
-		return reviewDataAccess.selectReviewList(searchInfo).toArray(
-				new Review[0]);
+		return reviewDataAccess.selectReviewList(searchInfo).toArray(new Review[0]);
 	}
 
 	public int getReviewCount(Map<String, Object> searchInfo) {
@@ -31,14 +30,14 @@ public class ReviewServiceImpl implements ReviewService {
 
 	public void updateReview(Review review) throws DataNotFoundException {
 		if (!reviewDataAccess.reviewNumExists(review.getReviewNum())) {
-			new DataNotFoundException("Data is not Exists");
+			throw new DataNotFoundException("Data is not Exists");
 		}
 		reviewDataAccess.updateReview(review);
 	}
 
 	public void removeReview(int reviewNum) throws DataNotFoundException {
 		if (!reviewDataAccess.reviewNumExists(reviewNum)) {
-			new DataNotFoundException("Data is not Exists");
+			throw new DataNotFoundException("Data is not Exists");
 		}
 		reviewDataAccess.deleteReview(reviewNum);
 	}

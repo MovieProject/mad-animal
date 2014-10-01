@@ -174,8 +174,13 @@ page {
 	width: 50px;
 }
 
-#reviewtable td.name, #reviewtable td.regdate {
-	width: 80px;
+#reviewtable td.name{
+	width: 60px;
+	text-align: center;
+}
+
+#reviewtable td.regdate {
+	width: 92px;
 	text-align: center;
 }
 
