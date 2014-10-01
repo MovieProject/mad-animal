@@ -21,6 +21,7 @@
 			<c:import url="content.jsp"></c:import>
 		</div>
 
+
 		<aside id="sidebar">
 			<c:import url="side-bar.jsp"></c:import>
 		</aside>

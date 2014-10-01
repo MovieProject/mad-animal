@@ -158,16 +158,41 @@ page {
 }
 
 #reviewtable {
-	width: 780px;
-	margin-bottom: 10px;
-	text-align: left;
+	width: 670px;
 }
 
-#reviewtable th.title{
-	width: 75px;
-}
-#reviewtable td.title{
+#reviewtable th {
 	width: 100px;
+}
+
+#reviewtable th, #reviewtable td {
+	border-left: 1px dotted #c0c0c0;
+	border-right: 1px dotted #c0c0c0;
+}
+
+#reviewtable th.name, #reviewtable th.regdate {
+	width: 50px;
+}
+
+#reviewtable td.name, #reviewtable td.regdate {
+	width: 80px;
+	text-align: center;
+}
+
+#reviewtable td.title, #reviewtable td.oneline {
+	padding-left: 8px;
+}
+
+#writereview .inputtext {
+	width: 500px;
+}
+
+#writereview th {
+	width: 100px;
+}
+
+#writebutton {
+	height: 50px;
 }
 
 #oneline{
@@ -178,6 +203,15 @@ page {
 	border-top: 1px solid #000;
 }
 
+#writereply {
+	height: 50px;
+}
+
 .remove{
 	float: right;
 }
+
+#pagenavigator { text-align: center; }
+#pagenavigator > a.pagenumber { padding: 2px 4px 1px 4px; border-width: 0px; font-weight: bold;}
+#pagenavigator > a.pagenumber:hover { padding: 1px 3px 0px 3px; border-width: 1px; border-style: solid;}
+#pagenavigator > a.currpage { text-decoration: underline; }

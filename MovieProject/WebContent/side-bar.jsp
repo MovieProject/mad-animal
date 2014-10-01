@@ -30,6 +30,9 @@
 	
 
 		<tr>
+			<td><a href="<c:url value="/index.jsp"/>">메인</a></td>
+		</tr>
+		<tr>
 			<td><a href="<c:url value="/notice.jsp"/>">공지사항</a></td>
 		</tr>
 		<tr>

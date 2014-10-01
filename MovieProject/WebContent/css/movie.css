@@ -111,13 +111,18 @@ a:hover, a:active {
 	border-top: 1px solid #e9e9e9;
 	border-bottom: 1px solid #e9e9e9;
 	line-height: 1.5em;
-	word-break: break-all
+	word-break: break-all;
 }
 
 #title {
 	font-size: 20px;
 	width: 380px;
 	text-align: left;
+}
+
+.maintable {
+	margin-top: 15px;
+	margin-bottom: 8px;
 }
 
 #listtable .num {
@@ -160,4 +165,39 @@ a:hover, a:active {
 	border-top: 1px solid #CCC;
 	color: #0000ff;
 	padding: 5px 10px;
+}
+ 
+#contenttitle {
+	font-weight: bold;
+	margin-bottom: 10px;
+	font-size: 20px;
+}
+
+#weektable {
+	width: 780px;
+	border-collapse: collapse;
+}
+
+#weektable th, #weektable td {
+	border: 1px solid #CCC;
+	height: 21px;
+}
+
+#weektable th {
+	text-align: center;
+	width: 50px;
+}
+
+#weektable td {
+	text-align: left;
+	padding: 2px 5px;
+}
+
+td#story {
+	padding: 5px 5px;
+	line-height: 1.5;
+}
+
+#poster {
+	width: 150px;
 }
