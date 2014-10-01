@@ -23,15 +23,15 @@
 				<thead>
 					<tr>
 						<th>제 목</th>
-						<td class="title" colspan="5">${board.title}</td>
+						<td class="title" colspan="5">${movie.movieName}</td>
 					</tr>
 					<tr>
 						<th>장르</th>
-						<td class="writer">${board.writer}</td>
+						<td class="writer">${movie.genre}</td>
 						<th>개봉일</th>
-						<td class="readcount">${board.readCount}</td>
+						<td class="readcount">${movie.releaseDate}</td>
 						<th>감독</th>
-						<td class="regdate">${board.regDate}</td>
+						<td class="regdate">${movie.director}</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -39,7 +39,7 @@
 						<th>줄거리</th>
 					</tr>
 					<tr>
-						<td class="contents" colspan="6">${board.contents}</td>
+						<td class="contents" colspan="6">${movie.synopsis}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -53,11 +53,9 @@
 				<c:if test="${not empty loginMember}">
 					<!-- <input type="button" value="목록" onclick="goUrl('board?action=list');"> -->
 					<input type="button" value="목록"
-						onclick="goUrl('list?searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
-					<input type="button" value="답글"
-						onclick="goUrl('replyForm?num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
+						onclick="goUrl('movie?action=movielist&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 					<input type="button" value="수정"
-						onclick="goUrl('updateForm?num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
+						onclick="goUrl('movie?action=movieupdateForm&num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 					<input type="button" value="삭제"
 						onclick="deleteCheck('remove?num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 				</c:if>

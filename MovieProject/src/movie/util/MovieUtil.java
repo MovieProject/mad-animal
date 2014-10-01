@@ -82,7 +82,9 @@ public class MovieUtil {
 	
 	public static void createThumbnail(File directory, File file, int width, int height) throws IOException {
 		String name = file.getName();
+		System.out.println(name);
 		String extension = name.substring(name.lastIndexOf(".")  + 1);
+		System.out.println(extension);
 
 		// load image (convert file to bufferedImage)
 		BufferedImage originImg = ImageIO.read(file);		

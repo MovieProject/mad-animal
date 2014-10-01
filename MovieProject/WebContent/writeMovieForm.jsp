@@ -18,14 +18,15 @@
 
 		<div id="content">
 
-			<form name="writeForm" action="<c:url value="/movie?action=writeMovie"/>" method="POST" >
+			<form name="writeForm" action="<c:url value="/movie?action=writeMovie"/>" method="POST"  enctype="multipart/form-data" >
 				<table id="writetable" class="maintable" align="center">
 					<caption id="boardtitle">회원추천 영화 등록</caption>
 					<thead>
 						<tr>
 							<th>영화 제목</th>
 							<td><input class="titleinput" type="text" name="title"
-								size="20" maxlength="50"></td>
+								size="20" maxlength="50">
+				<input type="hidden" name = "memberGrade" value = "${loginMember.grade }"> </td>
 						</tr>
 						<tr>
 							<th>장르</th>
@@ -68,7 +69,6 @@
 					</tbody>
 				</table>
 				<div class="buttonbar">
-				<input type="hidden" name = "memberGrade" value = "${loginMember.grade }"> 
 				<!-- 	<input type="button" value="등록"
 						onclick="boardWriteCheck(this.form);"> -->
 				<input type="submit" value="등록">

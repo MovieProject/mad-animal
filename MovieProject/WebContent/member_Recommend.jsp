@@ -23,46 +23,31 @@
 					<tr>
 						<th class="num"></th>
 						<th class="title">제 목</th>
-						<th class="writer">글쓴이</th>
-						<th class="regdate">작성일</th>
-						<th class="readcount">조회</th>
+						<th class="writer">감 독</th>
+						<th class="regdate">개봉일</th>
 					</tr>
 				</thead>
 				<tbody>
-<%-- 					<c:choose>
+					<c:choose>
 
-						<c:when test="${empty requestScope.boardList}">
+						<c:when test="${empty requestScope.movielist}">
 							<tr>
 								<td colspan="5">등록된 게시물이 없습니다.</td>
 							</tr>
 						</c:when>
 
 						<c:otherwise>
-							<c:forEach var="board" items="${requestScope.boardList}">
+							<c:forEach var="movie" items="${requestScope.movielist}">
 								<tr>
-									<td class="num">${board.num}</td>
-									<td class="title"><c:forEach begin="1"
-											end="${board.replyStep}">
-									&nbsp;
-								</c:forEach> <a
-										href="read?pageNumber=${currentPageNumber}&num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}">${board.title}</a></td>
-									<td class="writer">${board.writer}</td>
-									<td class="regdate">${board.regDate}</td>
-									<td class="readcount">${board.readCount}</td>
+									<td class="num">${movie.movieNum}</td>
+									<td class="title">									
+									 <a	href="movie?action=movieRead&pageNumber=${currentPageNumber}&num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}">${movie.movieName}</a></td>
+									<td class="writer">${movie.director}</td>
+									<td class="regdate">${movie.releaseDate}</td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
-
 					</c:choose>
---%>
-
-					<tr>
-					<td class="num">1</td>
-					<td class="title"><a href="readMovie.jsp">안녕하세요. 게시판 지기입니다.</a></td>
-					<td class="writer">운영자</td>
-					<td class="regdate">2014.07.01</td>
-					<td class="readcount">10</td>
-				</tr> 
 				</tbody>
 				<tfoot>
 					<tr>
