@@ -7,7 +7,7 @@
 	<table id="logouttable">
 
 		<tr>
-			<td class="message">${loginMember.memberName}님<br> 환영합니다.
+			<td class="message">${loginMember.memberName}님 환영합니다.
 			</td>
 		</tr>
 		<tr>
@@ -15,7 +15,7 @@
 			<td><a onclick="removeCheck('<c:url value="/member?action=remove&memberID=${loginMember.memberID }"/>');">회원탈퇴</a></td>
 		</tr>
 		<tr>
-			<td><input type="submit" name="logout" value="로그아웃" ></td>
+			<td colspan="2"><input type="submit" name="logout" value="로그아웃" ></td>
 		</tr>
 	</table>
 </form>

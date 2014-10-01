@@ -63,10 +63,17 @@
 						</c:forEach>
 					</tbody>
 					<tr>
+
+						<td class="check">회원선택</td>
+						<td class="num">번호</td>
+						<td class="memberID">ID</td>
+						<td class="name">이름</td>
+						<td class="level">등급</td>
 					</tr>
 				</table>
 				<input type="submit" value="탈퇴" id="removeButton" >
 			</form>
+
 		</div>
 
 

@@ -198,9 +198,15 @@ page {
 #oneline{
 	text-align: left;
 }
+<<<<<<< HEAD
 
 #writereply {
 	height: 50px;
+=======
+#reviewwrite {
+	width: 780px;
+	border-top: 1px solid #000;
+>>>>>>> refs/remotes/origin/rabbit
 }
 
 #managertable {
