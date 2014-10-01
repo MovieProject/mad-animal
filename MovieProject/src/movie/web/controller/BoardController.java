@@ -9,8 +9,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import movie.business.domain.Board;
+import movie.business.domain.Member;
 import movie.business.exception.DataNotFoundException;
 import movie.business.service.BoardService;
 import movie.business.service.BoardServiceImpl;
@@ -142,6 +144,7 @@ public class BoardController extends HttpServlet {
 		// 2. BoardService 객체로부터 해당 글 번호의 게시글을 구해온다.
 		BoardService service = new BoardServiceImpl();
 		Board board = service.readBoard(Integer.parseInt(num));
+		System.out.println(board);
 
 		// 3. request scope 속성(board)에 게시글을 저장한다.
 		request.setAttribute("board", board);
@@ -174,14 +177,27 @@ public class BoardController extends HttpServlet {
 	private void writeBoard(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
+		
+		HttpSession session = request.getSession(false);
+		if(session == null){
+			response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+			return;
+		}
+		
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		if(loginMember == null){
+			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "로그인이 필요합니다.");
+		}
+
 		// 1. 요청 파라미터로 부터 작성자(writer), 제목(title), 내용(contents)를 구한다.
-		String memberName = request.getParameter("writer");
+		String memberName = loginMember.getMemberName();
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
-		String memberID = request.getParameter("memberID");
+		String memberID = loginMember.getMemberID();
 
 		// 2. 구해 온 요청 파라미터 값와 ip 값을 지닌 Board 객체를 생성한다.
 		Board board = new Board(title, memberName, contents, memberID);
+		System.out.println(board);
 		// 3. BoardService 객체를 통해 해당 게시글을 등록한다.
 		BoardService service = new BoardServiceImpl();
 		service.writeBoard(board);
@@ -229,17 +245,29 @@ public class BoardController extends HttpServlet {
 	private void updateBoard(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
+		
+		HttpSession session = request.getSession(false);
+		if(session == null){
+			response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+			return;
+		}
+		
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		if(loginMember == null){
+			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "로그인이 필요합니다.");
+		}
+		
 		// 1. 요청 파라미터로 부터 글 번호(num), 작성자(writer), 제목(title), 내용(contents)을 구한다.
-		String boardNum = request.getParameter("board_num");
-		String memberName = request.getParameter("board_writer");
-		String title = request.getParameter("board_title");
-		String contents = request.getParameter("board_contents");
-		String memberID = request.getParameter("member_ID");
+		String boardNum = request.getParameter("boardNum");
+		String memberName = loginMember.getMemberName();
+		String title = request.getParameter("title");
+		String contents = request.getParameter("contents");
+		String memberID = loginMember.getMemberID();
 
 		// 2. 구해 온 요청 파라미터 값와 ip 값을 지닌 Board 객체를 생성한다.
 		Board board = new Board(Integer.parseInt(boardNum), title, memberName,
 				contents, memberID);
-		System.out.println("board" + board);
+		System.out.println(board);
 
 		// 3. BoardService 객체를 통해 해당 게시글을 갱신한다.
 		BoardService service = new BoardServiceImpl();

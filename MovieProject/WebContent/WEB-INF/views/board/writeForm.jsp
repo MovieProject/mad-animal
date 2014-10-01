@@ -7,7 +7,7 @@
 <title>Movie</title>
 <link rel="stylesheet" href="../css/movie.css">
 <link rel="stylesheet" href="../css/board.css">
-<script type="../js/board.js"></script>
+<script src="../js/board.js"></script>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 
 		<div id="content">
 
-			<form name="writeForm" action="write?memberID=${loginMember.memberID}" method="POST" onsubmit="return boardWriteCheck()">
+			<form name="writeForm" action="write" method="POST" onsubmit="return boardWriteCheck(this.form)">
 			<table id="writetable" class="maintable" align="center">
 				<caption id="boardtitle">공지사항 입력</caption>
 				<thead>
@@ -48,8 +48,8 @@
 				</tbody>
 			</table>
 			<div class="buttonbar">
-				<input type="submit" value="등록">
-				<input type="button" value="취소" onclick="goUrl(list);">
+				<input type="submit" value="등록" >
+				<input type="button" value="취소" onclick="goUrl('list');">
 			</div>
 		</form>
 		</div>
