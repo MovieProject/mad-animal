@@ -21,8 +21,8 @@
 				<caption id="boardtitle">회원관리</caption>
 				<thead>
 					<tr>
-						<td class="num"></td>
 						<td class="check">회원선택</td>
+						<td class="num">번호</td>
 						<td class="memberID">ID</td>
 						<td class="name">이름</td>
 						<td class="level">등급</td>
@@ -30,8 +30,8 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td class="num"></td>
 						<td class="check"><input type="checkbox"></td>
+						<td class="num"></td>
 						<td class="memberID"><a href="<c:url value="/detailsMember.jsp"/>">lig08</a></td>
 						<td class="name">송영욱</td>
 						<td class="level">등급</td>

@@ -35,8 +35,8 @@
 						<td class="grade">
 						<select name="gradeName" class="gradeName">
 								<option id="admin">관리자</option>
-								<option id="greatMember">우수회원</option>
-								<option id="nomalMember">일반회원</option>
+								<option id="writer">우수회원</option>
+								<option id="general">일반회원</option>
 						</select>
 						</td>
 					</tr>
