@@ -1,6 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, movie.business.domain.Board"%>
-<%@ page import="java.util.*, movie.business.domain.Member"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -20,45 +18,38 @@
 		</header>
 
 		<div id="content">
-
-			<table id="readtable" class="maintable">
-				<caption>게시글 보기</caption>
-				<thead>
-					<tr>
-						<th>제 목</th>
-						<td class="title" colspan="5">${board.title}</td>
-					</tr>
-					<tr>
-						<th>글쓴이</th>
-						<td class="writer">${board.writerName}</td>
-						<th>조회</th>
-						<td class="readcount">${board.readCount}</td>
-						<th>작성일</th>
-						<td class="regdate">${board.regDate}</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="contents" colspan="6">${board.contents}</td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="buttonbar">
-			
-				<c:if test="${empty loginMember}">
-				<input type="button" value="목록" onclick="goUrl('list?searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
-				</c:if>
-				<c:if test="${not empty loginMember}">
-					<!--관리자 ID 비교해서 수정,삭제할 수 있게 -->
-					<input type="button" value="목록"
-						onclick="goUrl('list?searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
-					<input type="button" value="수정"
-						onclick="goUrl('updateForm?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
-					<input type="button" value="삭제"
-						onclick="deleteCheck('remove?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
-				</c:if>
-			</div>
-
+		
+		<table id="readtable" class="maintable">
+			<caption>게시글 보기</caption>
+			<thead>
+				<tr>
+					<th>제 목</th>
+					<td class="title" colspan="5">${board.title}</td>
+				</tr>
+				<tr>
+					<th>글쓴이</th>
+					<td class="writer">${board.writerName}</td>
+					<th>조회</th>
+					<td class="readcount">${board.readCount}</td>
+					<th>작성일</th>
+					<td class="regdate">${board.regDate}</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="contents" colspan="6">${board.contents}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="buttonbar">
+			<input type=button value="목록" onclick="goUrl('list?pageNumber=${currentPageNumber}&boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}');">
+				<input type="button" value="답글" onclick="goUrl('replyForm?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
+			<c:if test="${not empty loginMember && loginMember.memberID eq board.writerID}"> <!--관리자 ID 비교해서 수정,삭제할 수 있게 -->
+				<input type="button" value="수정" onclick="goUrl('updateForm?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
+				<input type="button" value="삭제" onclick="deleteCheck('remove?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
+			</c:if>
+		</div>
+		
 		</div>
 		<aside id="sidebar">
 			<c:import url="/side-bar.jsp"></c:import>

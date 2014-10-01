@@ -43,6 +43,9 @@
 		<tr>
 			<td><a href="<c:url value="/newMovieIntro.jsp"/>">최신 영화 정보</a></td>
 		</tr>
+				<tr>
+			<td><a href="<c:url value="/board/list"/>">자유게시판</a></td>
+		</tr>
 			<tr>
 				<td><a href="<c:url value="/review.jsp"/>">영화 한줄평</a></td>
 			</tr>

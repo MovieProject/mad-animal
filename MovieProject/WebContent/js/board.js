@@ -34,7 +34,7 @@ function boardWriteCheck(form) {
 	if (form.title.value == '') {
 		alert('제목을 입력하세요.');
 		form.title.focus();
-		return false;
+		return;
 	}
 	
 /*	if (form.writer.value == '') {
@@ -51,7 +51,7 @@ function boardWriteCheck(form) {
 	if(edit.getData() == ''){
 		alert('내용을 입력하세요');
 		edit.focus();
-		return false;
+		return;
 	}
 	form.submit();
 }

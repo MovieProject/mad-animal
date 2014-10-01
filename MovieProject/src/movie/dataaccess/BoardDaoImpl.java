@@ -217,7 +217,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	public Board selectBoard(int boardNum) {
-		query = "SELECT board_num, board_title, board_writer, board_contents, read_count, reg_date, mod_date, master_num, reply_order, reply_step FROM board WHERE board_num=?";
+		query = "SELECT board_num, board_title, board_writer, board_contents, member_ID, read_count, reg_date, mod_date, master_num, reply_order, reply_step FROM board WHERE board_num=?";
 
 		System.out.println("BoardDaoImpl selectBoard() query : " + query);
 
@@ -235,7 +235,7 @@ public class BoardDaoImpl implements BoardDao {
 				result = new Board(rs.getInt("board_num"),
 						rs.getString("board_title"),
 						rs.getString("board_writer"),
-						rs.getString("board_contents"),
+						rs.getString("board_contents"),rs.getString("member_ID"),
 						rs.getInt("read_count"), rs.getString("reg_date"),
 						rs.getString("mod_date"), rs.getInt("master_num"),
 						rs.getInt("reply_order"), rs.getInt("reply_step"));
@@ -372,7 +372,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	public void updateBoard(Board board) {
-		query = "UPDATE board SET board_title=?, board_writer=?, board_contents=?, board_ID=?, mod_date=SYSDATE WHERE board_num=?";
+		query = "UPDATE board SET board_title=?, board_writer=?, board_contents=?, member_ID=?, mod_date=SYSDATE WHERE board_num=?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
@@ -439,8 +439,9 @@ public class BoardDaoImpl implements BoardDao {
 
 		System.out.println("BoardDaoImpl insertReplyBoard() query : " + query);
 
-		String query2 = "INSERT INTO board (board_num, board_title, board_writer, board_contents, board_ID, read_count, reg_date, mod_date, master_num, reply_order, reply_step) "
-				+ "VALUES (board_num_seq.NEXTVAL, ?, ?, ?, ?, 0, SYSDATE, SYSDATE, ?, ?, ?)";
+		String query2 = "INSERT INTO board (board_num, board_title, board_writer, board_contents, member_ID, read_count, reg_date, mod_date, master_num, reply_order, reply_step) "
+				+ "VALUES (board_sequence.NEXTVAL, ?, ?, ?, ?, 0, SYSDATE, SYSDATE, ?, ?, ?)";
+		
 		System.out
 				.println("BoardDaoImpl insertReplyBoard() query2 : " + query2);
 

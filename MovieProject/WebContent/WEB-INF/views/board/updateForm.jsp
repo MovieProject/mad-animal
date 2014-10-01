@@ -26,12 +26,12 @@
 				<thead>
 					<tr>
 						<th>제 목</th>
-						<td><input class="titleinput" type="text" name="title" maxlength="100" value = "${board.title }"></td>
+						<td><input class="titleinput" type="text" name="title" maxlength="100" value = "${board.title}"></td>
 					</tr>
 					<tr>
 						<th>글쓴이</th>
 						
-						<td><input class="writerinput" type="text" name="writer" maxlength="20" value = "${board.writerName }"></td>
+						<td><input class="writerinput" type="text" name="writer" maxlength="20" value = "${board.writerName}"></td>
 						
 						
 					</tr>
@@ -41,13 +41,13 @@
 						<td colspan="2">
 						
 							<textarea id="editor" class="contentsinput" name="contents" >${board.contents}</textarea>
-<script>CKEDITOR.replace('editor');</script>
+								<script>CKEDITOR.replace('editor');</script>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 			<div class="buttonbar">
-				<input type="submit" value="수정">
+				<input type="submit" value="수정" onclick="boardWriteCheck(this.form)&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}">
 				<input type="button" value="취소" onclick="goUrl('read?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 			</div>
 		</form>

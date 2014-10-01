@@ -19,7 +19,7 @@
 
 		<div id="content">
 
-			<form name="writeForm" action="write?memberID=${loginMember.memberID}" method="POST" onsubmit="return boardWriteCheck(this.form)">
+			<form name="writeForm" action="write" method="POST" onsubmit="return boardWriteCheck(this.form)">
 			<table id="writetable" class="maintable" align="center">
 				<caption id="boardtitle">공지사항 입력</caption>
 				<thead>
@@ -40,7 +40,7 @@
 					<tr>
 						<td colspan="2">
  							<textarea id="editor" class="contentsinput" name="contents"></textarea>
- 							<script>CKEDITOR.replace('editor');</script>
+<!-- 							<script>CKEDITOR.replace('editor');</script> -->
 
 							<!-- <textarea class="contentsinput ckeditor" name="contents"></textarea> -->
 						</td>
