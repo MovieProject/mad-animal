@@ -16,7 +16,10 @@
 		</header>
 
 		<div id="content">
-			<c:import url="/BoardList/week_Recommend.jsp" />
+			<div id="week">
+				<c:import url="/BoardList/week_Recommend.jsp" />
+			</div>
+			
 			<table id="listtable" class="maintable">
 				<caption>게시글 목록</caption>
 				<thead>
