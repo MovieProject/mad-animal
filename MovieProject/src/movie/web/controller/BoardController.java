@@ -66,6 +66,7 @@ public class BoardController extends HttpServlet {
 		searchInfo.put("searchType", searchType);
 		searchInfo.put("searchText", searchText);
 
+		//이거 이상한데
 		// pageNumber 요청 파라미터 값을 구한다.
 		String pageNumber = request.getParameter("pageNumber");
 
