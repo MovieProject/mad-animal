@@ -120,11 +120,6 @@ a:hover, a:active {
 	text-align: left;
 }
 
-.maintable {
-	margin-top: 15px;
-	margin-bottom: 8px;
-}
-
 #listtable .num {
 	width: 45px;
 	text-align: center;
@@ -166,16 +161,13 @@ a:hover, a:active {
 	color: #0000ff;
 	padding: 5px 10px;
 }
- 
+
 #contenttitle {
-	font-weight: bold;
-	margin-bottom: 10px;
 	font-size: 20px;
 }
 
 #weektable {
 	width: 780px;
-	border-collapse: collapse;
 }
 
 #weektable th, #weektable td {

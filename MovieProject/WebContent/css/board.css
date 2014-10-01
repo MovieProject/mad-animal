@@ -198,17 +198,44 @@ page {
 #oneline{
 	text-align: left;
 }
-#reviewwrite {
-	width: 780px;
-	border-top: 1px solid #000;
-}
 
 #writereply {
 	height: 50px;
 }
 
-.remove{
+#managertable {
+	width: 770px;
+}
+
+#managertable .num {
+	width: 45px;
+	text-align: center;
+}
+
+#managertable .memberID {
+	width: 350px;
+}
+
+#managertable .name {
+	width: 84px;
+	text-align: center;
+}
+#managertable .grade {
+	width: 84px;
+	text-align: center;
+}
+
+#remove td{
+	width: 84px;
 	float: right;
+}
+#manager{
+	float: right;
+}
+
+#managertable .gradeName {
+	height:20px;
+	width: 100px;
 }
 
 #pagenavigator { text-align: center; }
