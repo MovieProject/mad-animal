@@ -11,10 +11,6 @@
 </head>
 <body>
 	<div id="top">
-	
-		<tr>
-			<td><a href="<c:url value="/index.jsp"/>">메인</a></td>
-		</tr>
 		<div class="boardpage">
 
 			<table id="headertable" class="headertable">

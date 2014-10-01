@@ -5,12 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-
-<link rel="stylesheet" href="css/movie2.css">
-
+<link rel="stylesheet" href="css/movie.css">
 </head>
 <body>
-
 	<table id="weektable" class="maintable">
 	 	<caption id="contenttitle">금주의 영화</caption>
 		<tr>
@@ -39,7 +36,6 @@
 			</td>
 		</tr>
 	</table>
-
 </body>
 </html>
 

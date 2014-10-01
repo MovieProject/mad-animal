@@ -175,7 +175,7 @@ public class BoardController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
 		// 1. 요청 파라미터로 부터 작성자(writer), 제목(title), 내용(contents)를 구한다.
-		String memberName = request.getParameter("memberName");
+		String memberName = request.getParameter("writer");
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
 		String memberID = request.getParameter("memberID");
@@ -185,6 +185,7 @@ public class BoardController extends HttpServlet {
 		// 3. BoardService 객체를 통해 해당 게시글을 등록한다.
 		BoardService service = new BoardServiceImpl();
 		service.writeBoard(board);
+		
 
 		// 4. RequestDispatcher 객체를 통해 목록 보기(board?action=list)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request.getRequestDispatcher("list");
@@ -230,7 +231,7 @@ public class BoardController extends HttpServlet {
 			DataNotFoundException {
 		// 1. 요청 파라미터로 부터 글 번호(num), 작성자(writer), 제목(title), 내용(contents)을 구한다.
 		String boardNum = request.getParameter("boardNum");
-		String memberName = request.getParameter("memberName");
+		String memberName = request.getParameter("writerName");
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
 		String memberID = request.getParameter("memberID");
@@ -249,7 +250,7 @@ public class BoardController extends HttpServlet {
 
 		// 5. RequestDispatcher 객체를 통해 게시물 보기(board?action=read)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("read");
+				.getRequestDispatcher("read?boardNum="+boardNum);
 		dispatcher.forward(request, response);
 	}
 

@@ -5,10 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 목록</title>
-
 <link rel="stylesheet" href="../css/board.css">
 <link rel="stylesheet" href="../css/board2.css">
-
 
 </head>
 <body>

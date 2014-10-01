@@ -62,6 +62,7 @@
 						onclick="deleteCheck('remove?num=${board.num}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 				</c:if>
 			</div>
+
 		</div>
 		<aside id="sidebar">
 			<c:import url="side-bar.jsp"></c:import>

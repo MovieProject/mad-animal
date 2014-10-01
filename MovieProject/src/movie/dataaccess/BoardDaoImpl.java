@@ -43,7 +43,7 @@ public class BoardDaoImpl implements BoardDao {
 
 		if (searchType != null) {
 			if (searchType.equals("all")) {
-				whereSQL = "WHERE title LIKE ? OR writer LIKE ? OR contents LIKE ?";
+				whereSQL = "WHERE board_title LIKE ? OR board_writer LIKE ? OR board_contents LIKE ?";
 
 			} else if ((searchType.equals("title"))
 					|| (searchType.equals("writer"))
@@ -56,7 +56,7 @@ public class BoardDaoImpl implements BoardDao {
 			searchText = "%" + searchText.trim() + "%";
 		}
 
-		query = "select * from (select rownum r, board_num, board_title, board_writer, reg_date, read_count,reply_step from(select * from board "
+		query = "select * from (select rownum r, board_num, board_title, board_writer, reg_date, read_count, reply_step from(select * from board "
 				+ whereSQL
 				+ " order by master_num DESC, reply_order ASC)) where r between ? and ?";
 
@@ -96,14 +96,15 @@ public class BoardDaoImpl implements BoardDao {
 
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				String title = rs.getString("title");
+				String title = rs.getString("board_title");
 
 				if (title.length() > 28) {
 					title = new StringBuilder(title.substring(0, 28)).append(
 							"...").toString();
 				}
 
-				board = new Board(rs.getInt("board_num"), title,
+				board = new Board(rs.getInt("board_num"),
+						/*rs.getString("board_title")*/ title,
 						rs.getString("board_writer"), rs.getInt("read_count"),
 						rs.getString("reg_date"), rs.getInt("reply_step"));
 
@@ -146,7 +147,7 @@ public class BoardDaoImpl implements BoardDao {
 
 		if ((searchType != null)) {
 			if (searchType.equals("all")) {
-				whereSQL = "WHERE board_title LIKE ? OR writer LIKE ? OR contents LIKE ?";
+				whereSQL = "WHERE board_title LIKE ? OR board_writer LIKE ? OR board_contents LIKE ?";
 
 			} else if ((searchType.equals("title"))
 					|| (searchType.equals("writer"))
@@ -232,11 +233,12 @@ public class BoardDaoImpl implements BoardDao {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = new Board(rs.getInt("board_num"),
-						rs.getString("title"), rs.getString("board_writer"),
-						rs.getString("contents"), rs.getInt("read_count"),
-						rs.getString("reg_date"), rs.getString("mod_date"),
-						rs.getInt("master_num"), rs.getInt("reply_order"),
-						rs.getInt("reply_step"));
+						rs.getString("board_title"),
+						rs.getString("board_writer"),
+						rs.getString("board_contents"),
+						rs.getInt("read_count"), rs.getString("reg_date"),
+						rs.getString("mod_date"), rs.getInt("master_num"),
+						rs.getInt("reply_order"), rs.getInt("reply_step"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -336,7 +338,7 @@ public class BoardDaoImpl implements BoardDao {
 
 	public void insertBoard(Board board) {
 		query = "INSERT INTO board (board_num, board_title, board_writer,  board_contents, member_ID, read_count, reg_date, mod_date, master_num) "
-				+ "VALUES (board_num_seq.NEXTVAL, ?, ?, ?, ?, 0, SYSDATE, SYSDATE, board_num_seq.CURRVAL)";
+				+ "VALUES (board_sequence.NEXTVAL, ?, ?, ?, ?, 0, SYSDATE, SYSDATE, board_sequence.CURRVAL)";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 

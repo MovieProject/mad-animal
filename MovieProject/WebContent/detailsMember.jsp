@@ -50,13 +50,11 @@
 				</table>
 				<table id="manager">
 					<tr>
-
 						<td class="update"><input type="submit" value="수정"
 							id="updateButton"></td>
 						<td class="remove"><input type="button" value="탈퇴"
 							id="removeButton"
 							onclick="goUrl('<c:url value = "/member?action=remove&memberID=${selectedMember.memberID}"/>');"></td>
-
 					</tr>
 				</table>
 			</form>
