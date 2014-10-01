@@ -11,7 +11,7 @@
 
 
 			<table id="listtable" class="maintable"  align="center">
- 				<caption id="boardtitle">최신영화 소개</caption>
+ 				<caption id="boardtitle"><a href="read.jsp">최신영화 소개</a></caption>
 				<thead>
 					<tr>
 						<th class="num"></th>
