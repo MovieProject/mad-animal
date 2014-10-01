@@ -10,7 +10,7 @@ public class Member {
 	private String tel;
 	private int grade;
 	private int loginCheck;
-
+	//되는건가??
 
 	public Member() {
 

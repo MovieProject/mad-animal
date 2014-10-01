@@ -16,7 +16,10 @@
 		</header>
 
 		<div id="content">
-			<c:import url="/BoardList/week_Recommend.jsp" />
+			<div id="week">
+				<c:import url="/BoardList/week_Recommend.jsp" />
+			</div>
+			
 			<table id="listtable" class="maintable">
 				<caption>게시글 목록</caption>
 				<thead>
@@ -104,8 +107,8 @@
 						value="${param.searchText}"> <input type="submit"
 						value="검색" onclick="searchCheck(this.form);"> <input
 						type="button" value="목록" onclick="goUrl('list');"> 
-						<c:if test="${not empty loginMember}">
-						<input type="button" value="글쓰기" onclick="goUrl('writeForm');">
+						<c:if test="${not empty loginMember && loginMember.grade eq 2}">
+							<input type="button" value="글쓰기" onclick="goUrl('writeForm');">
 						</c:if>
 				</form>
 			</div>

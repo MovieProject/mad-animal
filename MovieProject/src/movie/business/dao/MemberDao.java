@@ -5,7 +5,7 @@ import java.util.*;
 import movie.business.domain.Member;
 
 public interface MemberDao {
-
+	//되는건가??
 	/**
 	 * 조건에 맞는 모든 회원 목록을 조회한다.
 	 * 
@@ -33,13 +33,6 @@ public interface MemberDao {
 	 * @param member 수정할 회원 정보를 담고 있는 Member 객체
 	 */
 	public void updateMember(Member member);
-	
-	/**
-	 * 인수로 주어진 Member 객체의 정보로 기존 회원을 수정한다.
-	 * 
-	 * @param member 수정할 회원 정보를 담고 있는 Member 객체
-	 */
-	public void updateMemberGrade(String memberID, int grade);
 	
 	/**
 	 * 인수로 주어진 번호에 해당하는 회원을 삭제한다.
