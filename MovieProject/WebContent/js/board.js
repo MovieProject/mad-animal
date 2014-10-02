@@ -74,3 +74,57 @@ function validateForm(){
 	alert("선택된 값이 없습니다.");
 	return false;
 }
+
+//리뷰 글쓰기 폼 체크
+function reviewWriteCheck() {
+	var form = document.reviewWriteForm;
+	if (form.movieTitle.value == '') {
+		alert('영화 제목를 입력하세요.');
+		form.movieTitle.focus();
+		return false;
+	}
+	if (form.contents.value == '') {
+		alert('한줄평을 입력하세요.');
+		form.contents.focus();
+		return false;
+	}
+	return true;
+}
+
+// 리뷰 한줄글 길이 제한
+//function contentMaxLength(content) {
+//	alert(innerForm.getElementById("oneline").textContent);
+//}
+
+// 수정 완료
+function reviewUpdate(num, content) {
+	goUrl('update?reviewNum=' + num + '&contents=' + content);
+	w2popup.close();
+}
+
+// 수정용 팝업 설정
+function popup(num, title, content) {
+	w2popup.open({
+        title     : '한줄평 수정',
+        body      :
+        	'<div class="w2ui-centered">' +
+			'<table><tr><th>제목</th>' +
+			'<td>' + title + '</td></tr>' +
+			'<tr><th>한줄평</th>' +
+			'<td width="530" ><input type="text" style="width: 490px" name="updateContents">' +
+//			'<td width="530" ><input type="text" style="width: 490px" name="updateContents" value="'+ content + '">' + // 기존 한줄평을 받아서 화면에 출력 해줌
+			'</td></tr></table>' + 
+			'</div>',
+        buttons   : 
+        	'<button class="btn" onclick="reviewUpdate(\''+ num +'\', $(document.getElementsByName(\'updateContents\')).attr(\'value\'))">수정</button>' +
+        	'<button class="btn" onclick="w2popup.close();">취소</button> ',
+        width     : 600,
+        height    : 150,
+        overflow  : 'hidden',
+        color     : '#333',
+        speed     : '0.3',
+        opacity   : '0.8',
+        modal     : true,
+        showClose : true,
+    });
+}

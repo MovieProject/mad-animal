@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Movie</title>
 <link rel="stylesheet" href="css/movie.css">
 
 </head>
 <body>
+
 	<div id="page">
 
 		<header id="header">
@@ -16,7 +18,7 @@
 		</header>
 
 		<div id="content">
-		
+
 			<c:import url="content.jsp"></c:import>
 		</div>
 
@@ -24,8 +26,8 @@
 		<aside id="sidebar">
 			<c:import url="side-bar.jsp"></c:import>
 		</aside>
-
 		<footer id="footer">
+			<c:import url="footer.jsp"></c:import>
 		</footer>
 	</div>
 </body>

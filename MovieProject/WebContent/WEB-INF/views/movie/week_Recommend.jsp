@@ -5,20 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-<link rel="stylesheet" href="css/board.css">
+<link rel="stylesheet" href="../css/board.css">
+<script type="text/javascript" src="../js/board.js"></script>
 </head>
 <body>
 
 	<div id="page">
 
 		<header id="header">
-			<c:import url="top.jsp"></c:import>
+			<c:import url="/top.jsp"></c:import>
 		</header>
 
 		<div id="content">
-
-			<table id="listtable" class="maintable"  align="center">
- 				<caption id="boardtitle">회원추천  영화</caption>
+			<c:import url="/BoardList/week_Recommend.jsp" />
+			<table id="listtable" class="maintable">
+				<caption>게시글 목록</caption>
 				<thead>
 					<tr>
 						<th class="num"></th>
@@ -29,7 +30,7 @@
 					</tr>
 				</thead>
 				<tbody>
-<%-- 					<c:choose>
+					<c:choose>
 
 						<c:when test="${empty requestScope.boardList}">
 							<tr>
@@ -54,15 +55,15 @@
 						</c:otherwise>
 
 					</c:choose>
---%>
 
-					<tr>
+
+					<!-- <tr>
 					<td class="num">1</td>
-					<td class="title"><a href="readMovie.jsp">안녕하세요. 게시판 지기입니다.</a></td>
+					<td class="title"><a href="read.jsp">안녕하세요. 게시판 지기입니다.</a></td>
 					<td class="writer">운영자</td>
 					<td class="regdate">2014.07.01</td>
 					<td class="readcount">10</td>
-				</tr> 
+				</tr> -->
 				</tbody>
 				<tfoot>
 					<tr>
@@ -88,7 +89,7 @@
 					</tr>
 				</tfoot>
 			</table>
-			<div class="buttonbar" >
+			<div class="buttonbar">
 				<form name="searchForm" action="list" method="GET"
 					onsubmit="return searchCheck();">
 					<select name="searchType">
@@ -103,17 +104,13 @@
 					</select> <input id="searchinput" type="text" name="searchText"
 						value="${param.searchText}"> <input type="submit"
 						value="검색" onclick="searchCheck(this.form);"> <input
-						type="button" value="목록" onclick="goUrl('list');">
-					<c:if test="${not empty loginMember}">
+						type="button" value="목록" onclick="goUrl('list');"> 
+						<c:if test="${not empty loginMember}">
 						<input type="button" value="글쓰기" onclick="goUrl('writeForm');">
-					</c:if> 
-				<%-- 
-				<a href="<c:url value="writeMovieForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a>
-				 --%>
-				 </form>
+						</c:if>
+				</form>
 			</div>
 		</div>
-
 
 		<aside id="sidebar">
 			<c:import url="side-bar.jsp"></c:import>
