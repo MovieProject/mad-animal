@@ -25,8 +25,7 @@ public class MemberController extends HttpServlet {
 	private void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-/**??*/
-		
+		//되는건가?
 		try {
 			if (action.equals("login")) {
 				login(request, response);
