@@ -19,7 +19,7 @@
 					<td><a href="<c:url value="/week_Recommend.jsp"/>">금주추천</a> |</td>
 					<td><a href="<c:url value="/member_Recommend.jsp"/>">회원추천</a> |</td>
 					<td><a href="<c:url value="/newMovieIntro.jsp"/>">최신영화</a> |</td>
-					<td><a href="<c:url value="/review.jsp"/>">영화리뷰</a></td>
+					<td><a href="<c:url value="/review/list"/>">영화리뷰</a></td>
 				</tr>
 
 				<tr>

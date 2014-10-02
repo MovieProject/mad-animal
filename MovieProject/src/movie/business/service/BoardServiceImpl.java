@@ -66,5 +66,9 @@ public class BoardServiceImpl implements BoardService {
 		}
 		boardDataAccess.insertReplyBoard(board);
 	}
+	
+	public Board[] previewList(){
+		return boardDataAccess.selectPreviewList().toArray(new Board[0]);
+	}
 
 }

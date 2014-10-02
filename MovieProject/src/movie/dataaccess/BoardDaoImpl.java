@@ -29,6 +29,57 @@ public class BoardDaoImpl implements BoardDao {
 		return dataSource.getConnection();
 	}
 
+	public List<Board> selectPreviewList() {
+		query = "SELECT * FROM board WHERE reply_order =0 ORDER BY board_num DESC";
+
+		System.out.println("BoardDaoImpl selectPreviewList() query : " + query);
+
+		List<Board> result = new ArrayList<Board>();
+		Board board = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = obtainConnection();
+			pstmt = con.prepareStatement(query);
+
+			// searchType 값에 따라 PreparedStatement의 파라미터 값을 설정한다.
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				String date = (rs.getString("reg_date")).substring(0, 10);
+				board = new Board(rs.getInt("board_num"),
+						rs.getString("board_title"),
+						rs.getString("board_writer"), rs.getInt("read_count"),
+						date, rs.getInt("reply_step"));
+
+				result.add(board);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace(System.err);
+			}
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace(System.err);
+			}
+			try {
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace(System.err);
+			}
+		}
+		return result;
+	}
+
 	public List<Board> selectBoardList(Map<String, Object> searchInfo) {
 		// searchInfo Map으로 부터 검색 조건을 구한다.
 		String searchType = (String) searchInfo.get("searchType");
@@ -103,8 +154,7 @@ public class BoardDaoImpl implements BoardDao {
 							"...").toString();
 				}
 
-				board = new Board(rs.getInt("board_num"),
-						/*rs.getString("board_title")*/ title,
+				board = new Board(rs.getInt("board_num"), title,
 						rs.getString("board_writer"), rs.getInt("read_count"),
 						rs.getString("reg_date"), rs.getInt("reply_step"));
 
@@ -147,8 +197,7 @@ public class BoardDaoImpl implements BoardDao {
 
 		if ((searchType != null)) {
 			if (searchType.equals("all")) {
-				whereSQL = "WHERE board_title LIKE ? OR board_writer LIKE ? OR board_contents LIKE ? ";
-
+				whereSQL = "WHERE board_title LIKE ? OR board_writer LIKE ? OR board_contents LIKE ?";
 			} else if ((searchType.equals("title"))
 					|| (searchType.equals("writer"))
 					|| (searchType.equals("contents"))) {
@@ -235,10 +284,11 @@ public class BoardDaoImpl implements BoardDao {
 				result = new Board(rs.getInt("board_num"),
 						rs.getString("board_title"),
 						rs.getString("board_writer"),
-						rs.getString("board_contents"),rs.getString("member_ID"),
-						rs.getInt("read_count"), rs.getString("reg_date"),
-						rs.getString("mod_date"), rs.getInt("master_num"),
-						rs.getInt("reply_order"), rs.getInt("reply_step"));
+						rs.getString("board_contents"),
+						rs.getString("member_ID"), rs.getInt("read_count"),
+						rs.getString("reg_date"), rs.getString("mod_date"),
+						rs.getInt("master_num"), rs.getInt("reply_order"),
+						rs.getInt("reply_step"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -441,9 +491,7 @@ public class BoardDaoImpl implements BoardDao {
 
 		String query2 = "INSERT INTO board (board_num, board_title, board_writer, board_contents, member_ID, read_count, reg_date, mod_date, master_num, reply_order, reply_step) "
 				+ "VALUES (board_sequence.NEXTVAL, ?, ?, ?, ?, 0, SYSDATE, SYSDATE, ?, ?, ?)";
-		
-		System.out
-				.println("BoardDaoImpl insertReplyBoard() query2 : " + query2);
+		System.out.println("BoardDaoImpl insertReplyBoard() query2 : " + query2);
 
 		Connection con = null;
 		PreparedStatement pstmt = null;

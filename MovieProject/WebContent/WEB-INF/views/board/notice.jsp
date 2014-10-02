@@ -42,21 +42,18 @@
 							<c:forEach var="board" items="${requestScope.boardList}">
 								<tr>
 									<td class="num">${board.boardNum}</td>
-									<td class="title"><c:forEach begin="1"
-											end="${board.replyStep}">
+									<td class="title">
+									<c:forEach begin="1" end="${board.replyStep}">
 									&nbsp;
-								</c:forEach> <a
-										href="read?pageNumber=${currentPageNumber}&boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}">${board.title}</a></td>
+								</c:forEach>
+								<a href="read?pageNumber=${currentPageNumber}&boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}">${board.title}</a></td>
 									<td class="writer">${board.writerName}</td>
 									<td class="regdate">${board.regDate}</td>
 									<td class="readcount">${board.readCount}</td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
-
 					</c:choose>
-
-
 				</tbody>
 				 <tfoot>
 					<tr>
@@ -76,9 +73,9 @@
 											href="list?pageNumber=${pageNumber}&searchType=${searchType}&searchText=${searchText}">${pageNumber}</a>
 									</c:otherwise>
 								</c:choose>
-							</c:forEach> <c:if test="${endPageNumber < totalPageCount}">
-								<a
-									href="list?pageNumber=${endPageNumber + 1}&searchType=${searchType}&searchText=${searchText}">다음</a>
+							</c:forEach> 
+							<c:if test="${endPageNumber < totalPageCount}">
+								<a href="list?pageNumber=${endPageNumber + 1}&searchType=${searchType}&searchText=${searchText}">다음</a>
 							</c:if></td>
 					</tr>
 				</tfoot> 
@@ -98,8 +95,7 @@
 					</select>
 					
 						<input id="searchinput" type="text" name="searchText" value="${param.searchText}"> 
-						<input type="submit" value="검색" onclick="searchCheck(this.form);">
-						
+						<input type="submit" value="검색">					
 						<input type="button" value="목록" onclick="goUrl('list');">
 
 					<c:if test="${not empty loginMember && loginMember.grade eq 2}">

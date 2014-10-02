@@ -7,8 +7,8 @@
 <title>Movie</title>
 <link rel="stylesheet" href="../css/movie.css">
 <link rel="stylesheet" href="../css/board.css">
-<script type="text/javascript" src = "../js/script.js"></script>
-<script type="text/javascript" src = "../js/board.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+<script type="text/javascript" src="../js/board.js"></script>
 </head>
 <body>
 
@@ -17,37 +17,33 @@
 		<header id="header">
 			<c:import url="/top.jsp"></c:import>
 		</header>
-
 		<div id="content">
-
 			<table id="readtable" class="maintable">
-				<caption>게시글 보기</caption>
-				<thead>
-					<tr>
-						<th>제 목</th>
-						<td class="title" colspan="5">${movie.movieName}</td>
-					</tr>
-					<tr>
-						<th>장르</th>
-						<td class="writer">${movie.genre}</td>
-						<th>개봉일</th>
-						<td class="readcount">${movie.releaseDate}</td>
-						<th>감독</th>
-						<td class="regdate">${movie.director}</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th>줄거리</th>
-					</tr>
-					<tr>
-						<td class="contents" colspan="6">${movie.synopsis}</td>
-					</tr>
-					<tr>
-					<td><img alt="실험" src='/images/+${movie.photoDir}'></td>
-					</tr>
-					
-				</tbody>
+				<caption id="contenttitle">금주의 영화</caption>
+				<tr>
+					<td id="poster" rowspan="6"><img alt="영화 포스터"
+						src="<c:url value="/images/${movie.photoDir}" />"></td>
+					<th>제목</th>
+					<td class="title">${movie.movieName}</td>
+				</tr>
+				<tr>
+					<th>장르</th>
+					<td class="writer">${movie.genre }</td>
+				</tr>
+				<tr>
+					<th>감독</th>
+					<td class="director">${movie.director }</td>
+				</tr>
+				<tr>
+					<th>개봉일</th>
+					<td class="date">${movie.releaseDate }</td>
+				</tr>
+				<tr>
+					<th colspan="2">줄거리</th>
+				</tr>
+				<tr>
+					<td id="story" colspan="2">${movie.synopsis }</td>
+				</tr>
 			</table>
 			<div class="buttonbar">
 				<c:if test="${empty loginMember}">

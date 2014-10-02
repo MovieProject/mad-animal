@@ -1,10 +1,9 @@
 @charset "utf-8";
 
 * {
-	font-family: 굴림, gulim, tahoma, sans-serif;
+	font-family: 援대┝, gulim, tahoma, sans-serif;
 	font-size: 12px;
 }
-
 page {
 	width: 800px;
 }
@@ -174,8 +173,13 @@ page {
 	width: 50px;
 }
 
-#reviewtable td.name, #reviewtable td.regdate {
-	width: 80px;
+#reviewtable td.name{
+	width: 60px;
+	text-align: center;
+}
+
+#reviewtable td.regdate {
+	width: 92px;
 	text-align: center;
 }
 

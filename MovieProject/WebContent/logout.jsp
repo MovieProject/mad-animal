@@ -7,14 +7,12 @@
 	<table id="logouttable">
 
 		<tr>
-			<td class="message">${loginMember.memberName}님<br> 환영합니다.
-			</td>
-		</tr>
-		<tr>
 			<td><a href="<c:url value="updateMember.jsp"/>">회원정보수정</a></td>
 			<td><a onclick="removeCheck('<c:url value="/member?action=remove&memberID=${loginMember.memberID }"/>');">회원탈퇴</a></td>
 		</tr>
 		<tr>
+			<td class="message"><span class="loginName">${loginMember.memberName}</span>님<br> 환영합니다.
+			</td>
 			<td><input type="submit" name="logout" value="로그아웃" ></td>
 		</tr>
 	</table>
