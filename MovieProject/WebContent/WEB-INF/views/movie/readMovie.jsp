@@ -19,7 +19,18 @@
 		</header>
 		<div id="content">
 			<table id="readtable" class="maintable">
+			<c:choose>
+			<c:when test="${movie.type eq 2 }">
 				<caption id="contenttitle">금주의 영화</caption>
+			</c:when>
+			<c:when test="${movie.type eq 1 }">
+				<caption id="contenttitle">회원 추천 영화</caption>
+			</c:when>
+			<c:when test="${movie.type eq 3 }">
+				<caption id="contenttitle">최신 영화 정보</caption>
+			</c:when>
+			
+			</c:choose>
 				<tr>
 					<td id="poster" rowspan="6"><img alt="영화 포스터"
 						src="<c:url value="/images/${movie.photoDir}" />"></td>

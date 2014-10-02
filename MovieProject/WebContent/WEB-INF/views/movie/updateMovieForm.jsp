@@ -21,7 +21,7 @@
 
 			<form name="writeForm"
 				action="updateMovie?type=${movie.type}&num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}"
-				method="POST">
+				method="POST" enctype="multipart/form-data">
 				<table id="updatetable" class="maintable">
 					<caption>게시글 수정</caption>
 					<thead>
@@ -50,8 +50,8 @@
 							<th>감독</th>
 
 							<td><input class="writerinput" type="text" name="director"
-								size="20" maxlength="20" value='${movie.director}'></td>
-
+								size="20" maxlength="20" value='${movie.director}'>
+														</td>
 						</tr>
 						<tr>
 							<th>줄거리</th>
@@ -66,7 +66,12 @@
 						</tr>
 						<tr>
 							<th>기존파일</th>
-							<td>${movie.photoDir}<input type="hidden" name = "original" value = "${movie.photoDir}"></td>
+							<td>${movie.photoDir}<input type="hidden" name = "original" value = "${movie.photoDir}">
+							<input type="hidden" name = "num" value = "${movie.movieNum}">
+							<input type="hidden" name = "memberID" value = "${movie.memberID}">
+							<input type="hidden" name = "type" value = "${movie.type}">
+							<input type="hidden" name = "pageNumber" value = "${currentPageNumber}">							
+							</td>
 							
 						</tr>
 						<tr>
@@ -78,7 +83,7 @@
 				</table>
 				<div class="buttonbar">
 					<input type="submit" value="수정"
-						onclick="boardWriteCheck(this.form)&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}">
+						onclick="boardWriteCheck(this.form)&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}&memberID=${movie.memberID}">
 					<input type="button" value="취소"
 						onclick="goUrl('movieRead?num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 				</div>
