@@ -1,10 +1,16 @@
 package movie.web.controller;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.DispatcherType;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import movie.business.domain.Board;
 import movie.business.domain.Member;
@@ -24,26 +30,26 @@ public class BoardController extends HttpServlet {
 
 		try {
 			// action 요청파라미터 값을 확인한다.
-			String action = request.getParameter("action");
+			String action = request.getPathInfo();
 
 			// action 값에 따라 적절한 메소드를 선택하여 호출한다.
-			if (action.equals("list")) {
+			if (action.equals("/list")) {
 				selectBoardList(request, response);
-			} else if (action.equals("read")) {
+			} else if (action.equals("/read")) {
 				readBoard(request, response);
-			} else if (action.equals("writeForm")) {
+			} else if (action.equals("/writeForm")) {
 				writeBoardForm(request, response);
-			} else if (action.equals("write")) {
+			} else if (action.equals("/write")) {
 				writeBoard(request, response);
-			} else if (action.equals("updateForm")) {
+			} else if (action.equals("/updateForm")) {
 				updateBoardForm(request, response);
-			} else if (action.equals("update")) {
+			} else if (action.equals("/update")) {
 				updateBoard(request, response);
-			} else if (action.equals("remove")) {
+			} else if (action.equals("/remove")) {
 				removeBoard(request, response);
-			} else if (action.equals("reply")) {
+			} else if (action.equals("/reply")) {
 				replyBoard(request, response);
-			} else if (action.equals("replyForm")) {
+			} else if (action.equals("/replyForm")) {
 				replyBoardForm(request, response);
 			} else {
 				response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -112,8 +118,9 @@ public class BoardController extends HttpServlet {
 		request.setAttribute("totalPageCount", totalPageCount);
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(list.jsp)로 요청을 전달한다.
+
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("list.jsp");
+				.getRequestDispatcher("/WEB-INF/views/board/notice.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -139,6 +146,7 @@ public class BoardController extends HttpServlet {
 		// 2. BoardService 객체로부터 해당 글 번호의 게시글을 구해온다.
 		BoardService service = new BoardServiceImpl();
 		Board board = service.readBoard(Integer.parseInt(num));
+		System.out.println(board);
 
 		// 3. request scope 속성(board)에 게시글을 저장한다.
 		request.setAttribute("board", board);
@@ -147,7 +155,7 @@ public class BoardController extends HttpServlet {
 
 		// 4. RequestDispatcher 객체를 통해 뷰 페이지(read.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("read.jsp");
+				.getRequestDispatcher("/WEB-INF/views/board/read.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -161,7 +169,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(writeForm.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("writeForm.jsp");
+				.getRequestDispatcher("/WEB-INF/views/board/writeForm.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -171,17 +179,31 @@ public class BoardController extends HttpServlet {
 	private void writeBoard(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
+		
+		HttpSession session = request.getSession(false);
+		if(session == null){
+			response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+			return;
+		}
+		
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		if(loginMember == null){
+			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "로그인이 필요합니다.");
+		}
+
 		// 1. 요청 파라미터로 부터 작성자(writer), 제목(title), 내용(contents)를 구한다.
-		String memberName = request.getParameter("memberName");
+		String memberName = loginMember.getMemberName();
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
-		String memberID = request.getParameter("memberID");
+		String memberID = loginMember.getMemberID();
 
 		// 2. 구해 온 요청 파라미터 값와 ip 값을 지닌 Board 객체를 생성한다.
 		Board board = new Board(title, memberName, contents, memberID);
+		System.out.println(board);
 		// 3. BoardService 객체를 통해 해당 게시글을 등록한다.
 		BoardService service = new BoardServiceImpl();
 		service.writeBoard(board);
+		
 
 		// 4. RequestDispatcher 객체를 통해 목록 보기(board?action=list)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request.getRequestDispatcher("list");
@@ -215,7 +237,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(updateForm.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("updateForm.jsp");
+				.getRequestDispatcher("/WEB-INF/views/board/updateForm.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -225,17 +247,29 @@ public class BoardController extends HttpServlet {
 	private void updateBoard(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
+		
+		HttpSession session = request.getSession(false);
+		if(session == null){
+			response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+			return;
+		}
+		
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		if(loginMember == null){
+			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "로그인이 필요합니다.");
+		}
+		
 		// 1. 요청 파라미터로 부터 글 번호(num), 작성자(writer), 제목(title), 내용(contents)을 구한다.
 		String boardNum = request.getParameter("boardNum");
-		String memberName = request.getParameter("memberName");
+		String memberName = loginMember.getMemberName();
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
-		String memberID = request.getParameter("memberID");
+		String memberID = loginMember.getMemberID();
 
 		// 2. 구해 온 요청 파라미터 값와 ip 값을 지닌 Board 객체를 생성한다.
 		Board board = new Board(Integer.parseInt(boardNum), title, memberName,
 				contents, memberID);
-		System.out.println("board" + board);
+		System.out.println(board);
 
 		// 3. BoardService 객체를 통해 해당 게시글을 갱신한다.
 		BoardService service = new BoardServiceImpl();
@@ -246,7 +280,7 @@ public class BoardController extends HttpServlet {
 
 		// 5. RequestDispatcher 객체를 통해 게시물 보기(board?action=read)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("read?boardNum=" + boardNum);
+				.getRequestDispatcher("read");
 		dispatcher.forward(request, response);
 	}
 
@@ -296,7 +330,7 @@ public class BoardController extends HttpServlet {
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(replyForm.jsp)로 요청을 전달한다.
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("replyForm.jsp");
+				.getRequestDispatcher("/WEB-INF/views/board/replyForm.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -306,22 +340,34 @@ public class BoardController extends HttpServlet {
 	private void replyBoard(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
+		
+		HttpSession session = request.getSession(false);
+		if(session == null){
+			response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+			return;
+		}
+		
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		if(loginMember == null){
+			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "로그인이 필요합니다.");
+		}
+		
 		// 요청 파라미터로 부터 글 번호(num), 작성자(writer), 제목(title), 내용(contents), 원본
 		// 글번호(masterNum)을 구한다.
 		String boardNum = request.getParameter("boardNum");
-		String memberName = request.getParameter("memberName");
+		String memberName = loginMember.getMemberName();
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
 		String masterNum = request.getParameter("masterNum");
 		String replyOrder = request.getParameter("replyOrder");
 		String replyStep = request.getParameter("replyStep");
-		String memberID = request.getParameter("memberID");
+		String memberID = loginMember.getMemberID();
 
 		// 구해 온 요청 파라미터 값와 ip 값을 지닌 Board 객체를 생성한다.
 		Board board = new Board(Integer.parseInt(boardNum), title, memberName,
 				contents, memberID, Integer.parseInt(masterNum),
 				Integer.parseInt(replyOrder), Integer.parseInt(replyStep));
-		System.out.println("board" + board);
+		System.out.println(board);
 
 		// BoardService 객체를 통해 해당 답글을 등록한다.
 		BoardService service = new BoardServiceImpl();

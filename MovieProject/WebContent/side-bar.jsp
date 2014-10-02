@@ -32,13 +32,13 @@
 			<td><a href="<c:url value="/index.jsp"/>">메인</a></td>
 		</tr>
 		<tr>
-			<td><a href="<c:url value="/notice.jsp"/>">공지사항</a></td>
+			<td><a href="<c:url value="/board/list"/>">공지사항</a></td>
 		</tr>
 		<tr>
 			<td><a href="<c:url value="/week_Recommend.jsp"/>">금주 추천 영화</a></td>
 		</tr>
 		<tr>
-			<td><a href="<c:url value="/movie?action=movielist"/>">회원 추천 영화</a></td>
+			<td><a href="<c:url value="/movie/movielist?type=1"/>">회원 추천 영화</a></td>
 		</tr>
 		<tr>
 			<td><a href="<c:url value="/newMovieIntro.jsp"/>">최신 영화 정보</a></td>

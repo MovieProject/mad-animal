@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Movie</title>
 <link rel="stylesheet" href="css/movie.css">
 
