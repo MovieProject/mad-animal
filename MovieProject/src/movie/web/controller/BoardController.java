@@ -51,12 +51,31 @@ public class BoardController extends HttpServlet {
 				replyBoard(request, response);
 			} else if (action.equals("/replyForm")) {
 				replyBoardForm(request, response);
-			} else {
+			} else if (action.equals("/preview")) {
+				previewList(request, response);
+			}else {
 				response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			}
 		} catch (Exception ex) {
 			throw new ServletException(ex);
 		}
+	}
+
+	private void previewList(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException{
+		
+		BoardService service = new BoardServiceImpl();
+		Board[] boardList = service.previewList();
+
+		// request scope 속성(boardList)에 게시글 리스트를 저장한다.
+		request.setAttribute("boardList", boardList);
+
+		// RequestDispatcher 객체를 통해 뷰 페이지(list.jsp)로 요청을 전달한다.
+
+		RequestDispatcher dispatcher = request
+				.getRequestDispatcher("/WEB-INF/views/board/preview.jsp");
+//		dispatcher.forward(request, response);
+		dispatcher.include(request, response);
 	}
 
 	private void selectBoardList(HttpServletRequest request,
