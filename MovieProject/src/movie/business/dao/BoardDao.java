@@ -71,5 +71,7 @@ public interface BoardDao {
 	 * @param board 등록할 답글 정보를 담고 있는 Board 객체
 	 */
 	public void insertReplyBoard(Board board);
+	
+	public List<Board> selectPreviewList();
 
 }

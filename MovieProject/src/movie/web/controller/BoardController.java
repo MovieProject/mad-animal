@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.DispatcherType;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -50,12 +51,31 @@ public class BoardController extends HttpServlet {
 				replyBoard(request, response);
 			} else if (action.equals("/replyForm")) {
 				replyBoardForm(request, response);
-			} else {
+			} else if (action.equals("/preview")) {
+				previewList(request, response);
+			}else {
 				response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			}
 		} catch (Exception ex) {
 			throw new ServletException(ex);
 		}
+	}
+
+	private void previewList(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException{
+		
+		BoardService service = new BoardServiceImpl();
+		Board[] boardList = service.previewList();
+
+		// request scope 속성(boardList)에 게시글 리스트를 저장한다.
+		request.setAttribute("boardList", boardList);
+
+		// RequestDispatcher 객체를 통해 뷰 페이지(list.jsp)로 요청을 전달한다.
+
+		RequestDispatcher dispatcher = request
+				.getRequestDispatcher("/WEB-INF/views/board/preview.jsp");
+//		dispatcher.forward(request, response);
+		dispatcher.include(request, response);
 	}
 
 	private void selectBoardList(HttpServletRequest request,
@@ -117,6 +137,7 @@ public class BoardController extends HttpServlet {
 		request.setAttribute("totalPageCount", totalPageCount);
 
 		// RequestDispatcher 객체를 통해 뷰 페이지(list.jsp)로 요청을 전달한다.
+
 		RequestDispatcher dispatcher = request
 				.getRequestDispatcher("/WEB-INF/views/board/notice.jsp");
 		dispatcher.forward(request, response);
@@ -289,7 +310,7 @@ public class BoardController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
 		// 1. 요청 파라미터로 부터 글 번호(boardNum)를 구한다.
-		String num = request.getParameter("board_num");
+		String num = request.getParameter("boardNum");
 		// 2. BoardService 객체를 통해 해당 번호의 게시글을 삭제한다.
 		BoardService service = new BoardServiceImpl();
 		service.removeBoard(Integer.parseInt(num));
@@ -338,22 +359,34 @@ public class BoardController extends HttpServlet {
 	private void replyBoard(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
+		
+		HttpSession session = request.getSession(false);
+		if(session == null){
+			response.sendError(HttpServletResponse.SC_FORBIDDEN, "로그인이 필요합니다.");
+			return;
+		}
+		
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		if(loginMember == null){
+			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "로그인이 필요합니다.");
+		}
+		
 		// 요청 파라미터로 부터 글 번호(num), 작성자(writer), 제목(title), 내용(contents), 원본
 		// 글번호(masterNum)을 구한다.
 		String boardNum = request.getParameter("boardNum");
-		String memberName = request.getParameter("memberName");
+		String memberName = loginMember.getMemberName();
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
 		String masterNum = request.getParameter("masterNum");
 		String replyOrder = request.getParameter("replyOrder");
 		String replyStep = request.getParameter("replyStep");
-		String memberID = request.getParameter("memberID");
+		String memberID = loginMember.getMemberID();
 
 		// 구해 온 요청 파라미터 값와 ip 값을 지닌 Board 객체를 생성한다.
 		Board board = new Board(Integer.parseInt(boardNum), title, memberName,
 				contents, memberID, Integer.parseInt(masterNum),
 				Integer.parseInt(replyOrder), Integer.parseInt(replyStep));
-		System.out.println("board" + board);
+		System.out.println(board);
 
 		// BoardService 객체를 통해 해당 답글을 등록한다.
 		BoardService service = new BoardServiceImpl();

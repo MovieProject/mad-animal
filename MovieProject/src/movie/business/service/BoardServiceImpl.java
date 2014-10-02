@@ -18,7 +18,7 @@ public class BoardServiceImpl implements BoardService {
 
 	public Board readBoard(int boardNum) throws DataNotFoundException {
 		if (!boardDataAccess.boardNumExists(boardNum)) {
-			new DataNotFoundException("Data is not Exists");
+			throw new DataNotFoundException("Data is not Exists");
 		}
 		boardDataAccess.addReadCount(boardNum);
 		Board result = boardDataAccess.selectBoard(boardNum);
@@ -27,7 +27,7 @@ public class BoardServiceImpl implements BoardService {
 
 	public Board findBoard(int boardNum) throws DataNotFoundException {
 		if (!boardDataAccess.boardNumExists(boardNum)) {
-			new DataNotFoundException("Data is not Exists");
+			throw new DataNotFoundException("Data is not Exists");
 		}
 		Board result = boardDataAccess.selectBoard(boardNum);
 		return result;
@@ -48,23 +48,27 @@ public class BoardServiceImpl implements BoardService {
 
 	public void updateBoard(Board board) throws DataNotFoundException {
 		if (!boardDataAccess.boardNumExists(board.getBoardNum())) {
-			new DataNotFoundException("Data is not Exists");
+			throw new DataNotFoundException("Data is not Exists");
 		}
 		boardDataAccess.updateBoard(board);
 	}
 
 	public void removeBoard(int boardNum) throws DataNotFoundException {
 		if (!boardDataAccess.boardNumExists(boardNum)) {
-			new DataNotFoundException("Data is not Exists");
+			throw new DataNotFoundException("Data is not Exists");
 		}
 		boardDataAccess.deleteBoard(boardNum);
 	}
 
 	public void replyBoard(Board board) throws DataNotFoundException {
 		if (!boardDataAccess.boardNumExists(board.getBoardNum())) {
-			new DataNotFoundException("Data is not Exists");
+			throw new DataNotFoundException("Data is not Exists");
 		}
 		boardDataAccess.insertReplyBoard(board);
+	}
+	
+	public Board[] previewList(){
+		return boardDataAccess.selectPreviewList().toArray(new Board[0]);
 	}
 
 }

@@ -9,7 +9,6 @@
 
 </head>
 <body>
-
 	<div id="page">
 
 		<header id="header">
@@ -27,7 +26,6 @@
 		</aside>
 
 		<footer id="footer">
-			<c:import url="footer.jsp"></c:import>
 		</footer>
 	</div>
 </body>

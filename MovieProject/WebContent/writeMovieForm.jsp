@@ -14,7 +14,7 @@
 
 		<header id="header">
 			<c:import url="top.jsp"></c:import>
-		</header>
+		</header>	
 
 		<div id="content">
 

@@ -43,6 +43,9 @@
 		</table>
 		<div class="buttonbar">
 			<input type=button value="목록" onclick="goUrl('list?pageNumber=${currentPageNumber}&boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}');">
+			<c:if test="${not empty loginMember}">
+				<input type="button" value="답글" onclick="goUrl('replyForm?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
+			</c:if>
 			<c:if test="${not empty loginMember && loginMember.memberID eq board.writerID}"> <!--관리자 ID 비교해서 수정,삭제할 수 있게 -->
 				<input type="button" value="수정" onclick="goUrl('updateForm?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 				<input type="button" value="삭제" onclick="deleteCheck('remove?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">

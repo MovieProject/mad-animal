@@ -70,4 +70,5 @@ public interface BoardService {
      */
 	public void replyBoard(Board board) throws DataNotFoundException;
 
+	public Board[] previewList();
 }
