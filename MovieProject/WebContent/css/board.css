@@ -158,7 +158,7 @@ page {
 }
 
 #reviewtable {
-	width: 670px;
+	width: 720px;
 }
 
 #reviewtable th {
@@ -184,12 +184,27 @@ page {
 	text-align: center;
 }
 
+#reviewtable th.title, #reviewtable th.oneline {
+	width: 98px;
+}
+
 #reviewtable td.title, #reviewtable td.oneline {
 	padding-left: 8px;
 }
 
+/* 한줄평 길이 조절 하려면 title과 oneline 값을 같이 변경 해야함 */
+#reviewtable td.title {
+	width: 332px;
+	max-width: 332px;
+}
+
+#reviewtable td.oneline {
+	width: 507px;
+	max-width: 507px;
+}
+
 #writereview .inputtext {
-	width: 500px;
+	width: 550px;
 }
 
 #writereview th {
@@ -198,10 +213,6 @@ page {
 
 #writebutton {
 	height: 50px;
-}
-
-#oneline{
-	text-align: left;
 }
 
 #writereply {

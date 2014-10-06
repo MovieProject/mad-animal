@@ -93,7 +93,7 @@ function reviewWriteCheck() {
 
 // 리뷰 한줄글 길이 제한
 window.onload = function () {
-	alert(document.getElementById("oneline"));
+	//alert(document.getElementById("oneline"));
 }
 
 
@@ -126,5 +126,7 @@ function popup(num, title, content) {
 // 팝업창에서 수정 버튼을 눌렀을 때 한줄평의 
 function updateContent(num) {
 	var temp = document.getElementById("temp").value;
-	goUrl('update?reviewNum=' + num + '&contents=' + temp);
+	temp.replace("\"", "\"\"");
+	
+	goUrl('update?reviewNum=' + num + '&contents=' + encodeURIComponent(temp));
 }
