@@ -21,7 +21,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	public int getReviewCount(Map<String, Object> searchInfo) {
-		return reviewDataAccess.selectReviewCount();
+		return reviewDataAccess.selectReviewCount(searchInfo);
 	}
 
 	public void writeReview(Review review) {

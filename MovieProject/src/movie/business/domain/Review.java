@@ -42,6 +42,12 @@ public class Review {
 		this.contents = contents;
 	}
 
+	// ¸®ºä ¼öÁ¤¿ë
+	public Review(int reviewNum, String contents) {
+		this.reviewNum = reviewNum;
+		this.contents = contents;
+	}
+	
 	public int getReviewNum() {
 		return reviewNum;
 	}
@@ -103,5 +109,6 @@ public class Review {
 		return "Review [reviewNum=" + reviewNum + ", movieNum=" + movieNum + ", movieTitle=" + movieTitle + ", writerName=" + writerName
 				+ ", writerID=" + writerID + ", contents=" + contents + ", regDate=" + regDate + "]";
 	}
+
 
 }

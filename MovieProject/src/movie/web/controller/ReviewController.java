@@ -25,15 +25,15 @@ public class ReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
+		String path = request.getPathInfo();
 		try {
-			if (action.equals("list")) {
+			if (path.equals("/list")) {
 				selectReviewList(request, response);
-			} else if (action.equals("write")) {
+			} else if (path.equals("/write")) {
 				writeReview(request, response);
-			} else if (action.equals("update")) {
-//				updateReview(request, response);
-			} else if (action.equals("remove")) {
+			} else if (path.equals("/update")) {
+				updateReview(request, response);
+			} else if (path.equals("/remove")) {
 				removeReview(request, response);
 			}
 		} catch (Exception ex) {
@@ -77,7 +77,7 @@ public class ReviewController extends HttpServlet {
 		request.setAttribute("currentPageNumber", currentPageNumber);
 		request.setAttribute("totalPageCount", totalPageCount);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("review.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/review/review.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -108,16 +108,41 @@ public class ReviewController extends HttpServlet {
 		request.setAttribute("currentPageNumber", currentPageNumber);
 
 		// 4. RequestDispatcher 객체를 통해 목록 보기(list)로 요청을 전달한다.
-		RequestDispatcher dispatcher = request.getRequestDispatcher("review?action=list");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("list");
 		dispatcher.forward(request, response);
 	}
 	
 	/** 리뷰 수정
 	 * 해당 리뷰의 제목과 한줄평을 form에 추가 받고 수정후 DB에 입력하고 list 출력
 	 * review객체를 넘기지 못할경우 review.jsp에 hidden속성으로 reviewNum값 추가 해야함.
+	 * @throws IOException 
+	 * @throws ServletException 
+	 * @throws DataNotFoundException 
 	 */
-	private void updateReview(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void updateReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
+		String reviewNum = request.getParameter("reviewNum");
+		String contents = request.getParameter("contents");
+		String pageNumber = request.getParameter("pageNumber");
+
+		// (1) 현재 페이지 번호
+		int currentPageNumber = 1;
+		if ((pageNumber != null) && (pageNumber.length() != 0)) {
+			currentPageNumber = Integer.parseInt(pageNumber);
+		}
+
+		Review review = new Review(Integer.parseInt(reviewNum), contents);
+		
+		// BoardService 객체를 통해 해당 번호의 게시글을 검색한다.
+		ReviewService service = new ReviewServiceImpl();
+		service.updateReview(review);
+
+		// request scope 속성(board)에 검색한 게시글을 저장한다.
+		request.setAttribute("review", review);
+		request.setAttribute("currentPageNumber", currentPageNumber);
+
+		// RequestDispatcher 객체를 통해 뷰 페이지(/WEB-INF/views/board/updateForm.jsp)로 요청을 전달한다.
+		RequestDispatcher dispatcher = request.getRequestDispatcher("list");
+		dispatcher.forward(request, response);
 		
 	}
 	
@@ -136,7 +161,7 @@ public class ReviewController extends HttpServlet {
 		service.removeReview(num);
 		
 		// 3. RequestDispatcher 객체를 통해 목록 보기(board?action=list)로 요청을 전달한다.
-		RequestDispatcher dispatcher = request.getRequestDispatcher("review?action=list");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("list");
 		dispatcher.forward(request, response);
 	}
 

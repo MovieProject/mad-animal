@@ -45,7 +45,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ReviewController</servlet-name>
-		<url-pattern>/review</url-pattern>
+		<url-pattern>/review/*</url-pattern>
 	</servlet-mapping>
 
 	<filter>
