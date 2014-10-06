@@ -5,6 +5,9 @@
 	font-size: 12px;
 }
 
+iframe{
+	border: 0px;
+}
 
 a:link {
 	text-decoration: none;

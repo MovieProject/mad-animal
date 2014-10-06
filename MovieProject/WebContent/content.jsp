@@ -15,27 +15,25 @@
 
 		<!-- 금주영화 -->
 		<div id="week">
-
-			
-			<object id="preview3" width="380px" height="300px" data="movie/moviepreview?type=3"></object>
+			<iframe id="preview3" width="380px" height="300px" src="movie/moviepreview?type=3"></iframe>
 		</div>
 
 		<!-- 공지 -->
 		<div id="notice">
-			<object id="preview" width="380px" height="300px"
-				data="board/preview"></object>
+			<iframe id="preview" width="380px" height="300px"
+				src="board/preview"></iframe>
 		</div>
 
 		<!-- 최신영화소개 -->
 		<div id="newMovieIntro">
-			<object id="preview1" width="380px" height="300px"
-				data="movie/moviepreview?type=2"></object>
+			<iframe id="preview1" width="380px" height="300px"
+				src="movie/moviepreview?type=2"></iframe>
 		</div>
 
 		<!-- 회원 영화 추천 -->
 		<div id="member">
-			<object id="preview2" width="380px" height="300px"
-				data="movie/moviepreview?type=1"></object>
+			<iframe id="preview2" width="380px" height="300px"
+				src="movie/moviepreview?type=1"></iframe>
 		</div>
 
 	</div>

@@ -12,7 +12,7 @@
 	 	<caption id="contenttitle">금주의 영화</caption>
 		<tr>
 			<td id="poster" rowspan="6">
-			<img alt="영화 포스터" src="<c:url value="images/${movielist[0].photoDir }" />"></td>
+			<img alt="영화 포스터" src="<c:url value="/images/${movielist[0].photoDir }" />"></td>
 			<th>제목</th>
 			<td class="content">${movielist[0].movieName}</td>
 		</tr>
