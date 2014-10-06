@@ -17,7 +17,6 @@ a:visited {
 }
 
 a:hover, a:active {
-	text-decoration: underline;
 	color: #ff8c00;
 }
 
@@ -253,4 +252,8 @@ td#story {
 	font-weight: bolder;
 	color: "#8282FF";
 	text-decoration: underline;
+}
+
+iframe#preview{
+	border: 0px;
 }

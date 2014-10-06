@@ -20,7 +20,8 @@
 
 		<!-- 공지 -->
 		<div id="notice">
-			<object id="preview" width="380px" height="300px" data="board/preview"></object>
+			<iframe id="preview" width="380px" height="300px" src="board/preview"></iframe>
+		<!-- 	<object id="preview" width="380px" height="300px" data="board/preview"></object> -->
 		</div>
 
 		<!-- 최신영화소개 -->
