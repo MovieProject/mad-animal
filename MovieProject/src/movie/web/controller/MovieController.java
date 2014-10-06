@@ -2,7 +2,6 @@ package movie.web.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -16,15 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import movie.business.domain.Movie;
 import movie.business.exception.DataDuplicatedException;
 import movie.business.exception.DataNotFoundException;
-import movie.business.service.BoardService;
-import movie.business.service.BoardServiceImpl;
 import movie.business.service.MovieService;
 import movie.business.service.MovieServiceImpl;
 import movie.util.MovieUtil;
@@ -81,7 +77,7 @@ public class MovieController extends HttpServlet {
 	}
 
 	private void previewMovie(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
 		// TODO Auto-generated method stub
 		MovieService service = new MovieServiceImpl();
 
@@ -146,6 +142,8 @@ public class MovieController extends HttpServlet {
 					.getRequestDispatcher("/WEB-INF/views/movie/newMovieIntro_pre.jsp");
 
 		} else if (type == 3) {
+			Movie movie = service.findMovie(movielist[0].getMovieNum());
+			request.setAttribute("movie", movie);
 			dispatcher = request
 					.getRequestDispatcher("/WEB-INF/views/movie/week_Recommend_pre.jsp");
 

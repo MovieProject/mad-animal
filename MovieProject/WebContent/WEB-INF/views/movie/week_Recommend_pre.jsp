@@ -12,28 +12,28 @@
 	 	<caption id="contenttitle">금주의 영화</caption>
 		<tr>
 			<td id="poster" rowspan="6">
-			<img alt="영화 포스터" src="<c:url value="images/${movielist[0].photoDir }" />"></td>
+			<img alt="영화 포스터" src="<c:url value="/images/${movie.photoDir }" />" width="150px" height="200px"></td>
 			<th>제목</th>
-			<td class="content">${movielist[0].movieName}</td>
+			<td class="content">${movie.movieName}</td>
 		</tr>
 		<tr>
 			<th>장르</th>
-			<td class="content">${movielist[0].genre}</td>
+			<td class="content">${movie.genre}</td>
 		</tr>
 		<tr>
 			<th>감독</th>
-			<td class="content">${movielist[0].genre}</td>
+			<td class="content">${movie.genre}</td>
 		</tr>
 		<tr>
 			<th>개봉일</th>
-			<td class="content">${movielist[0].director}</td>
+			<td class="content">${movie.director}</td>
 		</tr>
 		<tr>
 			<th colspan="2">줄거리</th>
 		</tr>
 		<tr>
 			<td id="story" colspan="2">
-			${movelist[0].synopsis}
+			${movie.synopsis}
 			</td>
 		</tr>
 	</table>
