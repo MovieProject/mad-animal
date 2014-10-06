@@ -81,7 +81,7 @@ public class MovieController extends HttpServlet {
 	}
 
 	private void previewMovie(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
 		// TODO Auto-generated method stub
 		MovieService service = new MovieServiceImpl();
 
@@ -146,6 +146,8 @@ public class MovieController extends HttpServlet {
 					.getRequestDispatcher("/WEB-INF/views/movie/newMovieIntro_pre.jsp");
 
 		} else if (type == 3) {
+			Movie movie = service.findMovie(movielist[0].getMovieNum());
+			request.setAttribute("movie", movie);
 			dispatcher = request
 					.getRequestDispatcher("/WEB-INF/views/movie/week_Recommend_pre.jsp");
 

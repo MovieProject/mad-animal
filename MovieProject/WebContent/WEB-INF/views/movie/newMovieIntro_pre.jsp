@@ -30,11 +30,11 @@
 						</c:when>
 
 						<c:otherwise>
-							<c:forEach var="movie" items="${requestScope.movielist}" end ="3">
+							<c:forEach var="movie" items="${requestScope.movielist}" end ="2">
 								<tr>
 									<td class="num">${movie.movieNum}</td>
 									<td class="title">									
-									 <a	href="movieRead?pageNumber=${currentPageNumber}&num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&type=3">${movie.movieName}</a></td>
+									 <a	href="movieRead?pageNumber=${currentPageNumber}&num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&type=3" target="_parent">${movie.movieName}</a></td>
 									<td class="writer">${movie.director}</td>
 									<td class="regdate">${movie.releaseDate}</td>
 								</tr>

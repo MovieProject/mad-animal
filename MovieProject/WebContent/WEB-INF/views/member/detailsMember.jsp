@@ -13,11 +13,11 @@
 	<div id="page">
 
 		<header id="header">
-			<c:import url="top.jsp"></c:import>
+			<c:import url="/top.jsp"></c:import>
 		</header>
 
 		<div id="content">
-			<form name = "managerForm" action = "<c:url value = "/member?action=gradeUpdate&memberID=${selectedMember.memberID}"/>" method = "post">
+			<form name = "managerForm" action = "<c:url value = "/member/gradeUpdate?memberID=${selectedMember.memberID}"/>" method = "post">
 				<table id="managertable" class="maintable" align="center">
 					<caption id="boardtitle">회원관리</caption>
 					<thead>
@@ -54,18 +54,18 @@
 							id="updateButton"></td>
 						<td class="remove"><input type="button" value="탈퇴"
 							id="removeButton"
-							onclick="goUrl('<c:url value = "/member?action=remove&memberID=${selectedMember.memberID}"/>');"></td>
+							onclick="goUrl('<c:url value = "/member/remove?memberID=${selectedMember.memberID}"/>');"></td>
 					</tr>
 				</table>
 			</form>
 		</div>
 
 		<aside id="sidebar">
-			<c:import url="side-bar.jsp"></c:import>
+			<c:import url="/side-bar.jsp"></c:import>
 		</aside>
 
 		<footer id="footer">
-			<c:import url="footer.jsp"></c:import>
+			<c:import url="/footer.jsp"></c:import>
 		</footer>
 	</div>
 </body>

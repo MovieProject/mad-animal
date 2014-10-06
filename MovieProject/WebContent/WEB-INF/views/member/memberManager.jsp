@@ -13,12 +13,12 @@
 	<div id="page">
 
 		<header id="header">
-			<c:import url="top.jsp"></c:import>
+			<c:import url="/top.jsp"></c:import>
 		</header>
 
 		<div id="content">
 
-			<form action="<c:url value = '/member?action=listRemove' />" name="listDelete" method="post" onsubmit="return validateForm();">
+			<form action="<c:url value = '/member/listRemove' />" name="listDelete" method="post" onsubmit="return validateForm();">
 				<table id="managertable" class="maintable" align="center">
 					<caption id="boardtitle">회원관리</caption>
 					<thead>
@@ -46,7 +46,7 @@
 									</c:otherwise>
 								</c:choose>
 								<td class="memberID"><a
-									href="<c:url value="/member?action=select&memberID=${member.memberID}"/>">${member.memberID }</a></td>
+									href="<c:url value="/member/select?memberID=${member.memberID}"/>">${member.memberID }</a></td>
 								<td class="name">${member.memberName }</td>
 								<c:choose>
 									<c:when test="${member.grade == 2 }">
@@ -71,11 +71,11 @@
 
 
 		<aside id="sidebar">
-			<c:import url="side-bar.jsp"></c:import>
+			<c:import url="/side-bar.jsp"></c:import>
 		</aside>
 
 		<footer id="footer">
-			<c:import url="footer.jsp"></c:import>
+			<c:import url="/footer.jsp"></c:import>
 		</footer>
 	</div>
 </body>

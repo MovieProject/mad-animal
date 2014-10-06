@@ -12,12 +12,12 @@
 	<div id="page">
 
 		<header id="header">
-			<c:import url="top.jsp"></c:import>
+			<c:import url="/top.jsp"></c:import>
 		</header>
 
 		<div id="content">
 			<h4>[회원 정보 수정]</h4>
-			<form action=" <c:url value ='/member?action=update&memberID=${sessionScope.loginMember.memberID }&grade=${sessionScope.loginMember.grade }'/>" method="POST">
+			<form action=" <c:url value ='/member/update&memberID=${sessionScope.loginMember.memberID }&grade=${sessionScope.loginMember.grade }'/>" method="POST">
 				<table class="registertable">
 					<tr>
 						<td class="label">회원ID :</td>
@@ -62,11 +62,11 @@
 		</div>
 
 		<aside id="sidebar">
-			<c:import url="side-bar.jsp"></c:import>
+			<c:import url="/side-bar.jsp"></c:import>
 		</aside>
 
 		<footer id="footer">
-			<c:import url="footer.jsp"></c:import>
+			<c:import url="/footer.jsp"></c:import>
 		</footer>
 	</div>
 </body>
