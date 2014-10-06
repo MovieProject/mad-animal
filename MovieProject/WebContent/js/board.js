@@ -75,7 +75,7 @@ function validateForm(){
 	return false;
 }
 
-//리뷰 글쓰기 폼 체크
+// 리뷰 글쓰기 폼 체크
 function reviewWriteCheck() {
 	var form = document.reviewWriteForm;
 	if (form.movieTitle.value == '') {
@@ -92,15 +92,10 @@ function reviewWriteCheck() {
 }
 
 // 리뷰 한줄글 길이 제한
-//function contentMaxLength(content) {
-//	alert(innerForm.getElementById("oneline").textContent);
-//}
+/*window.onload = function () {
+	alert(document.getElementById("oneline"));
+}*/
 
-// 수정 완료
-function reviewUpdate(num, content) {
-	goUrl('update?reviewNum=' + num + '&contents=' + content);
-	w2popup.close();
-}
 
 // 수정용 팝업 설정
 function popup(num, title, content) {
@@ -111,12 +106,11 @@ function popup(num, title, content) {
 			'<table><tr><th>제목</th>' +
 			'<td>' + title + '</td></tr>' +
 			'<tr><th>한줄평</th>' +
-			'<td width="530" ><input type="text" style="width: 490px" name="updateContents">' +
-//			'<td width="530" ><input type="text" style="width: 490px" name="updateContents" value="'+ content + '">' + // 기존 한줄평을 받아서 화면에 출력 해줌
+			'<td width="530" ><input id="temp" type="text" style="width: 490px" value="'+ content + '">' + // 기존 한줄평을 받아서 화면에 출력 해줌
 			'</td></tr></table>' + 
 			'</div>',
         buttons   : 
-        	'<button class="btn" onclick="reviewUpdate(\''+ num +'\', $(document.getElementsByName(\'updateContents\')).attr(\'value\'))">수정</button>' +
+        	'<button class="btn" onclick="updateContent(\'' + num + '\')">수정</button>' +
         	'<button class="btn" onclick="w2popup.close();">취소</button> ',
         width     : 600,
         height    : 150,
@@ -127,4 +121,10 @@ function popup(num, title, content) {
         modal     : true,
         showClose : true,
     });
+}
+
+// 팝업창에서 수정 버튼을 눌렀을 때 한줄평의 
+function updateContent(num) {
+	var temp = document.getElementById("temp").value;
+	goUrl('update?reviewNum=' + num + '&contents=' + temp);
 }

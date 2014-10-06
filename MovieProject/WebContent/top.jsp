@@ -10,15 +10,14 @@
 
 </head>
 <body>
-	<a href="<c:url value="/index.jsp"/>"><img id="link" alt="link" src="<c:url value='/images/link.png'/>"></a>
 	<div id="top">
 		<div class="boardpage">
 
 			<table id="headertable" class="headertable">
 				<tr>
-					<td><a href="<c:url value="/board/list"/>">공지사항</a> |</td>
+					<td><a href="<c:url value="notice.jsp"/>">공지사항</a> |</td>
 					<td><a href="<c:url value="/week_Recommend.jsp"/>">금주추천</a> |</td>
-					<td><a href="<c:url value="/movie/movielist?type=1"/>">회원추천</a> |</td>
+					<td><a href="<c:url value="/member_Recommend.jsp"/>">회원추천</a> |</td>
 					<td><a href="<c:url value="/newMovieIntro.jsp"/>">최신영화</a> |</td>
 					<td><a href="<c:url value="/review/list"/>">영화리뷰</a></td>
 				</tr>
