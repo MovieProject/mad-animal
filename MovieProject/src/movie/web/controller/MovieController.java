@@ -66,6 +66,8 @@ public class MovieController extends HttpServlet {
 				updateMovieForm(request, response);
 			} else if (action.equals("/updateMovie")) {
 				updateMovie(request, response);
+			} else if(action.equals("/moviepreview")){
+				previewMovie(request,response);
 			}
 
 		} catch (DataDuplicatedException e) {
@@ -76,6 +78,80 @@ public class MovieController extends HttpServlet {
 
 		}
 
+	}
+
+	private void previewMovie(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		MovieService service = new MovieServiceImpl();
+
+		// searchType, searchText 요청 파라미터 값을 구한다.
+		String searchText = request.getParameter("searchText");
+		String searchType = request.getParameter("searchType");
+		int type = Integer.parseInt(request.getParameter("type"));
+		// 검색 옵션을 담고 있는 Map 객체를 생성하여 searchType, searchText 값을 저장한다.
+		Map<String, Object> searchInfo = new HashMap<String, Object>();
+
+		String pageNumber = request.getParameter("pageNumber");
+
+		searchInfo.put("searchType", searchType);
+		searchInfo.put("searchText", searchText);
+		searchInfo.put("type", type);
+		// (1) 현재 페이지 번호
+		int currentPageNumber = 1;
+		if ((pageNumber != null) && (pageNumber.length() != 0)) {
+			currentPageNumber = Integer.parseInt(pageNumber);
+		}
+
+		// (4) 전체 개시글 개수
+		int totalBoardCount = service.getMovieCount(searchInfo);
+
+		// (5) 전체 페이지 개수
+		int totalPageCount = MovieUtil.getTotalPageCount(totalBoardCount);
+
+		// (6) 페이지 선택 바에 표시될 시작 페이지 번호
+		int startPageNumber = MovieUtil.getStartPageNumber(currentPageNumber);
+
+		// (7) 페이지 선택바에 표시될 끝 페이지 번호
+		int endPageNumber = MovieUtil.getEndPageNumber(currentPageNumber,
+				totalBoardCount);
+
+		// (8) 현재 페이지의 게시글 목록에서 처음 보여질 게시글의 행 번호
+		int startRow = MovieUtil.getStartRow(currentPageNumber);
+
+		// (9) 현재 페이지의 게시글 목록에서 마지막에 보여질 게시글의 행 번호
+		int endRow = MovieUtil.getEndRow(currentPageNumber);
+
+		// 검색옵션 Map(searchInfo)에 startRow와 endRow 값을 저장한다.
+		searchInfo.put("startRow", startRow);
+		searchInfo.put("endRow", endRow);
+		System.out.println(startRow);
+		System.out.println(endRow);
+		System.out.println(searchInfo);
+		Movie[] movielist = service.getMovieList(searchInfo);
+		for (Movie movie : movielist) {
+			System.out.println(movie);
+		}
+		request.setAttribute("movielist", movielist);
+		request.setAttribute("currentPageNumber", currentPageNumber);
+		request.setAttribute("startPageNumber", startPageNumber);
+		request.setAttribute("endPageNumber", endPageNumber);
+		request.setAttribute("totalPageCount", totalPageCount);
+		RequestDispatcher dispatcher = null;
+		if (type == 1) {
+			dispatcher = request
+					.getRequestDispatcher("/WEB-INF/views/movie/member_Recommend_pre.jsp");
+		} else if (type == 2) {
+			dispatcher = request
+					.getRequestDispatcher("/WEB-INF/views/movie/newMovieIntro_pre.jsp");
+
+		} else if (type == 3) {
+			dispatcher = request
+					.getRequestDispatcher("/WEB-INF/views/movie/week_Recommend_pre.jsp");
+
+		}
+		dispatcher.forward(request, response);
+		
 	}
 
 	private void updateMovieForm(HttpServletRequest request,
