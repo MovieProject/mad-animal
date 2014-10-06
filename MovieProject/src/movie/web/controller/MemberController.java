@@ -93,7 +93,7 @@ public class MemberController extends HttpServlet {
 		MemberService service = new MemberServiceImpl();
 		Member[] memberList = service.getMemberList();
 		request.setAttribute("memberList", memberList);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("memberManager.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/memberManager.jsp");
 		dispatcher.forward(request, response);
 		
 	}
@@ -165,7 +165,7 @@ public class MemberController extends HttpServlet {
 			Member member = service.getMember(memberID);
 			request.setAttribute("selectedMember", member);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("detailsMember.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/detailsMember.jsp");
 			dispatcher.forward(request, response);
 	
 
