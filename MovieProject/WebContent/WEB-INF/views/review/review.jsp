@@ -52,12 +52,12 @@
 						</tr>
 							<c:if test="${ sessionScope.loginMember.memberName != review.writerName && loginMember.grade != 2 }">
 								<tr>
-								<th>한줄평</th><td class="oneline" colspan="5"><script>contentMaxLength('${ review.contents }');</script></td>
+								<th>한줄평</th><td id="oneline" class="oneline" colspan="5">${ review.contents }</td>
 								</tr>
 							</c:if>
 							<c:if test="${ sessionScope.loginMember.memberName eq review.writerName || loginMember.grade eq 2}">
 								<tr>
-								<th>한줄평</th><td class="oneline" colspan="4">${ review.contents }</td>
+								<th>한줄평</th><td id="oneline" class="oneline" colspan="4">${ review.contents }</td>
 								<td>
 									<input type="button" value="수정" onclick="popup('${ review.reviewNum }', '${ review.movieTitle }', '${ review.contents }');">
 									<input type="button" value="삭제" onclick="goUrl('remove?reviewNum=${review.reviewNum}');">

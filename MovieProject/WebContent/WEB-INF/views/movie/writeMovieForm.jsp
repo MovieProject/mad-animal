@@ -7,8 +7,8 @@
 <title>Movie</title>
 <link rel="stylesheet" href="../css/movie.css">
 <link rel="stylesheet" href="../css/board.css">
-<script type="text/javascript" src = "../js/script.js"></script>
-<script type="text/javascript" src = "../js/board.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+<script type="text/javascript" src="../js/board.js"></script>
 </head>
 <body>
 
@@ -20,15 +20,26 @@
 
 		<div id="content">
 
-			<form name="writeForm" action="<c:url value="writeMovie"/>" method="POST"  enctype="multipart/form-data">
+			<form name="writeForm" action="<c:url value="writeMovie"/>"
+				method="POST" enctype="multipart/form-data">
 				<table id="writetable" class="maintable" align="center">
-					<caption id="boardtitle">회원추천 영화 등록</caption>
+					<c:choose>
+						<c:when test="${movie.type eq 2 }">
+							<caption id="contenttitle">금주의 영화</caption>
+						</c:when>
+						<c:when test="${movie.type eq 1 }">
+							<caption id="contenttitle">회원 추천 영화</caption>
+						</c:when>
+						<c:when test="${movie.type eq 3 }">
+							<caption id="contenttitle">최신영화 정보</caption>
+						</c:when>
+
+					</c:choose>
 					<thead>
 						<tr>
 							<th>영화 제목</th>
 							<td><input class="titleinput" type="text" name="title"
-								size="20" maxlength="50">
-				 </td>
+								size="20" maxlength="50"></td>
 						</tr>
 						<tr>
 							<th>장르</th>
@@ -41,8 +52,8 @@
 						<tr>
 							<th>개봉일</th>
 
-							<td><input class="writerinput" type="date" name="releaseDate"
-								size="20" maxlength="20"></td>
+							<td><input class="writerinput" type="date"
+								name="releaseDate" size="20" maxlength="20"></td>
 
 						</tr>
 						<tr>
@@ -70,14 +81,15 @@
 						</tr>
 					</tbody>
 				</table>
-				<input type="hidden" name = "memberID" value = "${loginMember.memberID }">
-				<input type="hidden" name = "type" value = "${type}">
+				<input type="hidden" name="memberID"
+					value="${loginMember.memberID }">
+					 <input type="hidden"
+					name="type" value="${type}">
 				<div class="buttonbar">
-				<!-- 	<input type="button" value="등록"
+					<!-- 	<input type="button" value="등록"
 						onclick="boardWriteCheck(this.form);"> -->
-				<input type="submit" value="등록">
-						 <input
-						type="button" value="취소" onclick="goUrl('movielist?type=${type}');">
+					<input type="submit" value="등록"> <input type="button"
+						value="취소" onclick="goUrl('movielist?type=${type}');">
 				</div>
 			</form>
 		</div>
