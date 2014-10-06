@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="../css/movie.css">
 <script type="text/javascript" src="js/script.js">
-	
 </script>
 <div class="sidebar">
 	<%-- 
@@ -24,15 +24,13 @@
 			<td id="menulabel">Menu</td>
 			<td></td>
 		</tr>
-		<tr>
-			<td></td>
-		</tr>
 
 		<tr>
 			<td><a href="<c:url value="/index.jsp"/>">메인</a></td>
 		</tr>
 		<tr>
 			<td><a href="<c:url value="/board/list"/>">공지사항</a></td>
+<%-- 			<td><a href="<c:url value="/board/list"/>">공지사항</a></td> --%>
 		</tr>
 		<tr> 
 			<td><a href="<c:url value="/week_Recommend.jsp"/>">금주 추천 영화</a></td>

@@ -13,8 +13,8 @@ public class MovieUtil {
 	public static final int GRADE_WRITER = 1;
 	public static final int GRADE_GENERAL = 0;
 
-	public final static int PAGE_LIST_SIZE = 5;
-	public final static int PAGE_GROUP_SIZE = 2;
+	public final static int PAGE_LIST_SIZE = 10;
+	public final static int PAGE_GROUP_SIZE = 3;
 
 	public static int getTotalPageCount(int totalBoardCount) {
 		int totalPageCount = totalBoardCount / PAGE_LIST_SIZE;

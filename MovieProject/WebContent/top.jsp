@@ -13,7 +13,7 @@
 	<div id="top">
 		<div class="boardpage">
 
-			<table id="headertable" class="headertable">
+				<table id="headertable" class="headertable">
 				<tr>
 					<td><a href="<c:url value="notice.jsp"/>">공지사항</a> |</td>
 					<td><a href="<c:url value="/week_Recommend.jsp"/>">금주추천</a> |</td>

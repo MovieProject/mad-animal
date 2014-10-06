@@ -17,32 +17,33 @@
 		</header>
 
 		<div id="content">
-
-			<table id="readtable" class="maintable">
-				<caption>게시글 보기</caption>
-				<thead>
-					<tr>
-						<th>제 목</th>
-						<td class="title" colspan="5">${board.title}</td>
-					</tr>
-					<tr>
-						<th>장르</th>
-						<td class="writer">${board.writer}</td>
-						<th>개봉일</th>
-						<td class="readcount">${board.readCount}</td>
-						<th>감독</th>
-						<td class="regdate">${board.regDate}</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th>줄거리</th>
-					</tr>
-					<tr>
-						<td class="contents" colspan="6">${board.contents}</td>
-					</tr>
-				</tbody>
-			</table>
+				<table id="weektable" class="maintable">
+	 	<caption id="contenttitle">금주의 영화</caption>
+		<tr>
+			<td id="poster" rowspan="6">
+			<img alt="영화 포스터" src="<c:url value="http://placehold.it/150x200" />"></td>
+			<th>제목</th>
+			<td class="title">${movie.title}</td>
+		</tr>
+		<tr>
+			<th>장르</th>
+			<td class="genre">${movie.genre }</td>
+		</tr>
+		<tr>
+			<th>감독</th>
+			<td class="director">${movie.director }</td>
+		</tr>
+		<tr>
+			<th>개봉일</th>
+			<td class="date">${movie.releaseDate }</td>
+		</tr>
+		<tr>
+			<th colspan="2">줄거리</th>
+		</tr>
+		<tr>
+			<td id="story" colspan="2">${movie.synopsys }</td>
+		</tr>
+	</table>
 			<div class="buttonbar">
 				<c:if test="${empty loginMember}">
 					<input type="button" value="목록"

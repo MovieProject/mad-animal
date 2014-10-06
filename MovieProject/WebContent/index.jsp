@@ -9,11 +9,11 @@
 
 </head>
 <body>
-
 	<div id="page">
 
 		<header id="header">
-			<c:import url="top.jsp"></c:import>
+					<img id="headerSlogan" src="images/headerSlogan.gif">
+			<c:import url="top.jsp"></c:import>    
 		</header>
 
 		<div id="content">
@@ -27,7 +27,6 @@
 		</aside>
 
 		<footer id="footer">
-			<c:import url="footer.jsp"></c:import>
 		</footer>
 	</div>
 </body>

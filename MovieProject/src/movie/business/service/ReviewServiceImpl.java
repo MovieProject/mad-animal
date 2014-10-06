@@ -31,14 +31,14 @@ public class ReviewServiceImpl implements ReviewService {
 
 	public void updateReview(Review review) throws DataNotFoundException {
 		if (!reviewDataAccess.reviewNumExists(review.getReviewNum())) {
-			new DataNotFoundException("Data is not Exists");
+			throw new DataNotFoundException("Data is not Exists");
 		}
 		reviewDataAccess.updateReview(review);
 	}
 
 	public void removeReview(int reviewNum) throws DataNotFoundException {
 		if (!reviewDataAccess.reviewNumExists(reviewNum)) {
-			new DataNotFoundException("Data is not Exists");
+			throw new DataNotFoundException("Data is not Exists");
 		}
 		reviewDataAccess.deleteReview(reviewNum);
 	}

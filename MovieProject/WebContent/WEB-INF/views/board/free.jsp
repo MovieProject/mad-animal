@@ -84,7 +84,7 @@
 				</tfoot> 
 			</table>
 			<div class="buttonbar">
-				<form name="searchForm" action="list" method="GET"
+				<form name="searchForm" action="list" method="POST"
 					onsubmit="return searchCheck();">
 					<select name="searchType">
 						<option value="all"

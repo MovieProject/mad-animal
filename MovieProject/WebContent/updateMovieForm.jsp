@@ -60,8 +60,11 @@
 						<tr>
 							<td colspan="2"><textarea id="editor" class="contentsinput"
 									name="contents">${board.contents}</textarea>
-									 <!-- <script>CKEDITOR.replace('editor');</script> -->
 							</td>
+						</tr>
+												<tr>
+							<th>사진첨부</th>
+							<td><input type="file" name="file"></td>
 						</tr>
 					</tbody>
 				</table>

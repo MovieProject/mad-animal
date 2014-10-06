@@ -20,13 +20,13 @@
 
 		<tr>
 			<td><input type="text" name="memberID" size="13"
-				placeholder="아이디"></td>
+				placeholder="아이디" tabindex="1" ></td>
 			<td rowspan="2"><input type="submit" name="login" value="로그인"
 				id="login"></td>
 		</tr>
 		<tr>
 			<td><input type="password" name="password" size="13"
-				placeholder="비밀번호"></td>
+				placeholder="비밀번호" tabindex="2"></td>
 		</tr>
 
 	</table>
