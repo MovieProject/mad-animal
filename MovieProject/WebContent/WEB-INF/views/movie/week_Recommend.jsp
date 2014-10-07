@@ -91,7 +91,7 @@
 						 <input type="submit" value="검색"> 
 						<input
 						type="button" value="목록" onclick="goUrl('movielist?type=2');">
-					<c:if test="${not empty loginMember}">
+					<c:if test="${not empty loginMember && loginMember.grade eq 2}">
 						<input type="button" value="글쓰기" onclick="goUrl('writeMovieForm?type=2');">
 					</c:if> 
 				<%-- 

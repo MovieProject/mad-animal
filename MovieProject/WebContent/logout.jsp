@@ -2,13 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script type="text/javascript" src = "js/board.js"></script>
 <link rel="stylesheet" href="css/movie.css">
-<!DOCTYPE html>
-<form action="<c:url value="/member?action=logout"/>" method="POST">
+<form action="<c:url value="/member/logout"/>" method="POST">
 	<table id="logouttable">
 
 		<tr>
-			<td><a href="<c:url value="updateMember.jsp"/>">회원정보수정</a></td>
-			<td><a onclick="removeCheck('<c:url value="/member?action=remove&memberID=${loginMember.memberID }"/>');">회원탈퇴</a></td>
+			<td><a href="<c:url value="/member/updateform"/>">회원정보수정</a></td>
+			<td><a onclick="removeCheck('<c:url value="member/remove?memberID=${loginMember.memberID }"/>');">회원탈퇴</a></td>
 		</tr>
 		<tr>
 			<td class="message"><span class="loginName">${loginMember.memberName}</span>님<br> 환영합니다.
