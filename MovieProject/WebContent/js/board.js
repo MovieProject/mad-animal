@@ -60,15 +60,6 @@ function boardWriteCheck(form) {
 		return;
 	}
 
-	/*
-	 * if (form.writer.value == '') { alert('이름을 입력하세요'); form.writer.focus();
-	 * return; }
-	 */
-	/*
-	 * if (form.contents.value == '') { alert('내용을 입력하세요');
-	 * form.contents.focus(); return; }
-	 */
-
 	if (edit.getData() == '') {
 		alert('내용을 입력하세요');
 		edit.focus();
@@ -85,6 +76,75 @@ function checkNotEmpty(inputField, errorSpan) {
 		errorSpan.innerHTML = '';
 	}
 }
+
+function checkUpdateMovie(form){
+	var title = document.getElementById("movieUpdateTitle");
+	var genre = document.getElementById("movieUpdateGenre");
+	var director = document.getElementById("movieUpdateDirector");
+	var synopsis = document.getElementById("movieUpdateSynopsis");
+	
+	if(title.value ==''){
+		alert("영화 제목을 입력하세요.");
+		title.focus();
+		return;
+	}
+	if(genre.value ==''){
+		alert("장르를 입력하세요.");
+		genre.focus();
+		return;
+	}
+
+	if(director.value ==''){
+		alert("감독을 입력하세요.");
+		director.focus();
+		return;
+	}
+	if(synopsis.value ==''){
+		alert("줄거리를 입력하세요.");
+		synopsis.focus();
+		return;
+	}
+	form.submit();
+}
+function checkWriteMovie(form){
+	var title = document.getElementById("movieWriteTitle");
+	var genre = document.getElementById("movieWriteGenre");
+	var releaseDate = document.getElementById("movieWriteDate");
+	var director = document.getElementById("movieWriteDirector");
+	var synopsis = document.getElementById("movieWriteSynopsis");
+	var file = document.getElementById("movieWriteFile");
+	
+	if(title.value ==''){
+		alert("영화 제목을 입력하세요.");
+		title.focus();
+		return;
+	}
+	if(genre.value ==''){
+		alert("장르를 입력하세요.");
+		genre.focus();
+		return;
+	}
+	if(releaseDate.value ==''){
+		alert("개봉일자를 입력하세요");
+		releaseDate.focus();
+		return;
+	}
+	if(director.value ==''){
+		alert("감독을 입력하세요");
+		director.focus();
+		return;
+	}
+	if(synopsis.value ==''){
+		alert("줄거리를 입력하세요");
+		synopsis.focus();
+		return;
+	}
+	if(file.value ==''){
+		alert("이미지를 선택하시 않았습니다. 기본이미지로 들어갑니다.");
+	}
+	form.submit();
+}
+
 
 function validateForm() {
 	var checkboxes = document.listDelete.items;

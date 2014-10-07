@@ -21,7 +21,7 @@
 		<div id="content">
 
 			<form name="writeForm" action="write" method="POST"  >
-			<table id="writetable" class="maintable" align="center">
+			<table id="writetable" class="maintable" >
 				<caption id="boardtitle">공지사항 입력</caption>
 				<thead>
 					<tr>

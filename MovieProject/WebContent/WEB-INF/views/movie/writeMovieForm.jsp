@@ -7,7 +7,8 @@
 <title>Movie</title>
 <link rel="stylesheet" href="../css/movie.css">
 <link rel="stylesheet" href="../css/board.css">
-<script type="text/javascript" src="../js/board.js"></script>
+<script type="text/javascript" src="../js/board.js">
+</script>
 </head>
 <body>
 
@@ -20,8 +21,8 @@
 		<div id="content">
 
 			<form name="writeForm" action="<c:url value="writeMovie"/>"
-				method="POST" enctype="multipart/form-data">
-				<table id="writetable" class="maintable" align="center">
+				method="POST" enctype="multipart/form-data" >
+				<table id="writetable" class="maintable" >
 					<c:choose>
 						<c:when test="${movie.type eq 2 }">
 							<caption id="contenttitle">금주의 영화</caption>
@@ -37,14 +38,14 @@
 					<thead>
 						<tr>
 							<th>영화 제목</th>
-							<td><input class="titleinput" type="text" name="title"
+							<td><input class="titleinput" type="text" name="title" id='movieWriteTitle'
 								size="20" maxlength="50"></td>
 						</tr>
 						<tr>
 							<th>장르</th>
 
 							<td><input class="writerinput" type="text" name="genre"
-								size="20" maxlength="20"></td>
+								size="20" maxlength="20" id="movieWriteGenre"></td>
 
 						</tr>
 
@@ -52,14 +53,14 @@
 							<th>개봉일</th>
 
 							<td><input class="writerinput" type="date"
-								name="releaseDate" size="20" maxlength="20"></td>
+								name="releaseDate" size="20" maxlength="20" id="movieWriteDate"></td>
 
 						</tr>
 						<tr>
 							<th>감독</th>
 
 							<td><input class="writerinput" type="text" name="director"
-								size="20" maxlength="20"></td>
+								size="20" maxlength="20" id="movieWriteDirector"></td>
 
 						</tr>
 						<tr>
@@ -68,7 +69,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan="2"><textarea id="editor" class="contentsinput"
+							<td colspan="2"><textarea id="movieWriteSynopsis" class="contentsinput"
 									name="synopsis"></textarea> <!-- 							<script>CKEDITOR.replace('editor');</script> -->
 
 								<!-- <textarea class="contentsinput ckeditor" name="contents"></textarea> -->
@@ -76,7 +77,7 @@
 						</tr>
 						<tr>
 							<th>사진첨부</th>
-							<td><input type="file" name="file"></td>
+							<td><input type="file" name="file" id = "movieWriteFile"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -87,7 +88,8 @@
 				<div class="buttonbar">
 					<!-- 	<input type="button" value="등록"
 						onclick="boardWriteCheck(this.form);"> -->
-					<input type="submit" value="등록"> <input type="button"
+					<input type="button" value="등록" onclick="checkWriteMovie(this.form)" > 
+					<input type="button"
 						value="취소" onclick="goUrl('movielist?type=${type}');">
 				</div>
 			</form>
