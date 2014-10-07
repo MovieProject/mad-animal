@@ -7,6 +7,7 @@
 <title>Movie</title>
 <link rel="stylesheet" href="../css/movie.css">
 <link rel="stylesheet" href="../css/board.css">
+<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 <script src="../js/board.js"></script>
 </head>
 <body>
@@ -19,7 +20,7 @@
 
 		<div id="content">
 
-			<form name="writeForm" action="write" method="POST" onsubmit="return boardWriteCheck(this.form)">
+			<form name="writeForm" action="write" method="POST">
 			<table id="writetable" class="maintable" align="center">
 				<caption id="boardtitle">공지사항 입력</caption>
 				<thead>
@@ -39,16 +40,16 @@
 				<tbody>
 					<tr>
 						<td colspan="2">
- 							<textarea id="editor" class="contentsinput" name="contents"></textarea>
-<!-- 							<script>CKEDITOR.replace('editor');</script> -->
-
-							<!-- <textarea class="contentsinput ckeditor" name="contents"></textarea> -->
+ 							<textarea id="editor" class="contentsinput ckeditor" name="contents"></textarea>
+								<script type = "text/javascript" id="ckeditor">
+									CKEDITOR.replace('editor');
+								</script>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 			<div class="buttonbar">
-				<input type="submit" value="등록" >
+				<input type="button" value="등록" onclick="boardWriteCheck(this.form)">
 				<input type="button" value="취소" onclick="goUrl('list');">
 			</div>
 		</form>

@@ -7,6 +7,7 @@
 <title>Movie</title>
 <link rel="stylesheet" href="../css/movie.css">
 <link rel="stylesheet" href="../css/board.css">
+<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 <script src="../js/board.js"></script>
 </head>
 <body>

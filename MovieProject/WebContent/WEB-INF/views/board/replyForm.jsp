@@ -7,6 +7,7 @@
 <title>Movie</title>
 <link rel="stylesheet" href="../css/movie.css">
 <link rel="stylesheet" href="../css/board.css">
+<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 <script src="../js/board.js"></script>
 </head>
 <body>
@@ -35,13 +36,13 @@
 				<tbody>
 					<tr>
 						<td colspan="2">
-							<textarea class="contentsinput ckeditor" name="contents"></textarea>
+							<textarea id="editor" class="contentsinput ckeditor"></textarea>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 			<div class="buttonbar">
-				<input type="submit" value="등록" onclick="boardWriteCheck(this.form);">
+				<input type="button" value="등록" onclick="boardWriteCheck(this.form)">
 				<input type="button" value="취소" onclick="goUrl('read?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 			</div>
 		</form>

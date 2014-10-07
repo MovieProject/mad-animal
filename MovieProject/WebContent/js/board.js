@@ -42,17 +42,13 @@ function boardWriteCheck(form) {
 		form.writer.focus();
 		return;
 	}*/
-/*	if (form.contents.value == '') {
-		alert('내용을 입력하세요');
-		form.contents.focus();
-		return;
-	}*/
 
-	if(edit.getData() == ''){
-		alert('내용을 입력하세요');
-		edit.focus();
+	if(edit.getData() == ""){
+		alert("내용을 입력하세요.");
+		CKEDITOR.instances.editor.focus();
 		return;
 	}
+
 	form.submit();
 }
 //폼필드가 비어있는지 여부를 체그하여 에러메시지를 출력

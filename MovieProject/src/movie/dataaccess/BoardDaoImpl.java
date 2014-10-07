@@ -95,9 +95,9 @@ public class BoardDaoImpl implements BoardDao {
 			if (searchType.equals("all")) {
 				whereSQL = "WHERE board_title LIKE ? OR board_writer LIKE ? OR board_contents LIKE ?";
 
-			} else if ((searchType.equals("title"))
-					|| (searchType.equals("writer"))
-					|| (searchType.equals("contents"))) {
+			} else if ((searchType.equals("board_title"))
+					|| (searchType.equals("board_writer"))
+					|| (searchType.equals("board_contents"))) {
 				whereSQL = "WHERE " + searchType + " LIKE ?";
 			}
 		}
@@ -136,9 +136,9 @@ public class BoardDaoImpl implements BoardDao {
 				pstmt.setInt(4, startRow);
 				pstmt.setInt(5, endRow);
 
-			} else if ((searchType.equals("title"))
-					|| (searchType.equals("writer"))
-					|| (searchType.equals("contents"))) {
+			} else if ((searchType.equals("board_title"))
+					|| (searchType.equals("board_writer"))
+					|| (searchType.equals("board_contents"))) {
 				pstmt.setString(1, searchText);
 				pstmt.setInt(2, startRow);
 				pstmt.setInt(3, endRow);
@@ -198,9 +198,9 @@ public class BoardDaoImpl implements BoardDao {
 			if (searchType.equals("all")) {
 				whereSQL = "WHERE board_title LIKE ? OR board_writer LIKE ? OR board_contents LIKE ?";
 
-			} else if ((searchType.equals("title"))
-					|| (searchType.equals("writer"))
-					|| (searchType.equals("contents"))) {
+			} else if ((searchType.equals("board_title"))
+					|| (searchType.equals("board_writer"))
+					|| (searchType.equals("board_contents"))) {
 				whereSQL = "WHERE " + searchType + " LIKE ?";
 			}
 		}
@@ -227,9 +227,9 @@ public class BoardDaoImpl implements BoardDao {
 					pstmt.setString(2, searchText);
 					pstmt.setString(3, searchText);
 
-				} else if ((searchType.equals("title"))
-						|| (searchType.equals("writer"))
-						|| (searchType.equals("contents"))) {
+				} else if ((searchType.equals("board_title"))
+						|| (searchType.equals("board_writer"))
+						|| (searchType.equals("board_contents"))) {
 					pstmt.setString(1, searchText);
 				}
 			}
