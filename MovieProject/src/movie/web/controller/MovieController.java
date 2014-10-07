@@ -64,6 +64,8 @@ public class MovieController extends HttpServlet {
 				updateMovie(request, response);
 			} else if(action.equals("/moviepreview")){
 				previewMovie(request,response);
+			} else if(action.equals("/removeMovieList")){
+				removeMovieList(request,response);
 			}
 
 		} catch (DataDuplicatedException e) {
@@ -74,6 +76,19 @@ public class MovieController extends HttpServlet {
 
 		}
 
+	}
+
+	private void removeMovieList(HttpServletRequest request,
+			HttpServletResponse response) throws NumberFormatException, DataNotFoundException, ServletException, IOException {
+		// TODO Auto-generated method stub
+		String[] items = request.getParameterValues("items");
+		MovieService service =  new MovieServiceImpl();
+		for(String item:items){
+			service.removeMovie(Integer.parseInt(item.toString()));
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/movie/movielist?type=1");
+		dispatcher.forward(request, response);
+		
 	}
 
 	private void previewMovie(HttpServletRequest request,

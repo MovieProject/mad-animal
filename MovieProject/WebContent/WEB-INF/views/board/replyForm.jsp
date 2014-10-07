@@ -32,7 +32,7 @@
 				<tbody>
 					<tr>
 						<td colspan="2">
-							<textarea class="contentsinput ckeditor" name="contents"></textarea>
+							<textarea id = 'editor' class="contentsinput ckeditor" name="contents"></textarea>
 						</td>
 					</tr>
 				</tbody>

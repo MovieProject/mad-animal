@@ -421,7 +421,7 @@ public class MemberDaoImpl implements MemberDao {
 		query = "UPDATE member SET GRADE = ? WHERE MEMBER_ID = ?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			con = obtainConnection();
 			pstmt = con.prepareStatement(query);
@@ -431,8 +431,8 @@ public class MemberDaoImpl implements MemberDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			if(con!=null){
+		} finally {
+			if (con != null) {
 				try {
 					con.close();
 				} catch (SQLException e) {
@@ -440,7 +440,7 @@ public class MemberDaoImpl implements MemberDao {
 					e.printStackTrace();
 				}
 			}
-			if(pstmt!=null){
+			if (pstmt != null) {
 				try {
 					pstmt.close();
 				} catch (SQLException e) {

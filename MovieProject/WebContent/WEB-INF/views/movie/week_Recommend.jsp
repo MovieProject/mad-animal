@@ -82,10 +82,10 @@
 					<select name="searchType">
 						<option value="all"
 							<c:if test="${empty param.searchType}" >selected="selected"</c:if>>전체검색</option>
-						<option value="movieName"
-							<c:if test="${param.searchType == 'title'}"> selected="selected"</c:if>>영화제목</option>
+						<option value="movie_name"
+							<c:if test="${param.searchType == 'movie_name'}"> selected="selected"</c:if>>영화제목</option>
 						<option value="director"
-							<c:if test="${param.searchType eq 'writer'}"> selected="selected"</c:if>>감독</option>
+							<c:if test="${param.searchType eq 'director'}"> selected="selected"</c:if>>감독</option>
 					</select> <input id="searchinput" type="text" name="searchText"
 						value="${param.searchText}">
 						 <input type="submit" value="검색"> 

@@ -37,17 +37,6 @@ function boardWriteCheck(form) {
 		return;
 	}
 	
-/*	if (form.writer.value == '') {
-		alert('이름을 입력하세요');
-		form.writer.focus();
-		return;
-	}*/
-/*	if (form.contents.value == '') {
-		alert('내용을 입력하세요');
-		form.contents.focus();
-		return;
-	}*/
-
 	if(edit.getData() == ''){
 		alert('내용을 입력하세요');
 		edit.focus();
@@ -73,6 +62,24 @@ function validateForm(){
 	}
 	alert("선택된 값이 없습니다.");
 	return false;
+}
+/**회원추천영화 선택삭제하는 기능*/
+function validateMovie(){
+	var form = document.getElementById("member_recommend_form");
+	var checkboxes = document.getElementsByName("items");
+	var booleanValue = false;
+	for(var i = 0;i<checkboxes.length;i++){
+		if(checkboxes[i].checked== true){
+			booleanValue = true;
+		}
+	}
+	if(booleanValue){
+		if(confirm("정말로 삭제하시겠습니까?")){
+			form.submit();
+		}
+	}else{
+		alert("선택된 값이 없습니다.");		
+	}
 }
 
 // 리뷰 글쓰기 폼 체크
@@ -100,6 +107,9 @@ window.onload = function () {
 			document.getElementsByName('inputOneline')[index].value = sub;
 		}
 	}
+	$(function() {
+		$( document ).tooltip();
+	})
 }
 
 // 수정용 팝업 설정
@@ -111,7 +121,7 @@ function popup(num, title, content) {
 			'<table><tr><th>제목</th>' +
 			'<td>' + title + '</td></tr>' +
 			'<tr><th>한줄평</th>' +
-			'<td width="530" ><textarea name="contents" id="temp" class="inputtext" type="text" style="width: 490px" onkeydown="characterCheck()" onkeyup="characterCheck()" rows="3">' + content + '</textarea>' + // 기존 한줄평을 받아서 화면에 출력 해줌
+			'<td width="530" ><textarea name="contents" id="temp" class="inputtext" type="text" style="width: 490px" onkeydown="characterCheck()" onkeyup="characterCheck()" rows="3">'+content+'</textarea>' + // 기존 한줄평을 받아서 화면에 출력 해줌
 			'</td></tr></table>' + 
 			'</div>',
         buttons   : 
@@ -137,19 +147,20 @@ function updateContent(num) {
 
 function characterCheck() {
 //	var RegExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;//정규식 구문
-	var RegExp = /[ \'\"]/gi;	//정규식 구문
+	var RegExp = /[\'\"]/gi;	//정규식 구문
 	var obj1 = document.getElementsByName("movieTitle")[0];
 	var obj2 = document.getElementsByName("contents")[0];
 	var obj3 = document.getElementsByName("contents")[1];
 	if (RegExp.test(obj1.value)) {
-		alert("허용되지 않는 특수문자입니다.");
-		obj1.value = obj1.value.substring(0, obj1.value.length - 1);//특수문자를 지우는 구문
-	} else if (RegExp.test(obj2.value)) {
-		alert("허용되지 않는 특수문자입니다.");
-		obj2.value = obj2.value.substring(0, obj2.value.length - 1);//특수문자를 지우는 구문
-	} else if (RegExp.test(obj3.value)) {
-		alert("허용되지 않는 특수문자입니다.");
-		obj3.value = obj3.value.substring(0, obj3.value.length - 1);//특수문자를 지우는 구문
+		alert("허용되지 않는 특수문자입니다.( \' , \" )");
+		obj1.value = obj1.value.replace(RegExp, "");//특수문자를 지우는 구문
+	}
+	if (RegExp.test(obj2.value)) {
+		alert("허용되지 않는 특수문자입니다.( \' , \" )");
+		obj2.value = obj2.value.replace(RegExp, "");//특수문자를 지우는 구문
+	}
+	if (RegExp.test(obj3.value)) {
+		alert("허용되지 않는 특수문자입니다.( \' , \" )");
+		obj3.value = obj3.value.replace(RegExp, "");//특수문자를 지우는 구문
 	}
 }
-

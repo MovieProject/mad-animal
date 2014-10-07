@@ -40,8 +40,8 @@
 				<tbody>
 					<tr>
 						<td colspan="2">
- 							<textarea  class="contentsinput" name="contents"></textarea>
-								<script>CKEDITOR.replace('contents');</script>
+ 							<textarea  id = 'editor'class="contentsinput" name="contents"></textarea>
+								<script>CKEDITOR.replace('editor');</script>
 
 							<!-- <textarea class="contentsinput ckeditor" name="contents"></textarea> -->
 						</td>

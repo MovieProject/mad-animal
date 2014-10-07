@@ -49,9 +49,9 @@ public class MovieDaoImpl implements MovieDao {
 		if (searchType != null) {
 			if (searchType.equals("all")) {
 				whereOutQuery = "WHERE movie_name like ? OR director like ?";
-			} else if (searchText.equals("movieName")
-					|| searchText.equals("director")) {
-				whereOutQuery = "WHERE " + searchType + " LIKE ?";
+			} else if (searchType.equals("movie_name")
+					|| searchType.equals("director")) {
+				whereOutQuery = "WHERE " + searchType + " LIKE ? ";
 			}
 		}
 		if (searchType != null) {
@@ -81,8 +81,8 @@ public class MovieDaoImpl implements MovieDao {
 				pstmt.setString(2, searchText);
 				pstmt.setInt(3, startRow);
 				pstmt.setInt(4, endRow);
-			} else if (searchText.equals("movieName")
-					|| searchText.equals("director")) {
+			} else if (searchType.equals("movie_name")
+					|| searchType.equals("director")) {
 				pstmt.setString(1, searchText);
 				pstmt.setInt(2, startRow);
 				pstmt.setInt(3, endRow);
@@ -141,8 +141,8 @@ public class MovieDaoImpl implements MovieDao {
 		if (searchType != null) {
 			if (searchType.equals("all")) {
 				whereOutQuery = "WHERE movie_name like ? OR director like ? ";
-			} else if (searchText.equals("movieName")
-					|| searchText.equals("director")) {
+			} else if (searchType.equals("movie_name")
+					|| searchType.equals("director")) {
 				whereOutQuery = "WHERE " + searchType + " LIKE ?";
 			}
 		}
@@ -164,8 +164,8 @@ public class MovieDaoImpl implements MovieDao {
 				if (searchType.equals("all")) {
 					pstmt.setString(1, searchText);
 					pstmt.setString(2, searchText);
-				} else if (searchText.equals("movieName")
-						|| searchText.equals("director")) {
+				} else if (searchType.equals("movie_name")
+						|| searchType.equals("director")) {
 					pstmt.setString(1, searchText);
 				}
 			}

@@ -68,6 +68,9 @@ textarea {
 #listtable {
 	width: 770px;
 }
+#listtable .check{
+	width: 20px;
+}
 
 #listtable .num {
 	width: 45px;
