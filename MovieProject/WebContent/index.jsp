@@ -12,7 +12,7 @@
 <body>
 
 	<div id="page">
-	
+
 		<header id="header">
 			<c:import url="top.jsp"></c:import>
 		</header>

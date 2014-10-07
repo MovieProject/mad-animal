@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-<link rel="stylesheet" href="css/movie.css">
+<link rel="stylesheet" href="css/board.css">
+<script type="text/javascript" src="js/board.js"></script>
 </head>
 <body>
 
@@ -18,7 +19,8 @@
 		<div id="content">
 
 			<h4>[회원가입]</h4>
-			<form action=" <c:url value = '/member?action=register'/> " method="POST">
+			<form action=" <c:url value = '/member?action=register'/> "
+				method="POST">
 				<table class="registertable">
 
 					<tr>

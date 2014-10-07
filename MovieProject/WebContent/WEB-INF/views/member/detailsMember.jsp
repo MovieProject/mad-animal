@@ -6,18 +6,18 @@
 <meta charset="UTF-8">
 <title>Movie</title>
 <link rel="stylesheet" href="css/board.css">
-<script type="text/javascript" src="../js/board.js"></script>
+<script type="text/javascript" src="js/board.js"></script>
 </head>
 <body>
-
 	<div id="page">
-
 		<header id="header">
 			<c:import url="/top.jsp"></c:import>
 		</header>
 
 		<div id="content">
-			<form name = "managerForm" action = "<c:url value = "/member/gradeUpdate?memberID=${selectedMember.memberID}"/>" method = "post">
+			<form name="managerForm"
+				action="<c:url value = "/member/gradeUpdate?memberID=${selectedMember.memberID}"/>"
+				method="post">
 				<table id="managertable" class="maintable" align="center">
 					<caption id="boardtitle">회원관리</caption>
 					<thead>
@@ -70,4 +70,3 @@
 	</div>
 </body>
 </html>
-

@@ -28,9 +28,33 @@ function removeCheck(url) {
 	}
 }
 
+function movieWriteCheck(form){
+	if(form.title.value==''){
+		alert('내용을 입력하세요');
+		form.title.focus();
+		return;
+	}
+	if(form.genre.value==''){
+		alert('내용을 입력하세요');
+		form.genre.focus();
+		return;
+	}
+	if(form.releaseDate.value==''){
+		alert('내용을 입력하세요');
+		form.releaseDate.focus();
+		return;
+	}
+	if(form.synopsis.value==''){
+		alert('내용을 입력하세요');
+		form.synopsis.focus();
+		return;
+	}
+	form.submit();
+}
+
 // 수정 폼 체크
 function boardWriteCheck(form) {
-	var edit = CKEDITOR.instances.editor;
+	var edit = CKEDITOR.instances.contents;
 	if (form.title.value == '') {
 		alert('제목을 입력하세요.');
 		form.title.focus();
@@ -53,7 +77,8 @@ function boardWriteCheck(form) {
 		edit.focus();
 		return;
 	}
-	form.submit();
+		form.submit();
+
 }
 //폼필드가 비어있는지 여부를 체그하여 에러메시지를 출력
 function checkNotEmpty(inputField,errorSpan){
