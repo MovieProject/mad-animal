@@ -53,7 +53,6 @@
 					onclick="goUrl('movielist?type=${movie.type}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 			</c:if>
 			<c:if test="${not empty loginMember}">
-				<!-- <input type="button" value="목록" onclick="goUrl('board?action=list');"> -->
 				<input type="button" value="목록"
 					onclick="goUrl('movielist?type=${movie.type}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 				<input type="button" value="수정"
