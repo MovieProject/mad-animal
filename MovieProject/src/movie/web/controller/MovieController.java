@@ -72,8 +72,8 @@ public class MovieController extends HttpServlet {
 				updateMovie(request, response);
 			} else if (action.equals("/moviepreview")) {
 				previewMovie(request, response);
-			} else if(action.equals("/removeMovieList")){
-				removeMovieList(request,response);
+			} else if (action.equals("/removeMovieList")) {
+				removeMovieList(request, response);
 			}
 
 		} catch (DataDuplicatedException e) {
@@ -87,18 +87,20 @@ public class MovieController extends HttpServlet {
 	}
 
 	private void removeMovieList(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException, NumberFormatException, DataNotFoundException {
+			HttpServletResponse response) throws ServletException, IOException,
+			NumberFormatException, DataNotFoundException {
 		// TODO Auto-generated method stub
 		String[] items = request.getParameterValues("items");
+		System.out.println("들어옴");
 		System.out.println("items" + items);
 		MovieService service = new MovieServiceImpl();
-		if(items != null){
-			for(String item:items){
-				service.removeMovie(Integer.parseInt(item));
-			}
+		for (String item : items) {
+			System.out.println("item값" + item);
+			service.removeMovie(Integer.parseInt(item.toString()));
 		}
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/memberlist");
+
+		RequestDispatcher dispatcher = request
+				.getRequestDispatcher("/movie/movielist?type=1");
 		dispatcher.forward(request, response);
 	}
 
@@ -344,7 +346,7 @@ public class MovieController extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		MovieService service = new MovieServiceImpl();
-
+		System.out.println("items"+request.getParameterValues("items"));
 		// searchType, searchText 요청 파라미터 값을 구한다.
 		String searchText = request.getParameter("searchText");
 		String searchType = request.getParameter("searchType");
