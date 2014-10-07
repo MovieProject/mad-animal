@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-<link rel="stylesheet" href="../css/board.css">
+<link rel="stylesheet" href="../css/movie.css">
 <script src="../js/board.js"></script>
 </head>
 <body>
@@ -58,7 +58,7 @@
 
 
 				</tbody>
-				 <tfoot>
+				<tfoot>
 					<tr>
 						<td id="pagenavigator" colspan="5"><c:if
 								test="${startPageNumber >1}">
@@ -81,10 +81,11 @@
 									href="list?pageNumber=${endPageNumber + 1}&searchType=${searchType}&searchText=${searchText}">다음</a>
 							</c:if></td>
 					</tr>
-				</tfoot> 
+				</tfoot>
 			</table>
 			<div class="buttonbar">
-				<form name="searchForm" action="list" method="POST"
+
+				<form name="searchForm" action="list" method="GET"
 					onsubmit="return searchCheck();">
 					<select name="searchType">
 						<option value="all"
@@ -95,15 +96,13 @@
 							<c:if test="${param.searchType eq 'writer'}"> selected="selected"</c:if>>글쓴이</option>
 						<option value="contents"
 							<c:if test="${param.searchType == 'contents'}"> selected="selected"</c:if>>내용</option>
-					</select>
-					
-						<input id="searchinput" type="text" name="searchText" value="${param.searchText}"> 
-						<input type="submit" value="검색" onclick="searchCheck(this.form);">
-						
-						<input type="button" value="목록" onclick="goUrl('list');">
+					</select> <input id="searchinput" type="text" name="searchText"
+						value="${param.searchText}"> <input type="submit"
+						value="검색" onclick="searchCheck(this.form);"> <input
+						type="button" value="목록" onclick="goUrl('list');">
 
 					<c:if test="${not empty loginMember && loginMember.grade eq 2}">
-						<input type="button"  value="글쓰기" onclick="goUrl('writeForm');">
+						<input type="button" value="글쓰기" onclick="goUrl('writeForm');">
 					</c:if>
 				</form>
 			</div>

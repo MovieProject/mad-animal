@@ -17,12 +17,11 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	public Review[] getReviewList(Map<String, Object> searchInfo) {
-		return reviewDataAccess.selectReviewList(searchInfo).toArray(
-				new Review[0]);
+		return reviewDataAccess.selectReviewList(searchInfo).toArray(new Review[0]);
 	}
 
 	public int getReviewCount(Map<String, Object> searchInfo) {
-		return reviewDataAccess.selectReviewCount();
+		return reviewDataAccess.selectReviewCount(searchInfo);
 	}
 
 	public void writeReview(Review review) {

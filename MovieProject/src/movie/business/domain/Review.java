@@ -3,38 +3,51 @@ package movie.business.domain;
 public class Review {
 	private int reviewNum;
 	private int movieNum;
-	private String moviewTitle;
+	private String movieTitle;
 	private String writerName;
 	private String writerID;
 	private String contents;
 	private String regDate;
 
-	public Review() {
+	public Review() { }
 
-	}
-
-	public Review(int reviewNum, String moviewTitle, String writerName,
+	// ¸®ºä Á¶È¸¿ë
+	public Review(int reviewNum, String movieTitle, String writerName,
 			String contents, String regDate) {
 		super();
 		this.reviewNum = reviewNum;
-		this.moviewTitle = moviewTitle;
+		this.movieTitle = movieTitle;
 		this.writerName = writerName;
 		this.contents = contents;
 		this.regDate = regDate;
 	}
 
-	public Review(int reviewNum, int movieNum, String moviewTitle,
+	public Review(int reviewNum, int movieNum, String movieTitle,
 			String writerName, String writerID, String contents, String regDate) {
 		super();
 		this.reviewNum = reviewNum;
 		this.movieNum = movieNum;
-		this.moviewTitle = moviewTitle;
+		this.movieTitle = movieTitle;
 		this.writerName = writerName;
 		this.writerID = writerID;
 		this.contents = contents;
 		this.regDate = regDate;
 	}
 
+	// ¸®ºä ¾²±â¿ë
+	public Review(String movieTitle, String writerName, String writerID, String contents) {
+		this.movieTitle = movieTitle;
+		this.writerName = writerName;
+		this.writerID = writerID;
+		this.contents = contents;
+	}
+
+	// ¸®ºä ¼öÁ¤¿ë
+	public Review(int reviewNum, String contents) {
+		this.reviewNum = reviewNum;
+		this.contents = contents;
+	}
+	
 	public int getReviewNum() {
 		return reviewNum;
 	}
@@ -43,8 +56,8 @@ public class Review {
 		return movieNum;
 	}
 
-	public String getMoviewTitle() {
-		return moviewTitle;
+	public String getMovieTitle() {
+		return movieTitle;
 	}
 
 	public String getWriterName() {
@@ -71,8 +84,8 @@ public class Review {
 		this.movieNum = movieNum;
 	}
 
-	public void setMoviewTitle(String moviewTitle) {
-		this.moviewTitle = moviewTitle;
+	public void setMovieTitle(String movieTitle) {
+		this.movieTitle = movieTitle;
 	}
 
 	public void setWriterName(String writerName) {
@@ -93,10 +106,9 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "Review [reviewNum=" + reviewNum + ", movieNum=" + movieNum
-				+ ", moviewTitle=" + moviewTitle + ", writerName=" + writerName
-				+ ", writerID=" + writerID + ", contents=" + contents
-				+ ", regDate=" + regDate + "]";
+		return "Review [reviewNum=" + reviewNum + ", movieNum=" + movieNum + ", movieTitle=" + movieTitle + ", writerName=" + writerName
+				+ ", writerID=" + writerID + ", contents=" + contents + ", regDate=" + regDate + "]";
 	}
+
 
 }

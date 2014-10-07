@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 목록</title>
-<link rel="stylesheet" href="../css/board.css">
-
+<link rel="stylesheet" href="../css/movie.css">
 </head>
 <body>
 
@@ -15,23 +14,30 @@
 
 		<!-- 금주영화 -->
 		<div id="week">
-			<c:import url="BoardList/week_Recommend.jsp"/>
+			<object id="preview3" width="380px" height="300px"
+				data="movie/moviepreview?type=3"></object>
+
 		</div>
 
 		<!-- 공지 -->
 		<div id="notice">
-			<!-- <object id="preview" width="380px" height="300px" data="board/preview"></object> -->
-			<iframe id="preview" src="board/preview" width="380px" height="300px" frameborder="0"></iframe>
+			<object id="preview" width="380px" height="300px"
+				data="board/preview"></object>
+
 		</div>
 
 		<!-- 최신영화소개 -->
 		<div id="newMovieIntro">
-		<c:import url="BoardList/newMovieIntro.jsp"/>
-		</div>
+			<object id="preview1" width="380px" height="300px"
+				data="movie/moviepreview?type=2"></object>
 
+		</div>
 		<!-- 회원 영화 추천 -->
 		<div id="member">
-		<c:import url="BoardList/member_Recommend.jsp"/>
+
+			<object id="preview2" width="380px" height="300px"
+				data="movie/moviepreview?type=1"></object>
+
 		</div>
 
 	</div>

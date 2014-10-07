@@ -5,12 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-<link rel="stylesheet" href="../css/board.css">
+<link rel="stylesheet" href="../css/movie.css">
 <script src="../js/board.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
 </head>
 <body>
 
-	<div id="page">
 
 		<header id="header">
 			<c:import url="/top.jsp"></c:import>
@@ -53,10 +54,7 @@
 								</tr>
 							</c:forEach>
 						</c:otherwise>
-
 					</c:choose>
-
-
 				</tbody>
 				 <tfoot>
 					<tr>
@@ -98,8 +96,7 @@
 					</select>
 					
 						<input id="searchinput" type="text" name="searchText" value="${param.searchText}"> 
-						<input type="submit" value="검색">
-						
+						<input type="submit" value="검색">					
 						<input type="button" value="목록" onclick="goUrl('list');">
 
 					<c:if test="${not empty loginMember && loginMember.grade eq 2}">

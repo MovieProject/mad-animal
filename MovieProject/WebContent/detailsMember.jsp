@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-<link rel="stylesheet" href="css/board.css">
+<link rel="stylesheet" href="../css/movie.css">
 <script type="text/javascript" src="../js/board.js"></script>
 </head>
 <body>

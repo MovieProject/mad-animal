@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="../css/movie.css">
 <script type="text/javascript" src="js/script.js">
 </script>
+
 <div class="sidebar">
 	<%-- 
 		1. session scope에 설정된 "loginMember" 속성이 없으면 로그인 페이지(login.jsp)를,
@@ -32,20 +33,17 @@
 			<td><a href="<c:url value="/board/list"/>">공지사항</a></td>
 <%-- 			<td><a href="<c:url value="/board/list"/>">공지사항</a></td> --%>
 		</tr>
-		<tr> 
-			<td><a href="<c:url value="/week_Recommend.jsp"/>">금주 추천 영화</a></td>
+		<tr>
+			<td><a href="<c:url value="/movie/movielist?type=2"/>">금주 추천 영화</a></td>
 		</tr>
 		<tr>
-			<td><a href="<c:url value="/member_Recommend.jsp"/>">회원 추천 영화</a></td>
+			<td><a href="<c:url value="/movie/movielist?type=1"/>">회원 추천 영화</a></td>
 		</tr>
 		<tr>
-			<td><a href="<c:url value="/newMovieIntro.jsp"/>">최신 영화 정보</a></td>
-		</tr>
-				<tr>
-			<td><a href="<c:url value="/board/list"/>">자유게시판</a></td>
+			<td><a href="<c:url value="/movie/movielist?type=3"/>">최신 영화 정보</a></td>
 		</tr>
 			<tr>
-				<td><a href="<c:url value="/review.jsp"/>">영화 한줄평</a></td>
+				<td><a href="<c:url value="/review/list"/>">영화 한줄평</a></td>
 			</tr>
 	<c:if test="${not empty loginMember && loginMember.grade == 2 }">
 				<tr>

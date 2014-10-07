@@ -14,7 +14,7 @@
 	<caption id="boardtitle">공지사항</caption>
 	<thead>
 		<tr>
-			<th class="previewNum"></th>
+			<th class="previewNum">번 호</th>
 			<th class="previewTitle">제 목</th>
 			<th class="previewWriter">글쓴이</th>
 			<th class="previewRegdate">작성일</th>

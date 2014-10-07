@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Movie</title>
 <link rel="stylesheet" href="css/movie.css">
 
@@ -17,7 +18,7 @@
 		</header>
 
 		<div id="content">
-		
+
 			<c:import url="content.jsp"></c:import>
 		</div>
 
@@ -25,7 +26,6 @@
 		<aside id="sidebar">
 			<c:import url="side-bar.jsp"></c:import>
 		</aside>
-
 		<footer id="footer">
 		</footer>
 	</div>

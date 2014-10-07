@@ -6,27 +6,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/movie.css">
+<link rel="stylesheet" href="../css/movie.css"> 
 
 </head>
 <body>
 	<div id="top">
 		<div class="boardpage">
 
-				<table id="headertable" class="headertable">
+			<table id="headertable" class="headertable">
 				<tr>
 					<td><a href="<c:url value="notice.jsp"/>">공지사항</a> |</td>
 					<td><a href="<c:url value="/week_Recommend.jsp"/>">금주추천</a> |</td>
-					<td><a href="<c:url value="/member_Recommend.jsp"/>">회원추천</a> |</td>
+					<td><a href="<c:url value="/member_Recommend.jsp"/>">회원추천</a>
+						|</td>
 					<td><a href="<c:url value="/newMovieIntro.jsp"/>">최신영화</a> |</td>
-					<td><a href="<c:url value="/review.jsp"/>">영화리뷰</a></td>
+					<td><a href="<c:url value="/review/list"/>">영화리뷰</a></td>
 				</tr>
 
 				<tr>
 					<td colspan="5" id="search"><input type="text"
-						name="searchtext" id="searchtext" placeholder="검색어 입력">
-						<a href="<c:url value="/search.jsp"/>"><input
-						type="button" name="searchbutton" id="searchbutton" value="검색"></a></td>
+						name="searchtext" id="searchtext" placeholder="검색어 입력"> <a
+						href="<c:url value="/search.jsp"/>"><input type="button"
+							name="searchbutton" id="searchbutton" value="검색"></a></td>
 				</tr>
 			</table>
 		</div>

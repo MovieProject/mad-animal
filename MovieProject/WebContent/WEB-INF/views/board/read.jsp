@@ -1,19 +1,41 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Movie</title>
-<link rel="stylesheet" href="../css/movie.css">
-<link rel="stylesheet" href="../css/board.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/movie.css"> 
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="../js/board.js"></script>
+<script>
+	$(function() {
+		$("#fs").change(function() {
+			//alert($(this).val());
+			$('#container').css("font-family", $(this).val());
+
+		});
+	});
+</script>
 </head>
 <body>
+	<form id="myform">
+		<select id="fs">
+			<option value="Yj BLOCK">Arial</option>
+			<option value="Verdana ">Verdana</option>
+			<option value="Impact ">Impact</option>
+			<option value="Comic Sans MS">Comic Sans MS</option>
+		</select>
+	</form>
 
-	<div id="page">
 
-		<header id="header">
+	<div id="page" class="changeMe">
+
+		<div id="container">
+
+
+		 <header id="header">
 			<c:import url="/top.jsp"></c:import>
 		</header>
 
@@ -59,7 +81,9 @@
 
 		<footer id="footer">
 			<c:import url="/footer.jsp"></c:import>
-		</footer>
+		</footer> 
+		</div>
+		
 	</div>
 </body>
 </html>
