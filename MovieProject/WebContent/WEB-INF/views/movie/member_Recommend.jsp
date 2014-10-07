@@ -101,7 +101,7 @@
 						<input type="button" value="글쓰기"
 							onclick="goUrl('writeMovieForm?type=1');">
 						<c:if test="${loginMember.grade eq 2 }">
-							<input type="button" value="선택 삭제" id ='moviesRemove' onclick="validateMovie('removeMovieList')">
+							<input type="button" value="선택 삭제" id ='moviesRemove' onclick="validateMovie('removeMovieList',this.form)">
 						</c:if>
 					</c:if>
 				</form>

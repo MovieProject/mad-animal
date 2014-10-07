@@ -99,8 +99,9 @@ function validateForm(){
 	alert("선택된 값이 없습니다.");
 	return false;
 }
-function validateMovie(url){
-	var checkboxes = document.listDelete.items;
+function validateMovie(url,form){
+	
+	var checkboxes = form.items;
 	for(var i = 0;i<checkboxes.length;i++){
 		if(checkboxes[i].checked== true){
 			if(confirm("정말로 삭제하시겠습니까?")){
