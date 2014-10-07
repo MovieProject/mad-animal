@@ -55,6 +55,8 @@
 							<td><input class="writerinput" type="text" name="director"
 								size="20" maxlength="20" value='${movie.director}'
 								id='movieUpdateDirector'></td>
+
+
 						</tr>
 						<tr>
 							<th>줄거리</th>
@@ -68,13 +70,20 @@
 								<!-- <script>CKEDITOR.replace('editor');</script> --></td>
 						</tr>
 						<tr>
-							<th>기존파일</th>
+							<th>기존파일</th> <<<<<<< HEAD
 							<td>${movie.photoDir}<input type="hidden" name="original"
 								value="${movie.photoDir}">
 
 
-							</td>
-
+							</td> =======
+							<td>${movie.photoDir}<input type="hidden" name="original"
+								value="${movie.photoDir}"> <input type="hidden"
+								name="num" value="${movie.movieNum}"> <input
+								type="hidden" name="memberID" value="${movie.memberID}">
+								<input type="hidden" name="type" value="${movie.type}">
+								<input type="hidden" name="pageNumber"
+								value="${currentPageNumber}">
+							</td> >>>>>>> refs/remotes/origin/master
 						</tr>
 						<tr>
 							<th>사진첨부</th>

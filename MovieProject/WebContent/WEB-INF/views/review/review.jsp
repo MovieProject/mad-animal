@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Movie</title>
 <link rel="stylesheet" href="../css/board.css">
-<link rel="stylesheet" href="http://w2ui.com/src/w2ui-1.4.1.min.css" />
 <script src="../js/board.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
@@ -56,8 +55,9 @@
 					</c:if>
 					<c:if test="${ not empty requestScope.reviewList }">
 						<c:forEach items="${ requestScope.reviewList }" var="review">
+
 							<tr>
-								<th>영화 제목</th>
+								<th class="title">영화 제목</th>
 								<td class="title">${ review.movieTitle }</td>
 								<th class="name">작성자</th>
 								<td class="name">${ review.writerName }</td>
@@ -66,18 +66,23 @@
 							</tr>
 							<c:if
 								test="${ sessionScope.loginMember.memberName != review.writerName && loginMember.grade != 2 }">
+
 								<tr>
-									<th>한줄평</th>
-									<td class="oneline" colspan="5"><script>
-										contentMaxLength('${ review.contents }');
-									</script></td>
+
+									<th class="oneline">한줄평</th>
+									<td class="oneline" colspan="5"><input type="text"
+										name="inputOneline" class="inputOneline" disabled="disabled"
+										title="${ review.contents }" value="${ review.contents }"></td>
 								</tr>
 							</c:if>
 							<c:if
 								test="${ sessionScope.loginMember.memberName eq review.writerName || loginMember.grade eq 2}">
 								<tr>
-									<th>한줄평</th>
-									<td class="oneline" colspan="4">${ review.contents }</td>
+
+									<th class="oneline">한줄평</th>
+									<td class="oneline" colspan="4"><input type="text"
+										name="inputOneline" class="inputOneline" disabled="disabled"
+										title="${ review.contents }" value="${ review.contents }"></td>
 									<td><input type="button" value="수정"
 										onclick="popup('${ review.reviewNum }', '${ review.movieTitle }', '${ review.contents }');">
 										<input type="button" value="삭제"
@@ -118,16 +123,18 @@
 				<table id="writereview" class="maintable">
 					<c:if test="${not empty loginMember}">
 						<tr>
-							<th>영화 제목</th>
+
 							<td colspan="4"><input class="inputtext" type="text"
-								name="movieTitle" tabindex="1"></td>
+								name="movieTitle" onkeydown="characterCheck()"
+								onkeyup="characterCheck()" tabindex="1"></td>
 							<td id="writeform" rowspan="2"><input id="writebutton"
 								type="submit" value="글쓰기" tabindex="3"></td>
 						</tr>
 						<tr>
-							<th>한줄평</th>
+
 							<td colspan="4"><input class="inputtext" type="text"
-								name="contents" tabindex="2"></td>
+								name="contents" onkeydown="characterCheck()"
+								onkeyup="characterCheck()" tabindex="2"></td>
 						</tr>
 					</c:if>
 				</table>
