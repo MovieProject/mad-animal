@@ -7,13 +7,8 @@
 <title>Movie</title>
 <link rel="stylesheet" href="../css/movie.css">
 <link rel="stylesheet" href="../css/board.css">
-<<<<<<< HEAD
-<script type="text/javascript" src="../js/board.js">
-	
-</script>
-=======
 <script type="text/javascript" src="../js/board.js"></script>
->>>>>>> refs/remotes/origin/master
+
 </head>
 <body>
 
@@ -43,7 +38,7 @@
 					</c:choose>
 					<thead>
 						<tr>
-							<th>영화 제목</th> <<<<<<< HEAD
+							<th>영화 제목</th>
 							<td><input class="titleinput" type="text" name="title"
 								id='movieWriteTitle' size="20" maxlength="50"></td>
 						</tr>
@@ -91,8 +86,7 @@
 					value="${loginMember.memberID }"> <input type="hidden"
 					name="type" value="${type}">
 				<div class="buttonbar">
-					<!-- 	<input type="button" value="등록"
-						onclick="boardWriteCheck(this.form);"> -->
+
 					<input type="button" value="등록"
 						onclick="checkWriteMovie(this.form)"> <input type="button"
 						value="취소" onclick="goUrl('movielist?type=${type}');">

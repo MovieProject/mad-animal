@@ -152,11 +152,11 @@ public class MovieController extends HttpServlet {
 		if (type == 1) {
 			dispatcher = request
 					.getRequestDispatcher("/WEB-INF/views/movie/member_Recommend_pre.jsp");
-		} else if (type == 2) {
+		} else if (type == 3) {
 			dispatcher = request
 					.getRequestDispatcher("/WEB-INF/views/movie/newMovieIntro_pre.jsp");
 
-		} else if (type == 3) {
+		} else if (type == 2) {
 			Movie movie = service.findMovie(movielist[0].getMovieNum());
 			request.setAttribute("movie", movie);
 			dispatcher = request
@@ -487,12 +487,10 @@ public class MovieController extends HttpServlet {
 
 					// 파일 업로드 처리 (<input type="file">인 경우)
 				} else {
-					String fieldName = item.getFieldName(); // 필드 이름
 					String fileName = item.getName(); // 경로가 포함된 파일명
-
-					System.out.println(fieldName);
-					System.out.println(fileName);
-
+					if (fileName.length() == 0 || fileName.equals("")) {
+						fileName = "default.jpg";
+					}
 					int index = fileName.lastIndexOf("\\"); // 디렉터리 구분자 위치를 통해
 					if (index == -1) {
 						index = fileName.lastIndexOf("/");

@@ -70,12 +70,7 @@
 								<!-- <script>CKEDITOR.replace('editor');</script> --></td>
 						</tr>
 						<tr>
-							<th>기존파일</th> <<<<<<< HEAD
-							<td>${movie.photoDir}<input type="hidden" name="original"
-								value="${movie.photoDir}">
-
-
-							</td> =======
+							<th>기존파일</th>
 							<td>${movie.photoDir}<input type="hidden" name="original"
 								value="${movie.photoDir}"> <input type="hidden"
 								name="num" value="${movie.movieNum}"> <input
@@ -83,7 +78,7 @@
 								<input type="hidden" name="type" value="${movie.type}">
 								<input type="hidden" name="pageNumber"
 								value="${currentPageNumber}">
-							</td> >>>>>>> refs/remotes/origin/master
+							</td>
 						</tr>
 						<tr>
 							<th>사진첨부</th>
