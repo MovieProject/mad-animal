@@ -28,13 +28,13 @@
 						<tr>
 							<th>영화 제목</th>
 							<td><input class="titleinput" type="text" name="title"
-								size="20" maxlength="50" value='${movie.movieName}'></td>
+								size="20" maxlength="50" value='${movie.movieName}' id="movieUpdateTitle"></td>
 						</tr>
 						<tr>
 							<th>장르</th>
 
 							<td><input class="writerinput" type="text" name="genre"
-								size="20" maxlength="20" value='${movie.genre}'></td>
+								size="20" maxlength="20" value='${movie.genre}' id = "movieUpdateGenre"></td>
 
 						</tr>
 
@@ -50,7 +50,7 @@
 							<th>감독</th>
 
 							<td><input class="writerinput" type="text" name="director"
-								size="20" maxlength="20" value='${movie.director}'>
+								size="20" maxlength="20" value='${movie.director}' id ="movieUpdateDirector">
 														</td>
 						</tr>
 						<tr>
@@ -60,7 +60,7 @@
 
 					<tbody>
 						<tr>
-							<td colspan="2"><textarea id="editor" class="contentsinput"
+							<td colspan="2"><textarea id="movieUpdateSynopsis" class="contentsinput"
 									name="contents">${movie.synopsis}</textarea> <!-- <script>CKEDITOR.replace('editor');</script> -->
 							</td>
 						</tr>
@@ -82,8 +82,8 @@
 
 				</table>
 				<div class="buttonbar">
-					<input type="submit" value="수정"
-						onclick="boardWriteCheck(this.form)&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}&memberID=${movie.memberID}">
+					<input type="button" value="수정"
+						onclick="checkUpdateMovie(this.form);">
 					<input type="button" value="취소"
 						onclick="goUrl('movieRead?num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 				</div>

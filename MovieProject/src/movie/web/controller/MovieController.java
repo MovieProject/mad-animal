@@ -62,10 +62,10 @@ public class MovieController extends HttpServlet {
 				updateMovieForm(request, response);
 			} else if (action.equals("/updateMovie")) {
 				updateMovie(request, response);
-			} else if(action.equals("/moviepreview")){
-				previewMovie(request,response);
-			} else if(action.equals("/removeMovieList")){
-				removeMovieList(request,response);
+			} else if (action.equals("/moviepreview")) {
+				previewMovie(request, response);
+			} else if (action.equals("/removeMovieList")) {
+				removeMovieList(request, response);
 			}
 
 		} catch (DataDuplicatedException e) {
@@ -79,20 +79,23 @@ public class MovieController extends HttpServlet {
 	}
 
 	private void removeMovieList(HttpServletRequest request,
-			HttpServletResponse response) throws NumberFormatException, DataNotFoundException, ServletException, IOException {
+			HttpServletResponse response) throws NumberFormatException,
+			DataNotFoundException, ServletException, IOException {
 		// TODO Auto-generated method stub
 		String[] items = request.getParameterValues("items");
-		MovieService service =  new MovieServiceImpl();
-		for(String item:items){
+		MovieService service = new MovieServiceImpl();
+		for (String item : items) {
 			service.removeMovie(Integer.parseInt(item.toString()));
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/movie/movielist?type=1");
+		RequestDispatcher dispatcher = request
+				.getRequestDispatcher("/movie/movielist?type=1");
 		dispatcher.forward(request, response);
-		
+
 	}
 
 	private void previewMovie(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException, DataNotFoundException {
+			HttpServletResponse response) throws ServletException, IOException,
+			DataNotFoundException {
 		// TODO Auto-generated method stub
 		MovieService service = new MovieServiceImpl();
 
@@ -152,11 +155,11 @@ public class MovieController extends HttpServlet {
 		if (type == 1) {
 			dispatcher = request
 					.getRequestDispatcher("/WEB-INF/views/movie/member_Recommend_pre.jsp");
-		} else if (type == 2) {
+		} else if (type == 3) {
 			dispatcher = request
 					.getRequestDispatcher("/WEB-INF/views/movie/newMovieIntro_pre.jsp");
 
-		} else if (type == 3) {
+		} else if (type == 2) {
 			Movie movie = service.findMovie(movielist[0].getMovieNum());
 			request.setAttribute("movie", movie);
 			dispatcher = request
@@ -164,7 +167,7 @@ public class MovieController extends HttpServlet {
 
 		}
 		dispatcher.forward(request, response);
-		
+
 	}
 
 	private void updateMovieForm(HttpServletRequest request,
@@ -189,111 +192,111 @@ public class MovieController extends HttpServlet {
 	private void updateMovie(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException {
-		int movieNum = 0;//Integer.parseInt(request.getParameter("num"));
+		int movieNum = 0;// Integer.parseInt(request.getParameter("num"));
 		String movieName = null;// request.getParameter("title");
-		String genre =  null;//request.getParameter("genre");
-		String releaseDate =  null;//request.getParameter("releaseDate");
+		String genre = null;// request.getParameter("genre");
+		String releaseDate = null;// request.getParameter("releaseDate");
 		String director = null;// request.getParameter("director");
-		String synopsis =  null;//request.getParameter("contents");
+		String synopsis = null;// request.getParameter("contents");
 		String photoDir = null;
-		String memberID =  null;//request.getParameter("memberID");
-		int type =  0;//Integer.parseInt(request.getParameter("type"));
-		String pageNumber =null;//request.getParameter("pageNumber");
-		
+		String memberID = null;// request.getParameter("memberID");
+		int type = 0;// Integer.parseInt(request.getParameter("type"));
+		String pageNumber = null;// request.getParameter("pageNumber");
+
 		// 디스크 기반의 FileItem factory 생성
-				DiskFileItemFactory factory = new DiskFileItemFactory();
-				// repository 생성 (a secure temp location is used)
-				ServletContext servletContext = this.getServletConfig()
-						.getServletContext();
-				File repository = (File) getServletContext().getAttribute(
-						"javax.servlet.context.tempdir");
-				// File repository = new File(uploadDir, "temp");
-				// if (!repository.exists()) { repository.mkdir(); }
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		// repository 생성 (a secure temp location is used)
+		ServletContext servletContext = this.getServletConfig()
+				.getServletContext();
+		File repository = (File) getServletContext().getAttribute(
+				"javax.servlet.context.tempdir");
+		// File repository = new File(uploadDir, "temp");
+		// if (!repository.exists()) { repository.mkdir(); }
 
-				// factory 제약 설정
-				factory.setSizeThreshold(1024 * 100);
-				// 메모리에 저장할 최대 size (100K까지는 메모리에 저장)
-				factory.setRepository(repository);
-				// 파일 임시 저장소 (100K 이상이면 repository에 저장)
+		// factory 제약 설정
+		factory.setSizeThreshold(1024 * 100);
+		// 메모리에 저장할 최대 size (100K까지는 메모리에 저장)
+		factory.setRepository(repository);
+		// 파일 임시 저장소 (100K 이상이면 repository에 저장)
 
-				// 파일 업로드 핸들러 생성
-				ServletFileUpload upload = new ServletFileUpload(factory);
-				// 총 request size 제약 설정
-				upload.setSizeMax(1024 * 1024 * 20); // 최대 size (20M까지 가능)
+		// 파일 업로드 핸들러 생성
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		// 총 request size 제약 설정
+		upload.setSizeMax(1024 * 1024 * 20); // 최대 size (20M까지 가능)
 
-				// 요청 파싱
-				try {
-					List<FileItem> items = upload.parseRequest(request);
+		// 요청 파싱
+		try {
+			List<FileItem> items = upload.parseRequest(request);
 
-					// 업로드된 items 처리
-					Iterator<FileItem> iter = items.iterator();
-					while (iter.hasNext()) {
-						FileItem item = iter.next();
+			// 업로드된 items 처리
+			Iterator<FileItem> iter = items.iterator();
+			while (iter.hasNext()) {
+				FileItem item = iter.next();
 
-						// 일반 폼 필드 처리 (<input type="file">이 아닌 경우)
-						if (item.isFormField()) {
-							String name = item.getFieldName(); // 필드 이름
-							String value = item.getString("UTF-8"); // 필드 값
+				// 일반 폼 필드 처리 (<input type="file">이 아닌 경우)
+				if (item.isFormField()) {
+					String name = item.getFieldName(); // 필드 이름
+					String value = item.getString("UTF-8"); // 필드 값
 
-							System.out.println(name + " : " + value);
+					System.out.println(name + " : " + value);
 
-							if (name.equals("title")) {
-								movieName = value;
-							} else if (name.equals("genre")) {
-								genre = value;
-							} else if (name.equals("director")) {
-								director = value;
-							} else if (name.equals("releaseDate")) {
-								releaseDate = value;
-							} else if (name.equals("contents")) {
-								synopsis = value;
-							} else if (name.equals("memberID")) {
-								memberID = value;
-							} else if (name.equals("type")) {
-								type = Integer.parseInt(value);
-							}else if(name.equals("num")){
-								movieNum = Integer.parseInt(value);
-							}else if(name.equals("original")){
-								photoDir = value;
-							}else if(name.equals("pageNumber")){
-								pageNumber = value;
-							}
-
-							// 파일 업로드 처리 (<input type="file">인 경우)
-						} else {
-							String fileName = item.getName(); // 경로가 포함된 파일명
-
-							System.out.println("fileName="+fileName);
-
-							int index = fileName.lastIndexOf("\\"); // 디렉터리 구분자 위치를 통해
-							if (index == -1) {
-								index = fileName.lastIndexOf("/");
-							}
-							if(fileName!=null){
-								photoDir = fileName.substring(index + 1);
-							}// 파일명만 추출			
-								System.out.println("photoDir = "+photoDir);
-								// 파일 업로드 처리
-								File uploadedFile = new File(uploadDir, photoDir);
-								item.write(uploadedFile); // 실질적인 저장
-							
-						}
+					if (name.equals("title")) {
+						movieName = value;
+					} else if (name.equals("genre")) {
+						genre = value;
+					} else if (name.equals("director")) {
+						director = value;
+					} else if (name.equals("releaseDate")) {
+						releaseDate = value;
+					} else if (name.equals("contents")) {
+						synopsis = value;
+					} else if (name.equals("memberID")) {
+						memberID = value;
+					} else if (name.equals("type")) {
+						type = Integer.parseInt(value);
+					} else if (name.equals("num")) {
+						movieNum = Integer.parseInt(value);
+					} else if (name.equals("original")) {
+						photoDir = value;
+					} else if (name.equals("pageNumber")) {
+						pageNumber = value;
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-		
-//		photoDir = request.getParameter("file");
-//		if (photoDir == null) {
-//			photoDir = request.getParameter("original");
-//		}
 
-		
+					// 파일 업로드 처리 (<input type="file">인 경우)
+				} else {
+					String fileName = item.getName(); // 경로가 포함된 파일명
+					if (!fileName.equals("") && fileName.length() != 0) {
+						System.out.println("fileName=" + fileName);
+
+						int index = fileName.lastIndexOf("\\"); // 디렉터리 구분자 위치를
+																// 통해
+						if (index == -1) {
+							index = fileName.lastIndexOf("/");
+						}
+						if (fileName != null) {
+							photoDir = fileName.substring(index + 1);
+						}// 파일명만 추출
+						System.out.println("photoDir = " + photoDir);
+						// 파일 업로드 처리
+						File uploadedFile = new File(uploadDir, photoDir);
+						item.write(uploadedFile); // 실질적인 저장
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// photoDir = request.getParameter("file");
+		// if (photoDir == null) {
+		// photoDir = request.getParameter("original");
+		// }
+
 		int currentPageNumber = 1;
 		if (pageNumber != null && pageNumber.length() != 0) {
 			currentPageNumber = Integer.parseInt(pageNumber);
-		}		
-		
+		}
+
 		Movie movie = new Movie(movieNum, movieName, genre, releaseDate,
 				director, synopsis, photoDir, memberID, type);
 		MovieService service = new MovieServiceImpl();
@@ -489,6 +492,9 @@ public class MovieController extends HttpServlet {
 				} else {
 					String fieldName = item.getFieldName(); // 필드 이름
 					String fileName = item.getName(); // 경로가 포함된 파일명
+					if (fileName.length() == 0||fileName.equals("")) {
+						fileName = "default.jpg";
+					}
 
 					System.out.println(fieldName);
 					System.out.println(fileName);
@@ -498,6 +504,7 @@ public class MovieController extends HttpServlet {
 						index = fileName.lastIndexOf("/");
 					}
 					photoDir = fileName.substring(index + 1); // 파일명만 추출
+
 					System.out.println(photoDir);
 					// 파일 업로드 처리
 					File uploadedFile = new File(uploadDir, photoDir);
@@ -511,15 +518,6 @@ public class MovieController extends HttpServlet {
 		Movie movie = new Movie(movieName, genre, director, releaseDate,
 				synopsis, photoDir, memberID, type);
 		System.out.println(movie);
-
-		// File uploadDir = new File(getServletContext().getRealPath("/" +
-		// getInitParameter("uploadDir")));
-		// // 파일 업로드 처리
-		// File uploadedFile = new File(photoDir);
-		// System.out.println(uploadDir);
-		// System.out.println(uploadedFile);
-		// if (!uploadDir.exists()) { uploadDir.mkdir(); }
-		// MovieUtil.createThumbnail(uploadDir, uploadedFile, 160, 160);
 
 		MovieService service = new MovieServiceImpl();
 		service.writeMovie(movie);
