@@ -1,4 +1,14 @@
 /**
+<<<<<<< HEAD
+ * @license Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
+ */
+
+CKEDITOR.editorConfig = function( config ) {
+	// Define changes to default configuration here. For example:
+	// config.language = 'fr';
+	// config.uiColor = '#AADC6E';
+=======
  * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.html or http://ckeditor.com/license
  */
@@ -14,4 +24,5 @@ CKEDITOR.editorConfig = function( config ) {
     config.filebrowserUploadUrl = '/dukeboard/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files';
     config.filebrowserImageUploadUrl = '/dukeboard/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images';
     config.filebrowserFlashUploadUrl = '/dukeboard/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash'; 
+>>>>>>> refs/remotes/origin/master
 };

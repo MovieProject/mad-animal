@@ -1,10 +1,9 @@
 @charset "utf-8";
 
 * {
-	font-family: 굴림, gulim, tahoma, sans-serif;
+	font-family: 援대┝, gulim, tahoma, sans-serif;
 	font-size: 12px;
 }
-
 page {
 	width: 800px;
 }
@@ -71,7 +70,9 @@ textarea {
 #listtable .check{
 	width: 20px;
 }
-
+#listtable .check{
+	width: 30px;
+}
 #listtable .num {
 	width: 45px;
 	text-align: center;

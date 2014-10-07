@@ -7,7 +7,13 @@
 <title>Movie</title>
 <link rel="stylesheet" href="../css/movie.css">
 <link rel="stylesheet" href="../css/board.css">
+<<<<<<< HEAD
+<script type="text/javascript" src="../js/board.js">
+	
+</script>
+=======
 <script type="text/javascript" src="../js/board.js"></script>
+>>>>>>> refs/remotes/origin/master
 </head>
 <body>
 
@@ -21,7 +27,8 @@
 
 			<form name="writeForm" action="<c:url value="writeMovie"/>"
 				method="POST" enctype="multipart/form-data">
-				<table id="writetable" class="maintable" align="center">
+				<table id="writetable" class="maintable">
+
 					<c:choose>
 						<c:when test="${movie.type eq 2 }">
 							<caption id="contenttitle">금주의 영화</caption>
@@ -36,30 +43,30 @@
 					</c:choose>
 					<thead>
 						<tr>
-							<th>영화 제목</th>
+							<th>영화 제목</th> <<<<<<< HEAD
 							<td><input class="titleinput" type="text" name="title"
-								size="20" maxlength="50"></td>
+								id='movieWriteTitle' size="20" maxlength="50"></td>
 						</tr>
 						<tr>
 							<th>장르</th>
 
 							<td><input class="writerinput" type="text" name="genre"
-								size="20" maxlength="20"></td>
+								size="20" maxlength="20" id="movieWriteGenre"></td>
 
 						</tr>
 
 						<tr>
 							<th>개봉일</th>
 
-							<td><input class="writerinput" type="date"
-								name="releaseDate" size="20" maxlength="20"></td>
+							<td><input class="writerinput" type="date" HEAD
+								name="releaseDate" size="20" maxlength="20" id="movieWriteDate"></td>
 
 						</tr>
 						<tr>
 							<th>감독</th>
 
 							<td><input class="writerinput" type="text" name="director"
-								size="20" maxlength="20"></td>
+								size="20" maxlength="20" id="movieWriteDirector"></td>
 
 						</tr>
 						<tr>
@@ -68,26 +75,26 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan="2"><textarea id="editor" class="contentsinput"
-									name="synopsis"></textarea> <!-- 							<script>CKEDITOR.replace('editor');</script> -->
+							<td colspan="2"><textarea id="movieWriteSynopsis"
+									class="contentsinput" name="synopsis"></textarea> <!-- 							<script>CKEDITOR.replace('editor');</script> -->
 
 								<!-- <textarea class="contentsinput ckeditor" name="contents"></textarea> -->
 							</td>
 						</tr>
 						<tr>
 							<th>사진첨부</th>
-							<td><input type="file" name="file"></td>
+							<td><input type="file" name="file" id="movieWriteFile"></td>
 						</tr>
 					</tbody>
 				</table>
 				<input type="hidden" name="memberID"
-					value="${loginMember.memberID }">
-					 <input type="hidden"
+					value="${loginMember.memberID }"> <input type="hidden"
 					name="type" value="${type}">
 				<div class="buttonbar">
 					<!-- 	<input type="button" value="등록"
 						onclick="boardWriteCheck(this.form);"> -->
-					<input type="submit" value="등록"> <input type="button"
+					<input type="button" value="등록"
+						onclick="checkWriteMovie(this.form)"> <input type="button"
 						value="취소" onclick="goUrl('movielist?type=${type}');">
 				</div>
 			</form>

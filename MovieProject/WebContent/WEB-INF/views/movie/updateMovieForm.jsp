@@ -28,13 +28,15 @@
 						<tr>
 							<th>영화 제목</th>
 							<td><input class="titleinput" type="text" name="title"
-								size="20" maxlength="50" value='${movie.movieName}'></td>
+								size="20" maxlength="50" value='${movie.movieName}'
+								id='movieUpdateTitle'></td>
 						</tr>
 						<tr>
 							<th>장르</th>
 
 							<td><input class="writerinput" type="text" name="genre"
-								size="20" maxlength="20" value='${movie.genre}'></td>
+								size="20" maxlength="20" value='${movie.genre}'
+								id='movieUpdateGenre'></td>
 
 						</tr>
 
@@ -43,15 +45,18 @@
 
 							<td><input class="writerinput" type="text"
 								name="releaseDate" size="20" maxlength="20"
-								value='${movie.releaseDate}' readonly="readonly" draggable="false"></td>
+								value='${movie.releaseDate}' readonly="readonly"
+								draggable="false"></td>
 
 						</tr>
 						<tr>
 							<th>감독</th>
 
 							<td><input class="writerinput" type="text" name="director"
-								size="20" maxlength="20" value='${movie.director}'>
-														</td>
+								size="20" maxlength="20" value='${movie.director}'
+								id='movieUpdateDirector'></td>
+
+
 						</tr>
 						<tr>
 							<th>줄거리</th>
@@ -60,19 +65,25 @@
 
 					<tbody>
 						<tr>
-							<td colspan="2"><textarea id="editor" class="contentsinput"
-									name="contents">${movie.synopsis}</textarea> <!-- <script>CKEDITOR.replace('editor');</script> -->
-							</td>
+							<td colspan="2"><textarea id="movieUpdateSynopsis"
+									class="contentsinput" name="contents">${movie.synopsis}</textarea>
+								<!-- <script>CKEDITOR.replace('editor');</script> --></td>
 						</tr>
 						<tr>
-							<th>기존파일</th>
-							<td>${movie.photoDir}<input type="hidden" name = "original" value = "${movie.photoDir}">
-							<input type="hidden" name = "num" value = "${movie.movieNum}">
-							<input type="hidden" name = "memberID" value = "${movie.memberID}">
-							<input type="hidden" name = "type" value = "${movie.type}">
-							<input type="hidden" name = "pageNumber" value = "${currentPageNumber}">							
-							</td>
-							
+							<th>기존파일</th> <<<<<<< HEAD
+							<td>${movie.photoDir}<input type="hidden" name="original"
+								value="${movie.photoDir}">
+
+
+							</td> =======
+							<td>${movie.photoDir}<input type="hidden" name="original"
+								value="${movie.photoDir}"> <input type="hidden"
+								name="num" value="${movie.movieNum}"> <input
+								type="hidden" name="memberID" value="${movie.memberID}">
+								<input type="hidden" name="type" value="${movie.type}">
+								<input type="hidden" name="pageNumber"
+								value="${currentPageNumber}">
+							</td> >>>>>>> refs/remotes/origin/master
 						</tr>
 						<tr>
 							<th>사진첨부</th>
@@ -82,9 +93,9 @@
 
 				</table>
 				<div class="buttonbar">
-					<input type="submit" value="수정"
-						onclick="boardWriteCheck(this.form)&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}&memberID=${movie.memberID}">
-					<input type="button" value="취소"
+					<input type="button" value="수정"
+						onclick="checkUpdateMovie(this.form)"> <input
+						type="button" value="취소"
 						onclick="goUrl('movieRead?num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 				</div>
 			</form>

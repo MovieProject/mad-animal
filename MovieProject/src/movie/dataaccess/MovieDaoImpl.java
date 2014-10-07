@@ -40,6 +40,8 @@ public class MovieDaoImpl implements MovieDao {
 		String searchType = (String) searchInfo.get("searchType");
 		String searchText = (String) searchInfo.get("searchText");
 
+		System.out.println(searchType);
+		System.out.println(searchText);
 		int type = (Integer) searchInfo.get("type");
 		int startRow = (Integer) searchInfo.get("startRow");
 		int endRow = (Integer) searchInfo.get("endRow");
@@ -52,8 +54,10 @@ public class MovieDaoImpl implements MovieDao {
 			} else if (searchType.equals("movie_name")
 					|| searchType.equals("director")) {
 				whereOutQuery = "WHERE " + searchType + " LIKE ? ";
+
 			}
 		}
+
 		if (searchType != null) {
 			searchText = "%" + searchText.trim() + "%";
 		}
@@ -62,10 +66,9 @@ public class MovieDaoImpl implements MovieDao {
 		Movie movie = null;
 		query = "SELECT * FROM ("
 				+ " SELECT rownum r, movie_num, movie_name, director, release_date FROM ("
-				+ " SELECT * FROM ( "
-				+ "SELECT * FROM movie "+ whereInQuery+" ) "
-				+ whereOutQuery	+ " ORDER BY movie_num DESC)) " 
-				+ "WHERE r BETWEEN ? and ?";
+				+ " SELECT * FROM ( " + "SELECT * FROM movie " + whereInQuery
+				+ " ) " + whereOutQuery + " ORDER BY movie_num DESC)) "
+				+ "WHERE r BETWEEN ? and ? ";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -73,10 +76,11 @@ public class MovieDaoImpl implements MovieDao {
 		try {
 			con = obtainConnection();
 			pstmt = con.prepareStatement(query);
+
 			if ((searchType == null) || (searchType.length() == 0)) {
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
-			}else if (searchType.equals("all")) {
+			} else if (searchType.equals("all")) {
 				pstmt.setString(1, searchText);
 				pstmt.setString(2, searchText);
 				pstmt.setInt(3, startRow);
@@ -87,8 +91,9 @@ public class MovieDaoImpl implements MovieDao {
 				pstmt.setInt(2, startRow);
 				pstmt.setInt(3, endRow);
 			}
-			
+
 			rs = pstmt.executeQuery();
+
 			while (rs.next()) {
 				String date = rs.getString("release_Date").substring(0, 10);
 				movie = new Movie(rs.getInt(2), rs.getString(3),
@@ -144,6 +149,7 @@ public class MovieDaoImpl implements MovieDao {
 			} else if (searchType.equals("movie_name")
 					|| searchType.equals("director")) {
 				whereOutQuery = "WHERE " + searchType + " LIKE ?";
+
 			}
 		}
 		if (searchType != null) {
@@ -169,7 +175,7 @@ public class MovieDaoImpl implements MovieDao {
 					pstmt.setString(1, searchText);
 				}
 			}
-			
+
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = rs.getInt(1);
@@ -222,7 +228,8 @@ public class MovieDaoImpl implements MovieDao {
 			if (rs.next()) {
 				result = new Movie(rs.getInt(1), rs.getString(2),
 						rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getString(7), rs.getString(8),rs.getInt(9));
+						rs.getString(6), rs.getString(7), rs.getString(8),
+						rs.getInt(9));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

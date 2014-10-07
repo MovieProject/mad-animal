@@ -46,8 +46,9 @@ public class BoardDaoImpl implements BoardDao {
 			// searchType 값에 따라 PreparedStatement의 파라미터 값을 설정한다.
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				String date = (rs.getString("reg_date")).substring(0,10);
-				board = new Board(rs.getInt("board_num"), rs.getString("board_title"),
+				String date = (rs.getString("reg_date")).substring(0, 10);
+				board = new Board(rs.getInt("board_num"),
+						rs.getString("board_title"),
 						rs.getString("board_writer"), rs.getInt("read_count"),
 						date, rs.getInt("reply_step"));
 
@@ -197,11 +198,10 @@ public class BoardDaoImpl implements BoardDao {
 		if ((searchType != null)) {
 			if (searchType.equals("all")) {
 				whereSQL = "WHERE board_title LIKE ? OR board_writer LIKE ? OR board_contents LIKE ?";
-
 			} else if ((searchType.equals("title"))
 					|| (searchType.equals("writer"))
 					|| (searchType.equals("contents"))) {
-				whereSQL = "WHERE " + searchType + " LIKE ?";
+				whereSQL = "WHERE " + searchType + " LIKE ? ";
 			}
 		}
 
@@ -491,9 +491,7 @@ public class BoardDaoImpl implements BoardDao {
 
 		String query2 = "INSERT INTO board (board_num, board_title, board_writer, board_contents, member_ID, read_count, reg_date, mod_date, master_num, reply_order, reply_step) "
 				+ "VALUES (board_sequence.NEXTVAL, ?, ?, ?, ?, 0, SYSDATE, SYSDATE, ?, ?, ?)";
-
-		System.out
-				.println("BoardDaoImpl insertReplyBoard() query2 : " + query2);
+		System.out.println("BoardDaoImpl insertReplyBoard() query2 : " + query2);
 
 		Connection con = null;
 		PreparedStatement pstmt = null;

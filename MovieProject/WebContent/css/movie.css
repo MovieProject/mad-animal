@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 * {
-	font-family: 굴림, gulim, tahoma, sans-serif;
+	font-family: 援대┝, gulim, tahoma, sans-serif;
 	font-size: 12px;
 }
 
@@ -94,7 +94,7 @@ a:hover, a:active {
 	text-align: center;
 	background-image: url(../images/footer.png);
 }
-/*  금주영화 */
+/*  湲덉＜�곹솕 */
 #week {
 	border-top: 1px solid #CCC;
 	border-bottom: 1px solid #CCC;
@@ -103,7 +103,7 @@ a:hover, a:active {
 	margin-top: 10px;
 	margin-bottom: 20px;
 }
-/* 공지사항 */
+/* 怨듭��ы빆 */
 #notice {
 	border-top: 1px solid #CCC;
 	border-bottom: 1px solid #CCC;
@@ -111,7 +111,7 @@ a:hover, a:active {
 	height: 280px;
 	float: left;
 }
-/* 최신영화소개, 회원추천영화 */
+/* 理쒖떊�곹솕�뚭컻, �뚯썝異붿쿇�곹솕 */
 #newMovieIntro, #member {
 	border-top: 1px solid #CCC;
 	border-bottom: 1px solid #CCC;
@@ -120,7 +120,7 @@ a:hover, a:active {
 	height: 134px;
 	float: right;
 }
-/* 공지사항, 최신영화소개, 회원추천영화 */
+/* 怨듭��ы빆, 理쒖떊�곹솕�뚭컻, �뚯썝異붿쿇�곹솕 */
 #notice td, #newMovieIntro td, #member td{
 	padding: 8px 5px;
 	border-top: 1px solid #e9e9e9;
