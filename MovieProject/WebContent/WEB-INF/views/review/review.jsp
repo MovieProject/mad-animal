@@ -9,6 +9,19 @@
 	<script src="../js/board.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="http://w2ui.com/src/w2ui-1.4.1.min.js"></script>
+    <script>
+		 // 리뷰 한줄글 길이 제한
+	    window.onload = function () {
+	    	var oneline = document.getElementsByName('inputOneline')
+	    	for (var index = 0; index < oneline.length; index++) {
+	    		if(oneline[index].value.length > 40) {
+	    			var sub = oneline[index].value.substr(0, 40) + '...';
+	    			document.getElementsByName('inputOneline')[index].value = sub;
+	    		}
+		    	$( document.getElementsByName('inputOneline')[index] ).tooltip();
+	    	}
+	    }
+    </script>
 </head>
 <body>
 
@@ -51,13 +64,12 @@
 						</tr>
 							<c:if test="${ sessionScope.loginMember.memberName != review.writerName && loginMember.grade != 2 }">
 								<tr>
-								<th class="oneline">한줄평</th><td class="oneline" colspan="5"><input type="text" name="inputOneline" class="inputOneline" disabled="disabled" value="${ review.contents }"></td>
+								<th class="oneline">한줄평</th><td class="oneline" colspan="5"><input type="text" name="inputOneline" class="inputOneline" disabled="disabled" title="${ review.contents }" value="${ review.contents }"></td>
 								</tr>
 							</c:if>
 							<c:if test="${ sessionScope.loginMember.memberName eq review.writerName || loginMember.grade eq 2}">
 								<tr>
-								<th class="oneline">한줄평</th><td class="oneline" colspan="4"><input type="text" name="inputOneline" class="inputOneline" disabled="disabled" value="${ review.contents }"></td>
- 								<%-- <th class="oneline">한줄평</th><td class="oneline" colspan="4">${ review.contents }</td> --%>
+								<th class="oneline">한줄평</th><td class="oneline" colspan="4"><input type="text" name="inputOneline" class="inputOneline" disabled="disabled" title="${ review.contents }" value="${ review.contents }"></td>
 								<td>
 									<input type="button" value="수정" onclick="popup('${ review.reviewNum }', '${ review.movieTitle }', '${ review.contents }');">
 									<input type="button" value="삭제" onclick="goUrl('remove?reviewNum=${review.reviewNum}');">
