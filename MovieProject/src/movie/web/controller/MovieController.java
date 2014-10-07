@@ -261,18 +261,18 @@ public class MovieController extends HttpServlet {
 
 							// 파일 업로드 처리 (<input type="file">인 경우)
 						} else {
-							String fieldName = item.getFieldName(); // 필드 이름
 							String fileName = item.getName(); // 경로가 포함된 파일명
 
-							System.out.println(fieldName);
-							System.out.println(fileName);
+							System.out.println("fileName="+fileName);
 
 							int index = fileName.lastIndexOf("\\"); // 디렉터리 구분자 위치를 통해
 							if (index == -1) {
 								index = fileName.lastIndexOf("/");
 							}
-								photoDir = fileName.substring(index + 1); // 파일명만 추출			
-								System.out.println(photoDir);
+							if(fileName!=null){
+								photoDir = fileName.substring(index + 1);
+							}// 파일명만 추출			
+								System.out.println("photoDir = "+photoDir);
 								// 파일 업로드 처리
 								File uploadedFile = new File(uploadDir, photoDir);
 								item.write(uploadedFile); // 실질적인 저장
