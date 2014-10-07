@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="css/movie.css">
-<table id="weektable" class="maintable">
+<link rel="stylesheet" href="../css/movie.css">
+<table id="weekPreListtable" class="maintable">
 	<caption id="contenttitle">금주의 영화</caption>
 	<tr>
 		<td id="poster" rowspan="6"><img alt="영화 포스터"

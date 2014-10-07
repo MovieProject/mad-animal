@@ -181,21 +181,24 @@ a:hover, a:active {
 	font-size: 20px;
 }
 
-#weektable {
-	width: 780px;
+/* ↓ 메인 페이지 금주의 영화 부분 css */
+#weekPreListtable {
+	width: 747px;
+	height: 216px;
 }
 
-#weektable th, #weektable td {
-	border: 1px solid #CCC;
-	height: 21px;
+#weekPreListtable th, #weekPreListtable td {
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	height: 22px;
 }
 
-#weektable th {
+#weekPreListtable th {
 	text-align: center;
 	width: 50px;
 }
 
-#weektable td {
+#weekPreListtable td {
 	text-align: left;
 	padding: 2px 5px;
 }
@@ -206,9 +209,10 @@ td#story {
 }
 
 #poster {
+	border: none;
 	width: 150px;
 }
-
+/* ↑ 메인 페이지 금주의 영화 부분 css */
 
 #listtable .previewNum {
 	width: 45px;
@@ -253,4 +257,28 @@ td#story {
 	font-weight: bolder;
 	color: "#8282FF";
 	text-decoration: underline;
+}
+
+iframe {
+	border: 0px;
+}
+
+iframe#preview {
+	height: 300px;
+	width: 380px;
+}
+
+iframe#preview1 {
+	height: 150px;
+	width: 380px;
+}
+
+iframe#preview2 {
+	height: 150px;
+	width: 380px;
+}
+
+iframe#preview3 {
+	height: 260px;
+	width: 780px;
 }

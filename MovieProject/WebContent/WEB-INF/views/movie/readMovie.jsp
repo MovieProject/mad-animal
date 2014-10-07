@@ -1,8 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="../css/movie.css">
-<link rel="stylesheet" href="../css/board.css">
-<script type="text/javascript" src="../js/board.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Movie</title>
+<!-- 	<link rel="stylesheet" href="../css/movie.css"> -->
+	<link rel="stylesheet" href="../css/board.css">
+	<script src="../js/board.js"></script>
+</head>
+<body>
 <div id="page">
 	<header id="header">
 		<c:import url="/top.jsp"></c:import>
@@ -19,12 +26,12 @@
 				<c:when test="${movie.type eq 3 }">
 					<caption id="contenttitle">최신 영화 정보</caption>
 				</c:when>
-
 			</c:choose>
 			<tr>
-				<td id="poster" rowspan="6"><img alt="영화 포스터"
-					src="<c:url value="/images/${movie.photoDir}" />" width="300px"
-					height="400px"></td>
+				<td id="poster" rowspan="6">
+					<img id="poster" alt="영화 포스터"
+					src="<c:url value="/images/${movie.photoDir}" />">
+				</td>
 				<th>제목</th>
 				<td class="title">${movie.movieName}</td>
 			</tr>
@@ -53,7 +60,6 @@
 					onclick="goUrl('movielist?type=${movie.type}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 			</c:if>
 			<c:if test="${not empty loginMember}">
-				<!-- <input type="button" value="목록" onclick="goUrl('board?action=list');"> -->
 				<input type="button" value="목록"
 					onclick="goUrl('movielist?type=${movie.type}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 				<input type="button" value="수정"
@@ -72,3 +78,6 @@
 		<c:import url="/footer.jsp"></c:import>
 	</footer>
 </div>
+</body>
+</html>
+

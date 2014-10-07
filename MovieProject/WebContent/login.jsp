@@ -23,11 +23,7 @@
 				placeholder="아이디"
 				tabindex="1"></td>
 			<td rowspan="2"><input type="submit" name="login" value="로그인"
-<<<<<<< HEAD
-				id="login" tabindex="3"></td>
-=======
 				id="login" tabindex="3" ></td>
->>>>>>> refs/remotes/origin/master
 		</tr>
 		<tr>
 			<td><input type="password" name="password" size="13"

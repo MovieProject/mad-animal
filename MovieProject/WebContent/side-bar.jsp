@@ -4,28 +4,19 @@
 	
 </script>
 <div class="sidebar">
-	<%-- 
-		1. session scope에 설정된 "loginMember" 속성이 없으면 로그인 페이지(login.jsp)를,
-			있으면 로그아웃 페이지(logout.jsp)를 포함시킨다.(include 액션 사용) 
---%>
-
 	<c:if test="${empty loginMember}">
-		<%-- 		<jsp:include page="login.jsp" /> --%>
+
 		<c:import url="/login.jsp"></c:import>
 	</c:if>
+	
 	<c:if test="${not empty loginMember}">
-		<%-- 		<jsp:include page="logout.jsp" />
- --%>
+
 		<c:import url="/logout.jsp"></c:import>
 	</c:if>
 
 	<table id="sidebartable">
 		<tr>
 			<td id="menulabel">Menu</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
 		</tr>
 
 		<tr>
