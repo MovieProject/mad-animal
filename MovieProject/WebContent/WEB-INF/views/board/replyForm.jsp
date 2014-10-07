@@ -1,15 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Movie</title>
+
 <link rel="stylesheet" href="../css/movie.css">
 <link rel="stylesheet" href="../css/board.css">
 <script src="../js/board.js"></script>
-</head>
-<body>
+<script type="text/javascript" src = "../ckeditor/ckeditor.js"></script>
+
 
 	<div id="page">
 
@@ -19,7 +15,8 @@
 
 		<div id="content">
 		
-		<form name="writeForm" action="reply?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}&masterNum=${board.masterNum}&replyOrder=${board.replyOrder}&replyStep=${board.replyStep}" method="POST">
+		<form name="writeForm" action="reply?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}&masterNum=${board.masterNum}&replyOrder=${board.replyOrder}&replyStep=${board.replyStep}" method="POST"
+		 >
 			<table id="updatetable" class="maintable">
 				<caption>답글 작성</caption>
 				<thead>
@@ -41,7 +38,7 @@
 				</tbody>
 			</table>
 			<div class="buttonbar">
-				<input type="submit" value="등록" onclick="boardWriteCheck(this.form);">
+				<input type="button" value="등록" onclick="boardWriteCheck(this.form);">
 				<input type="button" value="취소" onclick="goUrl('read?boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}&pageNumber=${currentPageNumber}');">
 			</div>
 		</form>
@@ -55,8 +52,6 @@
 			<c:import url="/footer.jsp"></c:import>
 		</footer>
 	</div>
-</body>
-</html>
 
 
 

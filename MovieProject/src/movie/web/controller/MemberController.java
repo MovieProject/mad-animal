@@ -24,27 +24,33 @@ public class MemberController extends HttpServlet {
 
 	private void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
+		String action = request.getPathInfo();
 		//되는건가?
 		try {
-			if (action.equals("login")) {
+			if (action.equals("/login")) {
 				login(request, response);
-			} else if (action.equals("logout")) {
+			} else if (action.equals("/logout")) {
 				logout(request, response);
-			} else if (action.equals("select")) {
+			} else if (action.equals("/select")) {
 				selectMember(request, response);
-			} else if (action.equals("update")) {
+			} else if (action.equals("/update")) {
 				updateMember(request, response);
-			} else if (action.equals("remove")) {
+			} else if (action.equals("/updateform")) {
+				updateMemberForm(request, response);
+			} else if (action.equals("/remove")) {
 				removeMember(request, response);
-			} else if (action.equals("register")) {
+			} else if (action.equals("/register")) {
 				registerMember(request, response);
-			}else if( action.equals("memberlist")){
+			} else if (action.equals("/registerform")) {
+				registerMemberForm(request, response);
+			}	else if( action.equals("/memberlist")){
 				selectMemberList(request,response);
-			}else if(action.equals("listRemove")){
+			}else if(action.equals("/listRemove")){
 				removeMemberList(request,response);
-			}else if(action.equals("gradeUpdate")){
+			}else if(action.equals("/gradeUpdate")){
 				updateMemberGrade(request,response);
+			}else if(action.equals("/main")){
+				gotoMain(request,response);
 			}
 		} catch (DataDuplicatedException e) {
 			// TODO Auto-generated catch block
@@ -56,6 +62,28 @@ public class MemberController extends HttpServlet {
 
 	}
 
+	private void gotoMain(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/registerMember.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	private void registerMemberForm(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/registerMember.jsp");
+		dispatcher.forward(request, response);
+		
+	}
+
+	private void updateMemberForm(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/updateMember.jsp");
+		dispatcher.forward(request, response);
+	}
+
 	private void updateMemberGrade(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			DataNotFoundException{
@@ -65,7 +93,7 @@ public class MemberController extends HttpServlet {
 		MemberService service = new MemberServiceImpl();
 		service.updateMemberGrade(memberID, Integer.parseInt(grade));
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/member?action=memberlist");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/memberlist");
 		dispatcher.forward(request, response);		
 	}
 
@@ -82,7 +110,7 @@ public class MemberController extends HttpServlet {
 			}
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/member?action=memberlist");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/memberlist");
 		dispatcher.forward(request, response);
 		
 	}
@@ -93,7 +121,7 @@ public class MemberController extends HttpServlet {
 		MemberService service = new MemberServiceImpl();
 		Member[] memberList = service.getMemberList();
 		request.setAttribute("memberList", memberList);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("memberManager.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/memberManager.jsp");
 		dispatcher.forward(request, response);
 		
 	}
@@ -113,7 +141,7 @@ public class MemberController extends HttpServlet {
 			MemberService service = new MemberServiceImpl();
 			service.writeMember(member);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 			dispatcher.forward(request, response);
 			
 			
@@ -130,7 +158,7 @@ public class MemberController extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		session.removeAttribute("loginMember");
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 		
 
@@ -154,7 +182,7 @@ public class MemberController extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		session.setAttribute("loginMember", member);		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -165,7 +193,7 @@ public class MemberController extends HttpServlet {
 			Member member = service.getMember(memberID);
 			request.setAttribute("selectedMember", member);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("detailsMember.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/detailsMember.jsp");
 			dispatcher.forward(request, response);
 	
 
@@ -177,7 +205,7 @@ public class MemberController extends HttpServlet {
 			session.removeAttribute("loginMember");
 			session.invalidate();
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -195,7 +223,7 @@ public class MemberController extends HttpServlet {
 		if(check == MovieUtil.VALID_MEMBER){
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", member);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 			dispatcher.forward(request, response);
 		}else{
 			String loginErrorMsg =null;
@@ -205,7 +233,7 @@ public class MemberController extends HttpServlet {
 				loginErrorMsg = "패스워드  ㄴㄴ";
 			}
 			request.setAttribute("loginErrorMsg", loginErrorMsg);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 			dispatcher.forward(request, response);
 			
 		}

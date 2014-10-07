@@ -48,7 +48,7 @@
 			</tr>
 	<c:if test="${not empty loginMember && loginMember.grade == 2 }">
 				<tr>
-				<td><a href="<c:url value='/member?action=memberlist'/>">회원 관리</a></td>
+				<td><a href="<c:url value='/member/memberlist'/>">회원 관리</a></td>
 			</tr>
 	</c:if>
 
