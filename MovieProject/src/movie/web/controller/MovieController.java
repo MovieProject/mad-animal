@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.RepaintManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.commons.fileupload.FileItem;
@@ -26,6 +27,8 @@ import movie.business.exception.DataDuplicatedException;
 import movie.business.exception.DataNotFoundException;
 import movie.business.service.BoardService;
 import movie.business.service.BoardServiceImpl;
+import movie.business.service.MemberService;
+import movie.business.service.MemberServiceImpl;
 import movie.business.service.MovieService;
 import movie.business.service.MovieServiceImpl;
 import movie.util.MovieUtil;
@@ -69,6 +72,8 @@ public class MovieController extends HttpServlet {
 				updateMovie(request, response);
 			} else if (action.equals("/moviepreview")) {
 				previewMovie(request, response);
+			} else if(action.equals("/removeMovieList")){
+				removeMovieList(request,response);
 			}
 
 		} catch (DataDuplicatedException e) {
@@ -79,6 +84,22 @@ public class MovieController extends HttpServlet {
 
 		}
 
+	}
+
+	private void removeMovieList(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException, NumberFormatException, DataNotFoundException {
+		// TODO Auto-generated method stub
+		String[] items = request.getParameterValues("items");
+		System.out.println("items" + items);
+		MovieService service = new MovieServiceImpl();
+		if(items != null){
+			for(String item:items){
+				service.removeMovie(Integer.parseInt(item));
+			}
+		}
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/memberlist");
+		dispatcher.forward(request, response);
 	}
 
 	private void previewMovie(HttpServletRequest request,

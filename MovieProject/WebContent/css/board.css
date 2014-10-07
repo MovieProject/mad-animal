@@ -57,7 +57,9 @@ page {
 #listtable {
 	width: 770px;
 }
-
+#listtable .check{
+	width: 30px;
+}
 #listtable .num {
 	width: 45px;
 	text-align: center;

@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>Movie</title>
 <link rel="stylesheet" href="../css/board.css">
-<script type="text/javascript"  src="../js/script.js"></script>
-<script type="text/javascript"  src="../js/board.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+<script type="text/javascript" src="../js/board.js"></script>
 </head>
 <body>
 
@@ -19,10 +19,13 @@
 
 		<div id="content">
 
-			<table id="listtable" class="maintable"  align="center">
- 				<caption id="boardtitle">회원추천  영화</caption>
+			<table id="listtable" class="maintable" align="center">
+				<caption id="boardtitle">회원추천 영화</caption>
 				<thead>
 					<tr>
+						<c:if test="${loginMember.grade eq 2 }">
+							<th class = "check"></th>
+						</c:if>
 						<th class="num"></th>
 						<th class="title">제 목</th>
 						<th class="writer">감 독</th>
@@ -41,9 +44,13 @@
 						<c:otherwise>
 							<c:forEach var="movie" items="${requestScope.movielist}">
 								<tr>
+									<c:if test="${loginMember.grade eq 2 }">
+										<td class="check"><input type="checkbox" id="items"
+											name="items" value="${movie.movieNum}"></td>
+									</c:if>
 									<td class="num">${movie.movieNum}</td>
-									<td class="title">									
-									 <a	href="movieRead?pageNumber=${currentPageNumber}&num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&type=1">${movie.movieName}</a></td>
+									<td class="title"><a
+										href="movieRead?pageNumber=${currentPageNumber}&num=${movie.movieNum}&searchType=${param.searchType}&searchText=${param.searchText}&type=1">${movie.movieName}</a></td>
 									<td class="writer">${movie.director}</td>
 									<td class="regdate">${movie.releaseDate}</td>
 								</tr>
@@ -75,11 +82,11 @@
 					</tr>
 				</tfoot>
 			</table>
-			<div class="buttonbar" >
+			<div class="buttonbar">
 				<form name="searchForm" action="movielist" method="post"
 					onsubmit="return searchCheck(this.form);">
-					<input type = "hidden" name = "type" value ="1">
-					<select name="searchType">
+					<input type="hidden" name="type" value="1"> <select
+						name="searchType">
 						<option value="all"
 							<c:if test="${empty param.searchType}" >selected="selected"</c:if>>전체검색</option>
 						<option value="movieName"
@@ -88,16 +95,16 @@
 							<c:if test="${param.searchType eq 'writer'}"> selected="selected"</c:if>>감독</option>
 					</select> <input id="searchinput" type="text" name="searchText"
 						value="${param.searchText}">
-						 <input type="submit" value="검색"> 
-						<input
-						type="button" value="목록" onclick="goUrl('movielist?type=1');">
-					<c:if test="${not empty loginMember}">
-						<input type="button" value="글쓰기" onclick="goUrl('writeMovieForm?type=1');">
-					</c:if> 
-				<%-- 
-				<a href="<c:url value="writeMovieForm.jsp"/>"><input type="button" name="write" value="글쓰기"></a>
-				 --%>
-				 </form>
+						 <input type="submit"	value="검색" >
+						  <input type="button" value="목록" onclick="goUrl('movielist?type=1');">
+					<c:if test="${not empty loginMember && loginMember.grade <= 2}">
+						<input type="button" value="글쓰기"
+							onclick="goUrl('writeMovieForm?type=1');">
+						<c:if test="${loginMember.grade eq 2 }">
+							<input type="button" value="선택 삭제" id ='moviesRemove' onclick="validateMovie('removeMovieList')">
+						</c:if>
+					</c:if>
+				</form>
 			</div>
 		</div>
 

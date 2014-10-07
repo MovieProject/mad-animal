@@ -99,6 +99,20 @@ function validateForm(){
 	alert("선택된 값이 없습니다.");
 	return false;
 }
+function validateMovie(url){
+	var checkboxes = document.listDelete.items;
+	for(var i = 0;i<checkboxes.length;i++){
+		if(checkboxes[i].checked== true){
+			if(confirm("정말로 삭제하시겠습니까?")){
+				location.href = url;
+			}else{
+				return false;
+			}
+		}
+	}
+	alert("선택된 값이 없습니다.");
+	return false;
+}
 
 //리뷰 글쓰기 폼 체크
 function reviewWriteCheck() {
