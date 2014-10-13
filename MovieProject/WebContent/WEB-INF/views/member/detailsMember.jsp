@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-<link rel="stylesheet" href="css/board.css">
+<link rel="stylesheet" href="../css/movie.css">
 <script type="text/javascript" src="js/board.js"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@
 			<form name="managerForm"
 				action="<c:url value = "/member/gradeUpdate?memberID=${selectedMember.memberID}"/>"
 				method="post">
-				<table id="managertable" class="maintable" align="center">
+				<table id="managertable" class="maintable">
 					<caption id="boardtitle">회원관리</caption>
 					<thead>
 						<tr>

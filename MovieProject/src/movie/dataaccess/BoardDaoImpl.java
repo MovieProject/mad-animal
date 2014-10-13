@@ -155,7 +155,7 @@ public class BoardDaoImpl implements BoardDao {
 
 				board = new Board(rs.getInt("board_num"), title,
 						rs.getString("board_writer"), rs.getInt("read_count"),
-						rs.getString("reg_date"), rs.getInt("reply_step"));
+						rs.getString("reg_date").substring(0, 10), rs.getInt("reply_step"));
 
 				result.add(board);
 			}

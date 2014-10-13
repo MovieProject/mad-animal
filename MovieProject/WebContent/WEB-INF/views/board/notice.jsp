@@ -5,11 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-<link rel="stylesheet" href="../css/board.css">
+<link rel="stylesheet" href="../css/movie.css">
 <script src="../js/board.js"></script>
 </head>
 <body>
-
 	<div id="page">
 
 		<header id="header">
@@ -17,8 +16,7 @@
 		</header>
 
 		<div id="content">
-
-			<table id="listtable" class="maintable" align="center">
+			<table id="listtable" class="maintable">
 				<caption id="boardtitle">공지사항</caption>
 				<thead>
 					<tr>
@@ -31,22 +29,19 @@
 				</thead>
 				<tbody>
 					<c:choose>
-
 						<c:when test="${empty requestScope.boardList}">
 							<tr>
 								<td colspan="5">등록된 게시물이 없습니다.</td>
 							</tr>
 						</c:when>
-
 						<c:otherwise>
 							<c:forEach var="board" items="${requestScope.boardList}">
 								<tr>
 									<td class="num">${board.boardNum}</td>
-									<td class="title"><c:forEach begin="1"
-											end="${board.replyStep}">
-									&nbsp;
-								</c:forEach> <a
-										href="read?pageNumber=${currentPageNumber}&boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}">${board.title}</a></td>
+									<td class="title">
+										<c:forEach begin="1" end="${board.replyStep}">&nbsp;</c:forEach>
+										<a href="read?pageNumber=${currentPageNumber}&boardNum=${board.boardNum}&searchType=${param.searchType}&searchText=${param.searchText}">${board.title}</a>
+									</td>
 									<td class="writer">${board.writerName}</td>
 									<td class="regdate">${board.regDate}</td>
 									<td class="readcount">${board.readCount}</td>
@@ -114,4 +109,3 @@
 	</div>
 </body>
 </html>
-

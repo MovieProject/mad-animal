@@ -5,21 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Movie</title>
-<link rel="stylesheet" href="../css/board.css">
+<link rel="stylesheet" href="../css/movie.css">
 <script type="text/javascript" src="js/board.js"></script>
 </head>
 <body>
-
 	<div id="page">
-
 		<header id="header">
 			<c:import url="/top.jsp"></c:import>
 		</header>
-
 		<div id="content">
-
 			<form action="<c:url value = '/member/listRemove' />" name="listDelete" method="post" onsubmit="return validateForm();">
-				<table id="managertable" class="maintable" align="center">
+				<table id="managertable" class="maintable">
 					<caption id="boardtitle">회원관리</caption>
 					<thead>
 						<tr>
@@ -68,12 +64,9 @@
 				<input type="submit" value="탈퇴" id="removeButton" >
 			</form>
 		</div>
-
-
 		<aside id="sidebar">
 			<c:import url="/side-bar.jsp"></c:import>
 		</aside>
-
 		<footer id="footer">
 			<c:import url="/footer.jsp"></c:import>
 		</footer>

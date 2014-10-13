@@ -5,29 +5,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Movie</title>
-	<link rel="stylesheet" href="../css/board.css">
+	<link rel="stylesheet" href="../css/movie.css">
 	<script src="../js/board.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="http://w2ui.com/src/w2ui-1.4.1.min.js"></script>
     <script>
 		 // 리뷰 한줄글 길이 제한
 	    window.onload = function () {
-	    	var oneline = document.getElementsByName('inputOneline')
-	    	for (var index = 0; index < oneline.length; index++) {
-	    		if(oneline[index].value.length > 40) {
-	    			alert("");
-	    			var sub = oneline[index].value.substr(0, 40) + '...';
-	    			document.getElementsByName('inputOneline')[index].value = sub;
+	    	var title = document.getElementsByClassName('title');
+	    	var oneline = document.getElementsByClassName('oneline');
+	    	for (var index = 1; index < oneline.length; index+=2) {
+	    		if(title[index].innerHTML.length > 20) {
+	    			title[index].title = title[index].innerHTML; 
+	    			title[index].innerHTML = title[index].innerHTML.substr(0, 20) + '...';;
 	    		}
-		    	$( document.getElementsByName('inputOneline')[index] ).tooltip();
+	    		if(oneline[index].innerHTML.length > 40) {
+	    			oneline[index].title = oneline[index].innerHTML; 
+	    			oneline[index].innerHTML = oneline[index].innerHTML.substr(0, 40) + '...';;
+	    		}
 	    	}
 	    }
     </script>
 </head>
 <body>
-
 	<div id="page">
-
 		<header id="header">
 			<c:import url="/top.jsp" />
 		</header>
@@ -65,18 +66,21 @@
 						</tr>
 							<c:if test="${ sessionScope.loginMember.memberName != review.writerName && loginMember.grade != 2 }">
 								<tr>
-								<th class="oneline">한줄평</th><td class="oneline" colspan="5"><input type="text" name="inputOneline" class="inputOneline" disabled="disabled" title="${ review.contents }" value="${ review.contents }"></td>
+								<th class="oneline">한줄평</th><td class="oneline" colspan="5">${ review.contents }</td>
 								</tr>
 							</c:if>
 							<c:if test="${ sessionScope.loginMember.memberName eq review.writerName || loginMember.grade eq 2}">
 								<tr>
-								<th class="oneline">한줄평</th><td class="oneline" colspan="4"><input type="text" name="inputOneline" class="inputOneline" disabled="disabled" title="${ review.contents }" value="${ review.contents }"></td>
+								<th class="oneline">한줄평</th><td class="oneline" colspan="4">${ review.contents }</td>
 								<td>
 									<input type="button" value="수정" onclick="popup('${ review.reviewNum }', '${ review.movieTitle }', '${ review.contents }');">
 									<input type="button" value="삭제" onclick="goUrl('remove?reviewNum=${review.reviewNum}');">
 								</td>
 								</tr>
 							</c:if>
+							<tr>
+								<td id="linebreak" colspan="6"></td>
+							</tr>
 	                    </c:forEach>
 					</c:if>
 				</tbody>
@@ -92,7 +96,7 @@
 									<a class="pagenumber currpage">${pageNumber}</a>
 								</c:when>
 								<c:otherwise>
-									<a class="pagenumber" href="list?pageNumber=${pageNumber}&searchType=${searchType}&searchText=${searchText}">${pageNumber}</a>
+									<a title="test" class="pagenumber" href="list?pageNumber=${pageNumber}&searchType=${searchType}&searchText=${searchText}">${pageNumber}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>

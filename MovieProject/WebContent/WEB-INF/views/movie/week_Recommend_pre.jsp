@@ -1,12 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="../css/movie.css">
-<table id="weekPreListtable" class="maintable">
-	<caption id="contenttitle">금주의 영화</caption>
+<table id="weekPreListtable" class="prevmaintable">
+	<caption id="preboardtitle">금주의 영화</caption>
 	<tr>
-		<td id="poster" rowspan="6"><img alt="영화 포스터"
-			src="<c:url value="/images/${movie.photoDir}" />" width="150px"
-			height="200px"></td>
+		<td id="preposter" rowspan="6">
+		<img id="preposter" alt="영화 포스터" src="<c:url value="/images/${movie.photoDir}" />">
+		</td>
+		
 		<th>제목</th>
 		<td class="content">${movie.movieName}</td>
 	</tr>

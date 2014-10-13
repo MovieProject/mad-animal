@@ -91,7 +91,6 @@ function reviewWriteCheck() {
 	return true;
 }
 // 최종 버전에 추가 수정할 부분
-// review.jsp 도 같이 수정해야함. (head에 tooltip관련 스크립트 추가함)
 //↓===================================================================
 // 수정용 팝업 설정
 function popup(num, title, content) {
